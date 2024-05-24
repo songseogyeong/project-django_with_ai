@@ -1007,7 +1007,7 @@ FileNotFoundError: [Errno 2] No such file or directory: 'C:\\study\\teenplay_ser
     # 정답-학습 데이터 (카테고리)
     add_y_train = [club.club_main_category]
 
-    # 정규표현식 함수를 통해 특수문자 등 제거 gn list로 변환
+    # 정규표현식 함수를 통해 특수문자 등 제거 후 list로 변환
     add_X_train_clean = [process_club_data(add_X_trian)]
 
     # 훈련 결과 확인
