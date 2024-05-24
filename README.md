@@ -43,7 +43,7 @@
     <a style="color: inherit;" href='#Ⅰ. 개요'>
       <p style='font-size: 23px'>Ⅰ. 개요</p> <br>
     </a>
-    <p style='font-size: 20px; margin-left: 20px; margin-top: -30px;'>서비스 소개</p>
+    <p style='font-size: 20px; margin-left: 20px; margin-top: -30px;'>1. 서비스 소개</p>
     <p style='font-size: 20px; margin-left: 20px;'>2. 기획배경 </p>
     <p style='font-size: 20px; margin-left: 20px;'>3. 기대효과 </p>
     <p style='font-size: 20px; margin-left: 20px;'>4. AI 추천 서비스 모델 기획 </p>
@@ -155,7 +155,7 @@
 <h1 id="Ⅱ. 모델 개발">Ⅱ. 모델 개발</h1>
 
 # 1. 데이터 수집
-○ 데이터 수집
+## □ 데이터 수집
 - 사전 훈련 모델 학습을 위하여 ```selenium(셀레니움)``` 라이브러리를 통해 * web crawling(웹 크롤링)으로 모임 데이터를 수집함  
 <sub>* web crawling이란, 인터넷 주소(URL)에 접근하여 해당 주소에 있는 정보들을 자동으로 추출할 수 있는 기술인 스크래핑으로 데이터를 추출하여 복사함</sub>
 
@@ -204,7 +204,7 @@
 
 <br></br>
 
-○ VIEW 생성
+## □ VIEW 생성
 - 수집된 데이터를 확인하기 쉽도록 정보가 정리된 새로운 데이터 테이블 생성
 - tbl_club의 club_region_id 와 tbl_region의 id를 join하여 view 생성함
 
