@@ -1,0 +1,321 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/web/css/management-club-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플:: 모임 관리{% endblock %}
+{% block content %}
+    <body style="position: relative; min-height: 100%; top: 0px">
+    <!-- 헤더 부분 -->
+    <header></header>
+    <!-- 메인 부분(모임 홍보쪽 해더) -->
+    <main class="main">
+        <div class="sud-header-wrap">
+            <div class="sud-header-container">
+                <div class="sud-header-box">
+                    <!-- 모임 개요 페이지 주소 필요 -->
+                    <a class="sud-header-category select-category" href="/member/mypage-club/{{ club_id }}">모임 개요</a>
+                    <!-- 구성원 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-member/{{ club_id }}">구성원</a>
+                    <!-- 모임 공지사항 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-notice/{{ club_id }}">모임 공지사항</a>
+                    <!-- 모임 설정 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-setting/{{ club_id }}">모임 설정</a>
+                </div>
+                <!-- 모임 상세페이지 주소 필요 -->
+                <a class="club-detail-link" href="/club/detail/?id={{ club_id }}" target="_blank">
+                    <span>모임 페이지 바로가기</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="move-svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                                d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <!-- 모임 관리 메인 서비스 -->
+        <div class="club-menagement-wrap">
+            <div class="club-menagement-container">
+                <section class="club-name-activity">
+                    <div class="club-name-activity-box">
+                        <div class="club-prfile-box">
+                            <div>
+                                <div class="club-prfile">
+                                    <!-- 모임 프로필 사진 주소 필요 -->
+                                    {% if insite.club_profile %}
+                                        <img src="/upload/{{ insite.club_profile }}" alt="프로필 사진" class="club-profile-img" />
+                                    {% else %}
+                                        <img src="{% static 'public/web/images/logo/logo1.png' %}"  alt="커버 이미지" class="club-profile-img" />
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="club-name-box">
+                                <span class="club-name">{{ insite.club_name }}</span>
+                            </div>
+                        </div>
+                        <div class="activity-open">
+                            <div>
+                                <a class="activity-open-btn" href="/club/pr-post-write/?club_id={{ club_id }}">홍보글 작성하기</a>
+                            </div>
+                            <div>
+                                <a class="activity-open-btn" href="/activity/create/?club_id={{ club_id }}">활동 개설하기</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="club-info">
+                    <div class="club-info-box">
+                        <div class="club-info-title">모임 인사이트</div>
+                        <div class="club-info-list">
+                            <!-- 구성원 정보 box -->
+                            <div>
+                                <div class="member-info-box">
+                                    <div class="member-info-items">
+                                        <div>
+                                            <!-- 구성원 페이지 주소 필요 -->
+                                            <a class="member-list-link" href="/member/mypage-member/{{ club_id }}">구성원
+                                                ></a>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <!-- 모임 가입 인원 필요 -->
+                                                <span class="member-count">{{ insite.club_member_count }}</span>
+                                                명
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 모임 공지 -->
+                            <div>
+                                <div class="club-notice-brief-box">
+                                    <div class="club-notice-brief-items">
+                                        <a class="club-notice-brief-link" href="/member/mypage-notice/{{ club_id }}">모임
+                                            공지사항 ></a>
+                                        <div>
+                                            <span class="club-notice-count">{{ insite.club_notice_count }}</span>
+                                            개의 공지
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div>
+                                <div class="activity-recruiting-box">
+                                    <div class="activity-recruiting-items">
+                                        <div class="activity-recruiting-item">
+                                            <a class="activity-recruiting-link">모집중</a>
+                                            <!-- 신청자 수 -->
+                                            <div>{{ insite.waiting_member_count }} 명 신청</div>
+                                        </div>
+                                        <div>
+                                            <span class="activity-recruiting-count">{{ insite.activity_count }}</span>
+                                            개의 활동
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div>
+                                <div class="ended-activities-box">
+                                    <div class="ended-activities-items">
+                                        <a class="ended-activities-link">종료</a>
+                                        <div>
+                                            <span class="ended-activities-count">{{ insite.activity_end_count }}</span>
+                                            개의 활동
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gap"></div>
+                        <div>
+                            <div>
+                                <!-- 활동이 있을 경우 -->
+                                <div class="activities-list-title-box">
+                                    <div class="activities-list-title">활동 리스트(<span>{{ activities_count }}</span>)</div>
+                                    <div>
+                                        <div>
+                                            <div class="sorting-box">
+                                                <button type="button" class="sorting-btn">
+                                                    <span class="seleced-sorting">최신 개설순</span>
+                                                    <span class="down-arrow-box">
+                                                        <svg class="down-arrow-svg" xmlns="http://www.w3.org/2000/svg"
+                                                             viewBox="0 0 20 20">
+                                                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                                <ul class="sorting-list-ul">
+                                                    <li class="sorting-target">
+                                                        <span>최신 개설순</span>
+                                                    </li>
+                                                    <li class="sorting-target">
+                                                        <span>활동 일시순</span>
+                                                    </li>
+{#                                                    <li class="sorting-target">#}
+{#                                                        <span>인기순</span>#}
+{#                                                    </li>#}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 활동 목록 부분 -->
+                                {% if not activities %}
+                                    <div class="club-activities-box">
+                                        <div class="club-activities-items">
+                                            <div class="club-activities-categories">
+                                                <div class="club-activities-number">활동번호</div>
+                                                <div class="club-activities-hits">
+                                                    <div class="activities-hits-box">
+                                                        <div>
+                                                            <span>조회수</span>
+                                                            <span class="hits-explain-box">
+                                                          <button class="hits-explain-btn"
+                                                                  type="button">⚠</button>
+                                                          <div>
+                                                              <div class="hits-explain-item">
+                                                                  <div class="hits-explain-ment">활동 페이지를 한 번 이상 조회한 방문 수</div>
+                                                              </div>
+                                                          </div>
+                                                      </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="club-activities-title">활동명</div>
+                                                <div class="club-activities-date">활동일시</div>
+                                                <div class="club-activities-open-date">활동 개설일</div>
+                                            </div>
+                                            <div class="club-activities-contents">
+                                                {% for activity in activities %}
+                                                    <div>
+                                                        <div class="top-line"></div>
+                                                        <div class="club-activity-content">
+                                                            <!-- 활동 id -->
+                                                            <div class="club-activity-number">{{ activity.id }}</div>
+                                                            <!-- 활동 조회수 -->
+                                                            <div class="club-activity-hits">4</div>
+                                                            <div class="club-activity-title">
+                                                                <!-- 활동 관리 페이지 주소, 제목 필요 -->
+                                                                <a class="club-activity-link" href="/member/activity/?activity_id={{ activity.id }}">{{ activity.activity_title }}</a>
+                                                            </div>
+                                                            <div class="club-activity-date">{{ activity.activity_start }}</div>
+                                                            <div class="club-activity-open-date">{{ activity.activity_end }}</div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 페이지네이션 버튼 부분(1페이지당 6개) -->
+                                    <div class="pagination-wrap">
+                                        <div class="pagination-container">
+                                            <div class="pagination-box">
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <!-- 활동이 없을 경우 -->
+                                    <div class="none-actinities-box">
+                                        <div>
+                                            <div>개설된 활동이 없습니다.</div>
+                                            <div class="new-activity-btn-box">
+                                                <button class="new-activity-btn" type="button">활동 개설</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 공지사항들 부분 -->
+                <section class="notice-section">
+                    <div class="notice-wrap">
+                        <div class="notice-title-container">
+                            <span>틴플 공지사항</span>
+                            <span style="margin-left: 560px">모임 공지사항</span>
+                        </div>
+                        <div class="notice-container">
+                            <div class="teenplay-notice-box">
+                                <div class="teenplay-notice-items">
+                                    <div class="teenplay-notice-item">
+                                        <div class="teenplay-notice-content">
+                                            <div class="teenplay-notice-categories">
+                                                <div class="teenplay-notice-category-kind">분류</div>
+                                                <div class="teenplay-notice-category-title">공지</div>
+                                                <div class="teenplay-notice-category-date">게시일</div>
+                                            </div>
+                                            <!-- 최신순으로 사이트 공지사항 4개만 -->
+                                            <div>
+                                                {% for notice in notices %}
+                                                    <div class="{{ notice.id }}">
+                                                        <div class="division-line"></div>
+                                                        <div class="teenplay-notice-info">
+                                                            <div class="teenplay-notice-kind">공지</div>
+                                                            <div class="teenplay-notice-title">
+                                                                <!-- 공지사항 주소 필요 -->
+                                                                <a class="teenplay-notice-link"
+                                                                   href="">{{ notice.notice_title }}</a>
+                                                            </div>
+                                                            <div class="teenplay-notice-date">{{ notice.created_date }}</div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="club-notice-box">
+                                <div class="club-notice-items">
+                                    <div class="club-notice-item">
+                                        <div class="club-notice-content">
+                                            <div class="club-notice-categories">
+                                                <div class="club-notice-category-kind">분류</div>
+                                                <div class="club-notice-category-title">공지</div>
+                                                <div class="club-notice-category-date">게시일</div>
+                                            </div>
+                                            <!-- 최신순으로 사이트 공지사항 4개만 -->
+                                            <div>
+                                                {% for club_notice in club_notices %}
+                                                    <div class="{{ club_notice.id }}">
+                                                        <div class="division-line"></div>
+                                                        <div class="club-notice-info">
+                                                            <div class="club-notice-kind">공지</div>
+                                                            <div class="club-notice-title">
+                                                                <!-- 공지사항 주소 필요 -->
+                                                                <a class="club-notice-link"
+                                                                   href="">{{ club_notice.notice_title }}</a>
+                                                            </div>
+                                                            <div class="club-notice-date">{{ club_notice.created_date }}</div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <!-- 푸터 부분 -->
+    <footer></footer>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const csrf_token = '{{ csrf_token }}';
+        const club_id = '{{ club_id }}';
+        let page = {{ page_info.page }};
+        let order = `{{ page_info.order }}`;
+    </script>
+    <script src="{% static 'member/web/js/management-mypage-module.js' %}"></script>
+    <script src="{% static 'member/web/js/management-club-web.js' %}"></script>
+{% endblock %}

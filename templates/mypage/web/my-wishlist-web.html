@@ -1,0 +1,184 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'member/web/css/my-wishlist-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플:: 나의 위시리스트{% endblock %}
+{% block content %}
+        <!-- 메인 부분 -->
+        <main class="mypage-main">
+            <div class="mypage-wrap">
+                <div>
+                    <div class="mypage-container">
+                        <div class="mypage-box">
+                            <div class="side-bar">
+                                <div class="side-bar-title">마이페이지</div>
+                                <div class="side-bar-items">
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a class="target-color" href="">나의 위시리스트</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="">나의 모임</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="">나의 댓글</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="">나의 활동</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="">틴친 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="">결제 내역</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="">쪽지 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="">알림 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="">내 정보 수정</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contents">
+                                <div class="service-title-box">
+                                    <div class="service-title">나의 위시리스트</div>
+                                    <div class="tab-list-box">
+                                        <div>
+                                            <div>
+                                                <div class="tab-list-contents">
+                                                    <div>
+                                                        <button class="tab-list-btn" type="button">
+                                                            <span>전체</span>
+                                                            <span> ↓ </span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="tab-list">
+                                                        <button class="tab" name="">전체</button>
+                                                        <button class="tab" name="open">공개</button>
+                                                        <button class="tab" name="secret">비공개</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wishlist-box">
+                                    <table class="wishlist-table">
+                                        <tbody>
+                                            <tr class="wishlist-items">
+                                                <th class="wishlist-item-content">위시리스트 내용</th>
+                                                <th class="wishlist-item-time">작성시간</th>
+                                                <th class="wishlist-item-disclosure">공개여부</th>
+                                                <th class="wishlist-item-category">카테고리</th>
+                                                <th class="wishlist-item-replayes">댓글수</th>
+                                                <th class="wishlist-item-likes">좋아요</th>
+                                                <th class="wishlist-item-gap"></th>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="add-more">
+                                    </table>
+                                </div>
+{#                                <div class="test">아직 작성한 위시리스트가 없습니다.</div>#}
+                                <!-- 페이지네이션 1페이지에 10개 -->
+                                <div class="pagination-box">
+                                    <div class="pagination-contents">
+                                        <div class="pagination-items">
+                                            <button class="next-btn" type="button" id="leftButton">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="left-arrow-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="page-numbers" id="pageButtons">
+
+                                                <!-- <button class="page-number-btn" type="button">
+                                                    <div class="page-number">...</div>
+                                                </button> -->
+                                            </div>
+                                            <button class="next-btn" type="button" id="rightButton">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="right-arrow-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 푸터 부분 -->
+        <footer></footer>
+        <!-- 삭제하기 모달창 부분 -->
+        <div>
+            <div>
+                <div>
+                    <div class="delete-modal-wrap">
+                        <div class="delete-modal-shadow"></div>
+                        <div class="delete-modal-container">
+                            <div class="delete-modal-box">
+                                <div>
+                                    <h2 class="modal-header-box">
+                                        <div class="check-svg-box">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="modal-header-title">정말 해당 위시리스트를 삭제하시겠습니까?</div>
+                                    </h2>
+                                </div>
+                                <div class="modal-btn-box">
+                                    <button class="close-btn" type="button" id="delete-out">닫기</button>
+                                    <button class="check-btn" type="button" id="delete-but">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script>
+    const csrf_Token = '{{ csrf_token }}';
+    const member_id = '{{ request.session.member.id }}'
+    const selectbut = document.querySelectorAll(".tab")
+    let status_wishlist = '전체'
+    selectbut.forEach((btn)=>{
+        btn.addEventListener("click", async(e)=>{
+            console.log(status_wishlist)
+            status_wishlist = btn.name
+            page = 1
+            currentPage = 1
+            const text = await wishlistService.getList(member_id, currentPage,status_wishlist, showList);
+            tbody.innerHTML = text;
+            wishlistService.getList(member_id, 1, status_wishlist,async (replies, total_pages) => {
+            maxPage = total_pages;
+            // 페이지 버튼 다시 업데이트
+            console.log(maxPage)
+            updatePageButtons();
+            });
+        })
+    })
+
+    </script>
+    <script src="{% static 'member/web/js/my-wishlist-module-web.js' %}"></script>
+    <script src="{% static 'member/web/js/my-wishlist-web.js' %}"></script>
+{% endblock %}

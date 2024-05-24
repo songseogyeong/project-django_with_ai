@@ -1,0 +1,306 @@
+{% extends 'admin/web/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'admin/web/css/activity/activity-web.css' %}">
+{% endblock %}
+{% block title %}틴플 :: 관리자 페이지{% endblock %}
+{% block content %}
+            <!-- 메뉴 선택할수 있는 칸 -->
+            <ul class="main-admin-select">
+                <!-- 유저관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/user/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/admin-user-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">유저 관리</span>
+                    </a>
+                </li>
+                <!-- 쪽지 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/message/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/message-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">쪽지 관리</span>
+                    </a>
+                </li>
+                <!-- 틴플레이관리 -->
+{#                <li class="main-user-other">#}
+{#                    <a href="/admin/teenplay/" class="main-user-warp">#}
+{#                        <img class="main-user-image" src="{% static 'admin/web/images/play-img.png' %}" alt="user-image" />#}
+{#                        <span class="main-user-text">틴 플레이 관리</span>#}
+{#                    </a>#}
+{#                </li>#}
+                <!-- 게시글 관리 -->
+                <li class="main-user">
+                    <a href="/admin/promote/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/post-img.png' %}" alt="user-image" />
+                        <span class="main-user-texta">게시글 관리</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/promote/" class="main-user-post-promote">
+                        <svg class="main-user-post-promote-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="4"></circle>
+                        </svg>
+                        <span class="main-user-post-promote-text">홍보글 관리</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/activity/" class="main-user-post-promote-add">
+                        <svg class="main-user-post-promote-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="4"></circle>
+                        </svg>
+                        <span class="main-user-post-promote-text">활동모집글 관리 </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/wishlist/" class="main-user-post-promote">
+                        <svg class="main-user-post-promote-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="4"></circle>
+                        </svg>
+                        <span class="main-user-post-promote-text">위시리스트 관리</span>
+                    </a>
+                </li>
+                <!-- 전체모임 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/meeting/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/meeting-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">전체 모임관리</span>
+                    </a>
+                </li>
+                <!-- 축제관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/festival/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/festival-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">축제 관리</span>
+                    </a>
+                </li>
+                <!-- 공지사항 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/notice/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/loudspeaker-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">공지사항 관리</span>
+                    </a>
+                </li>
+                <!-- 댓글관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/comment/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/comment-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">댓글 관리</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- 사실상 여기만 수정하면 모든게 끝입니다! -->
+        <div class="main-user-info-warp">
+            <div class="main-user-info-container">
+                <div class="main-user-info-box">
+                    <div class="main-user-info-top">
+                        <!-- 유저관리, 검색하는곳 -->
+                        <header class="main-user-info-text">
+                            <h1 class="main-user-info-tag">활동 모집글 관리</h1>
+                            <div>
+                                <div class="main-user-info-seach">
+                                    <label class="main-user-info-label">
+                                        <!-- 검색 앞에 들어가는거 시작 -->
+                                        <div class="main-message-info-choice-add">
+                                            <div class="main-message-info-choice-box-add">
+                                                <div class="main-message-info-choice-in-add">
+                                                    <button class="main-message-info-button-add">
+                                                        <span class="main-message-info-button-text-add">작성자</span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="main-comment-info-button-svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.27 8.42a1.076 1.076 0 0 1 1.587-.13L12 14.832l7.143-6.544a1.076 1.076 0 0 1 1.586.13 1.26 1.26 0 0 1-.122 1.696L12 18l-8.607-7.885A1.26 1.26 0 0 1 3.27 8.42Z"></path>
+                                                        </svg>
+                                                    </button>
+                                                    <div>
+                                                        <!-- 검색창 모달 -->
+                                                        <ul id="admin-message-modal-search-add" class="admin-message-modal-search-add hidden">
+                                                            <button class="admin-message-modal-search-send-add">작성자</button>
+                                                            <button class="admin-message-modal-search-receive-add">제목</button>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="main-message-info-bet"></div>
+                                        </div>
+                                        <input class="main-user-info-input" placeholder="활동 모집글" type="search" value="" id="member-search" />
+                                        <button class="main-user-search-button" id="member-button">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="main-user-search-box">
+                                                <path id="member-search-cansle" fill-rule="evenodd" clip-rule="evenodd" d="M15.83 16.561a7.8 7.8 0 1 1 1.233-1.312l3.465 3.465a.9.9 0 1 1-1.272 1.273L15.83 16.56Zm1.13-5.961a6.16 6.16 0 1 1-12.32 0 6.16 6.16 0 0 1 12.32 0Z"></path>
+                                            </svg>
+                                        </button>
+                                    </label>
+                                </div>
+                            </div>
+                        </header>
+                        <!-- 전체 목록 갯수확인 -->
+                        <div class="main-user-total">
+                            <!-- 첫번째(왼쪽 전체0) -->
+                            <div class="main-user-total-list">
+                                <span class="main-user-total-text">전체</span>
+                                <span class="main-user-total-number" id="total-count">0</span>
+                            </div>
+                            <!-- 2번째 -->
+                            <!-- 일단은 없애요^^ -->
+                            <div class="main-user-list-ston">
+                                <button class="member-user-list-button toggle-button disabled">삭제하기</button>
+                            </div>
+                        </div>
+                        <div class="main-user-status">
+                            <!-- 여기에 넣으면 추가할수있습니다(가로넓이 width만 수정)) -->
+                            <div class="main-user-status-name">전체선택</div>
+                            <div class="main-user-status-date">작성자</div>
+                            <div class="main-user-status-pay">제목</div>
+                            <div class="main-user-status-recent">작성날짜</div>
+                            <div class="main-user-status-stratdate">시작일</div>
+                            <div class="main-user-status-edndate">종료일</div>
+                            <div class="main-user-status-paycount">참여인원</div>
+                            <div class="main-user-status-status"></div>
+                        </div>
+                    </div>
+                    <div class="activity-data">
+{#                        <li class="main-user-list" data-id="1">#}
+{#                            <div class="main-user-list-check">#}
+{#                                <input type="checkbox" class="main-comment-list-checkbox" />#}
+{#                            </div>#}
+{#                            <div class="main-user-list-name">조관익</div>#}
+{#                            <div class="main-user-list-status">야구장투어</div>#}
+{#                            <div class="main-user-list-date">23.02.02</div>#}
+{#                            <div class="main-user-list-pay">23.02.06</div>#}
+{#                            <div class="main-user-list-startdate">23.02.08</div>#}
+{#                            <div class="main-user-list-enddate">2</div>#}
+{#                            <div class="main-user-list-detail">#}
+{#                                <button class="member-user-list-detail-button toggle-button" data-target="1">상세보기</button>#}
+{#                            </div>#}
+{#                        </li>#}
+{#                        <li class="main-user-list" data-id="2">#}
+{#                            <div class="main-user-list-check">#}
+{#                                <input type="checkbox" class="main-comment-list-checkbox" />#}
+{#                            </div>#}
+{#                            <div class="main-user-list-name">박종민</div>#}
+{#                            <div class="main-user-list-status">fc서울투어</div>#}
+{#                            <div class="main-user-list-date">23.02.05</div>#}
+{#                            <div class="main-user-list-pay">23.02.10</div>#}
+{#                            <div class="main-user-list-startdate">23.02.15</div>#}
+{#                            <div class="main-user-list-enddate">15</div>#}
+{#                            <div class="main-user-list-detail">#}
+{#                                <button class="member-user-list-detail-button toggle-button" data-target="2">상세보기</button>#}
+{#                            </div>#}
+{#                        </li>#}
+                    </div>
+                    <!-- 아래 버튼 -->
+                    <div class="main-user-bottom-box">
+                        <ul class="main-user-bottom-ul">
+{#                            <!-- 여기에 왼 숫자 오 들어감 -->#}
+{#                            <!-- 먼저 왼 -->#}
+{#                            <li>#}
+{#                                <button aria-label="page turning button" disabled type="button" class="main-user-bottom-reft">#}
+{#                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="main-user-bottom-svg">#}
+{#                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.58 3.27c.504.405.563 1.115.13 1.587L9.168 12l6.543 7.143a1.076 1.076 0 0 1-.13 1.586 1.26 1.26 0 0 1-1.695-.122L6 12l7.885-8.607a1.26 1.26 0 0 1 1.695-.122Z"></path>#}
+{#                                    </svg>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <!-- 숫자 -->#}
+{#                            <li class="main-margin">#}
+{#                                <button type="button" class="main-user-bottom add-color" id="button1">#}
+{#                                    <span class="main-user-number">1</span>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <li class="main-margin">#}
+{#                                <button aria-label="page number button" type="button" class="main-user-bottom" id="button2">#}
+{#                                    <span class="main-user-number">2</span>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <li class="main-margin">#}
+{#                                <button aria-label="page number button" type="button" class="main-user-bottom" id="button3">#}
+{#                                    <span class="main-user-number">3</span>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <!-- 오른쪽 -->#}
+{#                            <li class="main-margin">#}
+{#                                <button aria-label="page turning button" disabled type="button" class="main-user-bottom-right">#}
+{#                                    <svg class="main-user-bottom-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">#}
+{#                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.42 20.73a1.076 1.076 0 0 1-.13-1.587L14.832 12 8.289 4.857a1.076 1.076 0 0 1 .13-1.586 1.26 1.26 0 0 1 1.696.122L18 12l-7.885 8.607a1.26 1.26 0 0 1-1.695.122Z"></path>#}
+{#                                    </svg>#}
+{#                                </button>#}
+{#                            </li>#}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 삭제모달 -->
+        <div id="admin-user-modal" class="hidden">
+            <h4 class="admin-user-modal-title">정말 삭제하시겠습니까?</h4>
+            <div class="admin-user-modal-button">
+                <div class="admin-user-modal-left">
+                    <button class="admin-user-modal-left-button" id="modalCloseButton">취소</button>
+                </div>
+                <div class="admin-user-modal-right">
+                    <button class="admin-user-modal-right-button" id="modalApplyButton">삭제하기</button>
+                </div>
+            </div>
+        </div>
+        <div id="admin-user-modal-backdrop" class="admin-delete-modal-backdrop hidden"></div>
+        <!-- 수정 모달창 -->
+        <div class="detail-box">
+            <div id="admin-post-modal" class="admin-post-modal hidden">
+                <h4 class="admin-post-modal-title">활동 모집글 상세보기</h4>
+                <div class="admin-post-modal-warp">
+                    <!-- 여기서부터 안에 들어가는거 하나씩 / 각각 빈 div하나 만들고 안에서 생성 -->
+                    <div class="titleqq">
+                        <p class="admin-post-modal-title-name">제목</p>
+                        <label class="admin-post-modal-title-label">
+                            <input name="title" type="text" class="admin-post-modal-title-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+{#                        <div id="red-title" class="hidden">#}
+{#                            <div class="redbox">#}
+{#                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">#}
+{#                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>#}
+{#                                </svg>#}
+{#                                값을 입력해주세요.#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                    <div>
+                        <p class="admin-post-modal-content-name">내용</p>
+                        <label class="admin-post-modal-content-label">
+                            <div class="admin-post-modal-content-input"></div>
+{#                            <textarea name="content" class="admin-post-modal-content-input" readonly></textarea>#}
+                        </label>
+                        <!-- 값 미입력시 -->
+{#                        <div id="red-content" class="hidden">#}
+{#                            <div class="redbox">#}
+{#                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">#}
+{#                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>#}
+{#                                </svg>#}
+{#                                값을 입력해주세요.#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                </div>
+                <!-- 버튼 아래 있는것들 -->
+                <div class="admin-user-modal-button">
+                    <div class="admin-user-modal-left">
+                        <button class="admin-user-modal-left-detail-button" id="modalCloseButton">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 모달 뒷배경 -->
+        <div id="admin-user-modal-backdrop" class="admin-user-modal-backdrop hidden"></div>
+    </main>
+{% endblock %}
+{% block js %}
+    <script>
+        const csrf_token = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'admin/web/js/activity/admin-activity-module-web.js' %}"></script>
+    <script src="{% static 'admin/web/js/activity/admin-activity-web.js' %}"></script>
+{#    <script src="{% static 'admin/web/js/activity/admin-post-activity-addimg-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/activity/admin-post-activity-bottem-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/activity/admin-post-activity-button-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/activity/admin-post-activity-delete-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/activity/admin-post-activity-modal-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/activity/admin-post-activity-redbox-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/activity/admin-post-activity-search-web.js' %}"></script>#}
+{% endblock %}

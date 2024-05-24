@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>틴플 :: 내 정보 수정</title>
+        <link rel="shortcut icon" href="/staticfiles/images/teenplay_logo/logo1.png" type="image/x-icon" />
+        <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/staticfiles/css/mypage/app/my-info-app.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1" />
+        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport" />
+    </head>
+    <body loaded style="position: relative; min-height: 100%; top: 0px">
+        <!-- 마이페이지 헤더 부분 -->
+        <header></header>
+        <!-- 메인 부분 -->
+        <main class="mypage-main">
+            <div class="mypage-wrap">
+                <div>
+                    <div class="mypage-container">
+                        <div class="mypage-box">
+                            <div class="contents">
+                                <div class="main-info-modify">
+                                    <div class="main-info-title">내 정보 수정</div>
+                                    <!-- 이메일과 이름 칸 -->
+                                    <div>
+                                        <div>
+                                            <div class="modify-target-title">이메일(ID)</div>
+                                            <!-- 회원의 이메일이 들어가는 자리 -->
+                                            <div class="profile-email">dlfjs158@nate.com</div>
+                                        </div>
+                                        <div class="nickname-box">
+                                            <div class="modify-target-title">이름</div>
+                                            <div class="nickname-view">
+                                                <span>서경덕</span>
+                                                <button class="change-btn" type="button">변경</button>
+                                            </div>
+                                            <div class="nickname-modify" style="display: none">
+                                                <div>
+                                                    <div>
+                                                        <input class="nickname-input" autocomplete="off" type="text" placeholder="이름을 입력해 주세요" />
+                                                    </div>
+                                                </div>
+                                                <a class="nickname-fix">확인</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 프로필 이미지 변경 칸 -->
+                                    <div>
+                                        <div class="profile-title">모임 프로필 업로드</div>
+                                        <div class="profile-setting">
+                                            <div class="profile-thumbnail-box">
+                                                <!-- 프로필 썸네일이 들어가는 자리 -->
+                                                <img class="profile-thumbnail" src="/staticfiles/images/teenplay_logo/logo1.png" />
+                                            </div>
+                                            <button class="profile-upload-btn" type="button">모임 프로필 업로드</button>
+                                        </div>
+                                    </div>
+                                    <label class="profile-input-label" for="profile-input"></label>
+                                    <input id="profile-input" type="file" name="" accept="image/*" />
+                                    <input class="profile-input-thumbnail" />
+                                    <!-- 전화번호 입력 칸 -->
+                                    <div>
+                                        <span class="modify-target-title"> 휴대전화번호 </span>
+                                        <div class="phone-input-box">
+                                            <div>
+                                                <input class="phone-input" autocomplete="off" type="text" placeholder="예&#41; 010-9999-9999" />
+                                            </div>
+                                        </div>
+                                        <div class="phone-error">전화번호 양식을 지켜주세요</div>
+                                    </div>
+                                    <!-- 주소 입력 칸 -->
+                                    <div>
+                                        <span class="modify-target-title"> 주소 </span>
+                                        <div class="address-input-box">
+                                            <div>
+                                                <input class="address-input" autocomplete="off" type="text" readonly value="서울특별시 강남구" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 관심분야 선택 칸 -->
+                                    <div>
+                                        <span class="modify-target-title"> 관심분야 </span>
+                                        <div class="interest-select-box">
+                                            <div class="interest-category">문화·예술</div>
+                                            <div class="interest-category">운동·액티비티</div>
+                                            <div class="interest-category">푸드·드링크</div>
+                                            <div class="interest-category">취미</div>
+                                            <div class="interest-category">여행·동행</div>
+                                            <div class="interest-category selected-category">성장·자기개발</div>
+                                            <div class="interest-category">동네·또래</div>
+                                            <div class="interest-category">연애·소개팅</div>
+                                            <div class="interest-category">재테크</div>
+                                            <div class="interest-category">외국어</div>
+                                            <div class="interest-category">스터디</div>
+                                            <div class="interest-category">지역축제</div>
+                                            <div class="interest-category selected-category">기타</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-info-modify">
+                                    <div class="sub-info-title">부가 정보</div>
+                                    <div class="sub-modify-section">
+                                        <div>
+                                            <span class="modify-target-title"> 성별 </span>
+                                            <div class="gender-box">
+                                                <div>
+                                                    <div class="male-box">
+                                                        <input type="radio" name="gender" id="male" value="남성" />
+                                                        <label for="male" class="male-label">남성</label>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="female-box">
+                                                        <input type="radio" name="gender" id="female" value="여성" />
+                                                        <label for="female" class="female-label">여성</label>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="none-box">
+                                                        <input type="radio" name="gender" id="none" value="선택안함" />
+                                                        <label for="none" class="none-label">선택안함</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="modify-target-title"> 출생연도 </span>
+                                            <!-- js로 for문 사용하여 innerHTML 사용함 -->
+                                            <select class="birth-year" name="" id="" required>
+                                                <option disabled value="" selected>출생연도</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <span class="modify-target-title"> 관심지역 </span>
+                                            <select class="areas-interrest" name="" id="" required>
+                                                <option disabled value="" selected>선택하기</option>
+                                                <option value="서울">서울</option>
+                                                <option value="부산">부산</option>
+                                                <option value="대구">대구</option>
+                                                <option value="인천">인천</option>
+                                                <option value="광주">광주</option>
+                                                <option value="대전">대전</option>
+                                                <option value="울산">울산</option>
+                                                <option value="세종">세종</option>
+                                                <option value="경기">경기</option>
+                                                <option value="강원">강원</option>
+                                                <option value="충북">충북</option>
+                                                <option value="충남">충남</option>
+                                                <option value="전북">전북</option>
+                                                <option value="전남">전남</option>
+                                                <option value="경북">경북</option>
+                                                <option value="경남">경남</option>
+                                                <option value="제주">제주</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <span class="modify-target-title"> 가입경로 </span>
+                                            <!-- 회원정보의 선택 값의 태그에 selected 넣어기 -->
+                                            <select class="subscription-path" name="" id="" disabled>
+                                                <option value="선택안함">선택안함</option>
+                                                <option value="행사신청페이지">행사신청페이지</option>
+                                                <option value="지인추천">지인추천</option>
+                                                <option value="이벤터스 광고">이벤터스 광고</option>
+                                                <option value="네이버 블로그">네이버 블로그</option>
+                                                <option value="인터넷 검색">인터넷 검색</option>
+                                                <option value="페이스북">페이스북</option>
+                                                <option value="인스타그램">인스타그램</option>
+                                                <option value="기타" selected>기타</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="marketing-agree-box">
+                                                <div>
+                                                    <div class="marketing-input-content">
+                                                        <div class="marketing-input-items">
+                                                            <input id="marketing-checkbox" type="checkbox" />
+                                                            <label class="marketing-checkbox-label" for="marketing-checkbox">[선택] 마케팅 정보 수신동의</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- 마케팅 정보 수신동의 주소 필요 -->
+                                                <a class="consent-form-link" href="" target="_blank">보기</a>
+                                            </div>
+                                            <div class="collection-agree-box">
+                                                <div>
+                                                    <div class="collection-input-content">
+                                                        <div class="collection-input-items">
+                                                            <input id="collection-checkbox" type="checkbox" />
+                                                            <label class="collection-checkbox-label" for="collection-checkbox">[선택]개인정보 수집·이용 동의서</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- 개인정보 수집·이용 동의서 주소 필요 -->
+                                                <a class="consent-form-link" href="" target="_blank">보기</a>
+                                            </div>
+                                        </div>
+                                        <div class="withdrawal-box">
+                                            <a class="withdrawal-link" href="">틴플레이 탈퇴하기</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="save-box">
+                                    <button class="save-btn" type="button">저장하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 푸터 부분 -->
+        <footer></footer>
+        <!-- 저장 모달창 부분 -->
+        <div>
+            <div>
+                <div>
+                    <div class="save-modal-wrap" style="display: none">
+                        <div class="save-modal-shadow"></div>
+                        <div class="save-modal-container">
+                            <div class="save-modal-box">
+                                <div>
+                                    <h2 class="modal-header-box">
+                                        <div class="check-svg-box">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="modal-header-title">저장 되었습니다.</div>
+                                    </h2>
+                                </div>
+                                <div class="modal-btn-box">
+                                    <button class="close-btn" type="button">닫기</button>
+                                    <button class="check-btn" type="button">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 파일 확장자 틀릴 경우 모달 -->
+            <div class="extension-error-modal-wrap">
+                <div class="extension-error-modal-shadow"></div>
+                <div class="extension-error-modal-container">
+                    <div class="extension-error-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="extension-error-modal-title">유형에 맞지 않는 파일입니다.</div>
+                            </h2>
+                        </div>
+                        <div class="extension-error-modal-btn-box">
+                            <button class="extension-error-modal-close-btn" type="button">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/staticfiles/js/mypage/app/my-info-app.js"></script>
+</html>

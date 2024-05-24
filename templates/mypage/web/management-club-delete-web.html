@@ -1,0 +1,84 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/web/css/management-club-delete-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플:: 모임 삭제{% endblock %}
+{% block content %}
+    <body style="position: relative; min-height: 100%; top: 0px">
+    <!-- 헤더 부분 -->
+    <header></header>
+    <!-- 메인 부분 -->
+    <main class="main">
+        <!-- 헤더 밑의 모임 관리 관련 서브헤더 -->
+        <div class="sud-header-wrap">
+            <div class="sud-header-container">
+                <div class="sud-header-box">
+                    <!-- 모임 개요 페이지 주 소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-club/{{ club_id }}">모임 개요</a>
+                    <!-- 구성원 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-member/{{ club_id }}">구성원</a>
+                    <!-- 모임 공지사항 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-notice/{{ club_id }}">모임 공지사항</a>
+                    <!-- 모임 설정 페이지 주소 필요 -->
+                    <a class="sud-header-category select-category" href="/member/mypage-setting/{{ club_id }}">모임 설정</a>
+                </div>
+                <!-- 모임 상세페이지 주소 필요 -->
+                <a class="club-detail-link" href="/club/detail/?id={{ club_id }}" target="_blank">
+                    <span>모임 페이지 바로가기</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="move-svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="club-delete-wrap">
+            <div class="club-delete-container">
+                <div class="club-delete-box">
+                    <div class="club-delete-contents">
+                        <div class="club-delete-content">
+                            <div class="top-gap"></div>
+                            <div class="club-delete-items">
+                                <div class="club-delete-item">
+                                    <div class="club-delete-title">모임 삭제</div>
+                                    <div class="club-delete-ment-box">
+                                        <div style="text-align: center">
+                                            <span class="club-name">{{ club_name }}</span>
+                                            <span>채널 {{ activities_count }}개의 행사에 {{ club_members_count }}명의 신청자가 있습니다.</span>
+                                        </div>
+                                        <div style="text-align: center">채널을 삭제 하시면 행사와 신청자 정보가 모두 삭제됩니다.</div>
+                                        <div style="text-align: center">삭제한 내용은 복구되지 않습니다.</div>
+                                        <div class="re-question-ment">삭제하시겠습니까?</div>
+                                        <div class="club-delete-btn-box">
+                                            <span class="club-delete-btn"> 네, 삭제합니다. </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- 푸터 부분 -->
+    <footer></footer>
+    <!-- 모달 부분 -->
+    <div>
+        <div class=""></div>
+    </div>
+        <form id="delete-club-form" method="post" action="{% url 'member:mypage-club-delete' club_id=club_id %}">
+        {% csrf_token %}
+    </form>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const csrf_token = '{{ csrf_token }}';
+        const club_id = '{{ club_id }}';
+    </script>
+    <script src="{% static 'member/web/js/management-club-delete-web.js' %}"></script>
+{% endblock %}

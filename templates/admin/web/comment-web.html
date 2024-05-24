@@ -1,0 +1,329 @@
+{% extends 'admin/web/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'admin/web/css/comment/comment-web.css' %}">
+{% endblock %}
+{% block title %}틴플 :: 관리자 페이지{% endblock %}
+{% block content %}
+            <!-- 메뉴 선택할수 있는 칸 -->
+            <ul class="main-admin-select">
+                <!-- 유저관리 -->
+                <li class="main-comment-other">
+                    <a href="/admin/user/" class="main-comment-warp">
+                        <img class="main-comment-image" src="{% static 'admin/web/images/admin-user-img.png' %}" alt="comment-image" />
+                        <span class="main-comment-text">유저 관리</span>
+                    </a>
+                </li>
+                <!-- 쪽지 관리 -->
+                <li class="main-comment-other">
+                    <a href="/admin/message/" class="main-comment-warp">
+                        <img class="main-comment-image" src="{% static 'admin/web/images/message-img.png' %}" alt="comment-image" />
+                        <span class="main-comment-text">쪽지 관리</span>
+                    </a>
+                </li>
+                <!-- 틴플레이관리 -->
+{#                <li class="main-comment-other">#}
+{#                    <a href="/admin/teenplay/" class="main-comment-warp">#}
+{#                        <img class="main-comment-image" src="{% static 'admin/web/images/play-img.png' %}" alt="comment-image" />#}
+{#                        <span class="main-comment-text">틴 플레이 관리</span>#}
+{#                    </a>#}
+{#                </li>#}
+                <!-- 게시글 관리 -->
+                <li class="main-comment-other">
+                    <a href="/admin/promote/" class="main-comment-warp">
+                        <img class="main-comment-image" src="{% static 'admin/web/images/post-img.png' %}" alt="comment-image" />
+                        <span class="main-comment-text">게시글 관리</span>
+                    </a>
+                </li>
+                <!-- 전체모임 관리 -->
+                <li class="main-comment-other">
+                    <a href="/admin/meeting/" class="main-comment-warp">
+                        <img class="main-comment-image" src="{% static 'admin/web/images/meeting-img.png' %}" alt="comment-image" />
+                        <span class="main-comment-text">전체 모임관리</span>
+                    </a>
+                </li>
+                <!-- 축제관리 -->
+                <li class="main-comment-other">
+                    <a href="/admin/festival/" class="main-comment-warp">
+                        <img class="main-comment-image" src="{% static 'admin/web/images/festival-img.png' %}" alt="comment-image" />
+                        <span class="main-comment-text">축제 관리</span>
+                    </a>
+                </li>
+                <!-- 공지사항 관리 -->
+                <li class="main-comment-other">
+                    <a href="/admin/notice/" class="main-comment-warp">
+                        <img class="main-comment-image" src="{% static 'admin/web/images/loudspeaker-img.png' %}" alt="comment-image" />
+                        <span class="main-comment-text">공지사항 관리</span>
+                    </a>
+                </li>
+                <!-- 댓글관리 -->
+                <li class="main-comment">
+                    <a href="/admin/comment/" class="main-comment-warp">
+                        <img class="main-comment-image" src="{% static 'admin/web/images/comment-img.png' %}" alt="comment-image" />
+                        <span class="main-comment-texta">댓글 관리</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- 사실상 여기만 수정하면 모든게 끝입니다! -->
+        <div class="main-comment-info-warp">
+            <div class="main-comment-info-container">
+                <div class="main-comment-info-box">
+                    <div class="main-comment-info-top">
+                        <!-- 유저관리, 검색하는곳 -->
+                        <header class="main-comment-info-text">
+                            <h1 class="main-comment-info-tag">댓글 관리</h1>
+                            <div>
+                                <div class="main-comment-info-seach">
+                                    <label class="main-comment-info-label">
+                                        <div class="main-comment-info-choice">
+                                            <div class="main-comment-info-choice-box">
+                                                <div class="main-comment-info-choice-in">
+                                                    <button class="main-comment-info-button">
+                                                        <span class="main-comment-info-button-text">작성자</span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="main-comment-info-button-svg">
+                                                            <path class="arrow" fill-rule="evenodd" clip-rule="evenodd" d="M3.27 8.42a1.076 1.076 0 0 1 1.587-.13L12 14.832l7.143-6.544a1.076 1.076 0 0 1 1.586.13 1.26 1.26 0 0 1-.122 1.696L12 18l-8.607-7.885A1.26 1.26 0 0 1 3.27 8.42Z"></path>
+                                                        </svg>
+                                                    </button>
+                                                    <div>
+                                                        <!-- 검색창 모달 -->
+                                                        <ul id="admin-comment-modal-search" class="admin-comment-modal-search hidden">
+                                                            <button class="admin-comment-modal-search-send" value="w">작성자</button>
+                                                            <button class="admin-comment-modal-search-receive" value="p">게시글</button>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="main-comment-info-bet"></div>
+                                        </div>
+                                        <input class="main-comment-info-input" type="search" value="" id="member-search" />
+                                        <button class="main-comment-search-button" id="member-button">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="main-comment-search-box">
+                                                <path class="arrow" id="member-search-cansle" fill-rule="evenodd" clip-rule="evenodd" d="M15.83 16.561a7.8 7.8 0 1 1 1.233-1.312l3.465 3.465a.9.9 0 1 1-1.272 1.273L15.83 16.56Zm1.13-5.961a6.16 6.16 0 1 1-12.32 0 6.16 6.16 0 0 1 12.32 0Z"></path>
+                                            </svg>
+                                        </button>
+                                    </label>
+                                </div>
+                            </div>
+                        </header>
+                        <!-- 전체 목록 갯수확인 -->
+                        <div class="main-comment-total">
+                            <!-- 첫번째(왼쪽 전체0) -->
+                            <div class="main-comment-total-list">
+                                <span class="main-comment-total-text">전체</span>
+                                <span class="main-comment-total-number" id="total-count">0</span>
+                            </div>
+                            <!-- 상태 활성화창 -->
+                            <div class="main-bet">
+                                <div class="main-wish-sellect">
+                                    <div class="main-wish-sellect-warp">
+                                        <div class="main-wish-sellect-container">
+                                            <button type="button" class="main-wish-sellect-button-add" aria-label="filter">
+                                                <span class="main-wish-sellect-button-span-add">전체</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="main-comment-info-button-svga">
+                                                    <path class="arrow" fill-rule="evenodd" clip-rule="evenodd" d="M3.27 8.42a1.076 1.076 0 0 1 1.587-.13L12 14.832l7.143-6.544a1.076 1.076 0 0 1 1.586.13 1.26 1.26 0 0 1-.122 1.696L12 18l-8.607-7.885A1.26 1.26 0 0 1 3.27 8.42Z"></path>
+                                                </svg>
+                                            </button>
+                                            <!-- 공개 비공개 모달창 -->
+                                            <ul id="admin-message-modal-search-add" class="admin-message-modal-search-add hidden">
+                                                <button class="admin-message-modal-search-receive-add category" value="">전체</button>
+                                                <button class="admin-message-modal-search-send-add category" value="1">활동중</button>
+                                                <button class="admin-message-modal-search-donotreceive-add category" value="-1">정지</button>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-comment-list-stopa">
+                                    <button class="member-user-list-button toggle-button disabled">상태변경</button>
+                                </div>
+                                <div class="main-comment-list-delete">
+                                    <button class="member-user-list-delete-button toggle-button disabled">댓글삭제</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 전체 밑에 상태, 이름 등등 나타내는곳 -->
+                        <div class="main-comment-status">
+                            <!-- 여기에 넣으면 추가할수있습니다(가로넓이 width만 수정)) -->
+                            <div class="main-comment-status-name">전체선택</div>
+                            <div class="main-comment-status-status">작성자</div>
+                            <div class="main-comment-status-date">게시글</div>
+                            <div class="main-comment-status-recent">작성일</div>
+                            <div class="main-comment-status-paycount">댓글 내용</div>
+                            <div class="main-comment-status-paycount">유저상태</div>
+                        </div>
+                    </div>
+                    <!-- 맴버 정보 들어가야함 (지금은 없고 나중에어떤식인지 배워봅시다.) -->
+                    <!-- 일단 하나 만들어봅시다. -->
+                    {% if member.post_content|length != 0 %}
+                        <!-- 유저가 없다면 아래 -->
+                        <div class="main-user-status-list">
+                            <!-- 이거말고 차라리 로고로? -->
+                            <svg width="53" height="56" fill="none" xmlns="http://www.w3.org/2000/svg" class="main-user-status-list-svg">
+                                <path
+                                    d="M27.516 1.62c-6.654-4.436-21.823.626-21.821 10.475 0 5.567 1.956 10.31 3.889 14.205-1.403-.463-2.853-1.072-3.8-2.095-.466-.502-1.151-1.115-1.802-1.35-.993-.358-2.035.135-2.572.923-1.212 1.776-1.071 2.717-.403 4.643 4.364 5.647 8.167 5.53 11.275 5.435.286-.009.566-.017.84-.021.897 3.13 2.706 6.042 4.099 8.965 1.617 5.694 9.313 4.544 12.913 1.697 2.3-1.819 5.187-2.36 8.117-1.475 2.303.419 3.88-.68 5.236-1.624 1.031-.72 1.934-1.348 2.93-1.149 1.19.238 2.511.191 2.718-1.307.521-3.781-8.391-5.535-11.284-7.062 4.98-2.883 7.416-7.67 6.968-10.861-.31-2.2-2.168-2.967-4.076-1.773-2.206 1.38-2.758 3.32-5.42 4.348 1.822-6.821 3.386-14.515-7.807-21.975Z"
+                                    fill="#9D8DFF"
+                                ></path>
+                                <path d="M15.33 17.017c.03.784-.382 1.385-.92 1.344-.54-.042-1.001-.71-1.032-1.494-.03-.784.382-1.385.921-1.343.54.041 1 .71 1.031 1.493ZM19.599 16.868c.03.784-.382 1.385-.921 1.344-.54-.042-1-.71-1.031-1.494-.03-.784.382-1.385.92-1.343.54.041 1.001.71 1.032 1.493Z" fill="#060606"></path>
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M11.457 29.625a.7.7 0 0 1 .755.64c.036.44.242.87.57 1.304.322.428.721.81 1.107 1.178l.027.026a.7.7 0 1 1-.967 1.012l-.05-.048c-.37-.353-.842-.804-1.235-1.325-.414-.55-.782-1.23-.847-2.033a.7.7 0 0 1 .64-.754ZM35.844 23.41a.7.7 0 0 0-.968.205 25.97 25.97 0 0 1-.389.571c-.235.34-.487.704-.68 1.032-.33.559-.626 1.212-.626 1.941a.7.7 0 1 0 1.4 0c0-.354.145-.745.43-1.228.18-.303.368-.573.573-.868.146-.21.3-.431.465-.684a.7.7 0 0 0-.205-.969Z"
+                                    fill="#000"
+                                ></path>
+                                <path d="M17.917 19.838c-.158-.342-2.435-.62-2.138.915 1.156 3.742 2.834.598 2.138-.915Z" fill="#030303"></path>
+                                <path d="M51.901 52.983c0 1.223-7.433 2.214-16.602 2.214-9.17 0-16.603-.991-16.603-2.214 0-1.222 7.433-2.213 16.603-2.213 9.17 0 16.602.99 16.602 2.213Z" fill="#E3E3E3"></path>
+                            </svg>
+                            <p class="main-user-status-list-text">댓글이 없습니다.</p>
+                        </div>
+                    {% else %}
+                        <div class="comment-data">
+{#                            <li class="main-comment-list" data-number="1">#}
+{#                                <div class="main-comment-list-name">#}
+{#                                    <input type="checkbox" class="main-comment-list-checkbox" />#}
+{#                                </div>#}
+{#                                <div class="main-comment-list-status">조관익</div>#}
+{#                                <div class="main-comment-list-paycount">맛집갈사람!</div>#}
+{#                                <div class="main-comment-list-date">24.02.16</div>#}
+{#                                <div class="main-comment-list-check">#}
+{#                                    <span class="main-comment-list-input" type="text" readonly>정말 재미있는 보여요!</span>#}
+{#                                </div>#}
+{#                                <div data-id="1" class="main-comment-list-stop">활동중</div>#}
+{#                            </li>#}
+{#                            <li class="main-comment-list" data-number="2">#}
+{#                                <div class="main-comment-list-name">#}
+{#                                    <input type="checkbox" class="main-comment-list-checkbox" />#}
+{#                                </div>#}
+{#                                <div class="main-comment-list-status">이동현</div>#}
+{#                                <div class="main-comment-list-paycount">맛집갈사람!</div>#}
+{#                                <div class="main-comment-list-date">23.01.05</div>#}
+{#                                <div class="main-comment-list-check">#}
+{#                                    <span class="main-comment-list-input" type="text" readonly>정말 재미있는 보여요!</span>#}
+{#                                </div>#}
+{#                                <div data-id="2" class="main-comment-list-stop">활동중</div>#}
+{#                            </li>#}
+                        </div>
+                    {% endif %}
+                    <div class="main-user-bottom-box">
+                        <ul class="main-user-bottom-ul">
+{#                            <!-- 여기에 왼 숫자 오 들어감 -->#}
+{#                            <!-- 먼저 왼 -->#}
+{#                            <li>#}
+{#                                <button aria-label="page turning button" disabled type="button" class="main-user-bottom-reft">#}
+{#                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="main-user-bottom-svg">#}
+{#                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.58 3.27c.504.405.563 1.115.13 1.587L9.168 12l6.543 7.143a1.076 1.076 0 0 1-.13 1.586 1.26 1.26 0 0 1-1.695-.122L6 12l7.885-8.607a1.26 1.26 0 0 1 1.695-.122Z"></path>#}
+{#                                    </svg>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <!-- 숫자 -->#}
+{#                            <li class="main-margin">#}
+{#                                <button type="button" class="main-user-bottom add-color" id="button1">#}
+{#                                    <span class="main-user-number">1</span>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <li class="main-margin">#}
+{#                                <button aria-label="page number button" type="button" class="main-user-bottom" id="button2">#}
+{#                                    <span class="main-user-number">2</span>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <li class="main-margin">#}
+{#                                <button aria-label="page number button" type="button" class="main-user-bottom" id="button3">#}
+{#                                    <span class="main-user-number">3</span>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <!-- 오른쪽 -->#}
+{#                            <li class="main-margin">#}
+{#                                <button aria-label="page turning button" disabled type="button" class="main-user-bottom-right">#}
+{#                                    <svg class="main-user-bottom-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">#}
+{#                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.42 20.73a1.076 1.076 0 0 1-.13-1.587L14.832 12 8.289 4.857a1.076 1.076 0 0 1 .13-1.586 1.26 1.26 0 0 1 1.696.122L18 12l-7.885 8.607a1.26 1.26 0 0 1-1.695.122Z"></path>#}
+{#                                    </svg>#}
+{#                                </button>#}
+{#                            </li>#}
+                        </ul>
+                    </div>
+
+                    <!-- 유저가 없다면 아래 -->
+{#                    <div class="main-comment-status-list">#}
+{#                        <!-- 이거말고 차라리 로고로? -->#}
+{#                        <svg width="53" height="56" fill="none" xmlns="http://www.w3.org/2000/svg" class="main-comment-status-list-svg">#}
+{#                            <path#}
+{#                                d="M27.516 1.62c-6.654-4.436-21.823.626-21.821 10.475 0 5.567 1.956 10.31 3.889 14.205-1.403-.463-2.853-1.072-3.8-2.095-.466-.502-1.151-1.115-1.802-1.35-.993-.358-2.035.135-2.572.923-1.212 1.776-1.071 2.717-.403 4.643 4.364 5.647 8.167 5.53 11.275 5.435.286-.009.566-.017.84-.021.897 3.13 2.706 6.042 4.099 8.965 1.617 5.694 9.313 4.544 12.913 1.697 2.3-1.819 5.187-2.36 8.117-1.475 2.303.419 3.88-.68 5.236-1.624 1.031-.72 1.934-1.348 2.93-1.149 1.19.238 2.511.191 2.718-1.307.521-3.781-8.391-5.535-11.284-7.062 4.98-2.883 7.416-7.67 6.968-10.861-.31-2.2-2.168-2.967-4.076-1.773-2.206 1.38-2.758 3.32-5.42 4.348 1.822-6.821 3.386-14.515-7.807-21.975Z"#}
+{#                                fill="#9D8DFF"#}
+{#                            ></path>#}
+{#                            <path d="M15.33 17.017c.03.784-.382 1.385-.92 1.344-.54-.042-1.001-.71-1.032-1.494-.03-.784.382-1.385.921-1.343.54.041 1 .71 1.031 1.493ZM19.599 16.868c.03.784-.382 1.385-.921 1.344-.54-.042-1-.71-1.031-1.494-.03-.784.382-1.385.92-1.343.54.041 1.001.71 1.032 1.493Z" fill="#060606"></path>#}
+{#                            <path#}
+{#                                fill-rule="evenodd"#}
+{#                                clip-rule="evenodd"#}
+{#                                d="M11.457 29.625a.7.7 0 0 1 .755.64c.036.44.242.87.57 1.304.322.428.721.81 1.107 1.178l.027.026a.7.7 0 1 1-.967 1.012l-.05-.048c-.37-.353-.842-.804-1.235-1.325-.414-.55-.782-1.23-.847-2.033a.7.7 0 0 1 .64-.754ZM35.844 23.41a.7.7 0 0 0-.968.205 25.97 25.97 0 0 1-.389.571c-.235.34-.487.704-.68 1.032-.33.559-.626 1.212-.626 1.941a.7.7 0 1 0 1.4 0c0-.354.145-.745.43-1.228.18-.303.368-.573.573-.868.146-.21.3-.431.465-.684a.7.7 0 0 0-.205-.969Z"#}
+{#                                fill="#000"#}
+{#                            ></path>#}
+{#                            <path d="M17.917 19.838c-.158-.342-2.435-.62-2.138.915 1.156 3.742 2.834.598 2.138-.915Z" fill="#030303"></path>#}
+{#                            <path d="M51.901 52.983c0 1.223-7.433 2.214-16.602 2.214-9.17 0-16.603-.991-16.603-2.214 0-1.222 7.433-2.213 16.603-2.213 9.17 0 16.602.99 16.602 2.213Z" fill="#E3E3E3"></path>#}
+{#                        </svg>#}
+{#                        <p class="main-comment-status-list-text">댓글이 없습니다.</p>#}
+{#                    </div>#}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 모달창 / 활동정지-->
+    <!-- 모달창 -->
+
+    <!-- 회원정지 모달창 -->
+    <div id="admin-user-modal" class="admin-user-modal-update hidden">
+        <h4 class="admin-user-modal-title">정말 변경하시겠습니까?</h4>
+{#        <div>#}
+{#            <div>#}
+{#                <textarea class="admin-user-modal-text" id="modal-text" oninput="resizeTextarea()"></textarea>#}
+{#            </div>#}
+{#        </div>#}
+        <div class="admin-user-modal-button">
+            <div class="admin-user-modal-left">
+                <button class="admin-user-modal-left-button-update" id="modalCloseButton">취소</button>
+            </div>
+            <div class="admin-user-modal-right">
+                <button class="admin-user-modal-right-button-update" id="modalApplyButton">적용하기</button>
+            </div>
+        </div>
+    </div>
+    <div id="admin-user-modal-backdrop" class="admin-user-modal-backdrop-update hidden"></div>
+    <!-- 메시지 모달창 -->
+    <div id="admin-comment-modal" class="hidden">
+        <h4 class="admin-comment-modal-title">댓글 내용</h4>
+        <div>
+            <input type="text" readonly class="admin-user-modal-text" id="modal-comment-text" oninput="resizeTextarea()" />
+        </div>
+        <div class="admin-comment-modal-button">
+            <div class="admin-comment-modal-left">
+                <button class="admin-comment-modal-left-button" id="modalCloseButton">닫기</button>
+            </div>
+        </div>
+    </div>
+    <!-- 삭제모달 -->
+    <div id="admin-user-modal-delete" class="admin-user-modal-delete hidden">
+        <h4 class="admin-user-modal-title">정말 삭제하시겠습니까?</h4>
+        <div class="admin-user-modal-button">
+            <div class="admin-user-modal-left">
+                <button class="admin-user-modal-left-delete-button" id="modalCloseButton">취소</button>
+            </div>
+            <div class="admin-user-modal-right">
+                <button class="admin-user-modal-right-delete-button" id="modalApplyButton">삭제하기</button>
+            </div>
+        </div>
+    </div>
+    <div id="admin-comment-modal-backdrop" class="admin-comment-modal-backdrop hidden"></div>
+    <!-- 검색창 모달 -->
+{% endblock %}
+{% block js %}
+    <script>
+        const csrf_token = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'admin/web/js/comment/admin-comment-module-web.js' %}"></script>
+    <script src="{% static 'admin/web/js/comment/admin-comment-web.js' %}"></script>
+{#    <script src="{% static 'admin/web/js/comment/admin-comment-bottem-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/comment/admin-comment-button-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/comment/admin-comment-delete-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/comment/admin-comment-modal-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/comment/admin-comment-search-web.js' %}"></script>#}
+{% endblock %}
+

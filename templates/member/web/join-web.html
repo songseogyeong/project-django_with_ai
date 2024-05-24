@@ -1,0 +1,194 @@
+{% extends 'member/web/base.html' %}
+{% load static %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'member/web/css/join-web.css' %}">
+{% endblock %}
+{% block title %}틴플 :: 회원가입{% endblock %}
+{% block content %}
+    <!-- 화면 부분 -->
+    <div class="screen-all-wrap">
+        <div class="screen-full-wrap">
+            <div class="screen-wrap">
+                <div class="app-screen-all-wrap">
+                    <div class="app-screen-wrap">
+                        <!-- 회원가입 텍스트 부분 -->
+                        <div class="join-text-container">
+                            <h1 class="join-text">
+                                <span>회원가입</span>
+                            </h1>
+                        </div>
+                        <!-- 회원가입 부분 -->
+                        <form class="input-all-wrap" action="/member/join/" method="post" novalidate>
+                            {% csrf_token %}
+                            <div class="input-wrap">
+                                <!-- 멤버 sns 종류 -->
+                                <input name="member-type" type="hidden" value="{{ member_type }}">
+                                <!-- 이메일 입력 부분 -->
+                                <div class="email-container">
+                                    <div class="email-content">
+                                        <div class="email-text-divison">
+                                            <label class="email-text" for="email">
+                                                <span>이메일(ID)</span>
+                                            </label>
+                                        </div>
+                                        <input class="input email-input" name="member-email" value="{{ member_email }}" readonly id="email" tabindex="1" autocomplete="off" type="email">
+                                        <div class="input-error noemail hidden">
+                                            <span>항목을 입력하세요</span>
+                                        </div>
+                                        <div class="email-length-error hidden">
+                                            <span>이메일 형식에 맞지 않습니다</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 이름 입력 부분 -->
+                                <div class="name-container">
+                                    <div class="name-content">
+                                        <div class="name-text-divison">
+                                            <label class="name-text" for="name">
+                                                <span>이름</span>
+                                            </label>
+                                            <span class="name-explain">
+                                                <span>2자 이상</span>
+                                            </span>
+                                        </div>
+                                        <input class="input name-input" name="member-name" id="name" value="{{ member_nickname }}" tabindex="2" autocomplete="false" type="text">
+                                        <div class="input-error noname hidden">
+                                            <div >항목을 입력하세요</div>
+                                        </div>
+                                        <div class="name-length-error hidden">
+                                            <span>2자 이상으로 작성하세요</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 전화번호 입력 부분 -->
+                                <div class="phone-container">
+                                    <div class="phone-content">
+                                        <div class="phone-text-divison">
+                                            <label class="phone-text" for="phone">
+                                                <span>휴대폰 번호</span>
+                                            </label>
+                                            <span class="phone-explain">
+                                                <span>'-', '.' 등 기호 없이 입력</span>
+                                            </span>
+                                        </div>
+                                        <input class="input phone-input" name="member-phone" id="phone" maxlength="11" tabindex="2" autocomplete="off" type="text">
+                                    </div>
+                                </div>
+                                <!-- 약관동의 부분 -->
+                                <div class="agreement-container">
+                                    <p>
+                                        <span>약관동의</span>
+                                    </p>
+                                    <!-- [필수]만 14세 이상입니다. -->
+                                    <div class="agreement-content">
+                                        <div class="agreement-divison-content">
+                                            <div class="agreement-divison">
+                                                <input class="agreement-button essential" id="agreement-age" tabindex="4" required type="checkbox" value="true" data-gtm-form-interact-field-id="0">
+                                                <label class="agreement-text" for="agreement-age">
+                                                    [필수] 만 14세 이상입니다.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="agreement-error hidden">이 항목은 필수 입니다</div>
+                                    </div>
+                                    <!-- [필수]이용약관 -->
+                                    <div class="agreement-content">
+                                        <div class="agreement-divison-content">
+                                            <div class="agreement-divison">
+                                                <input class="agreement-button essential" id="agreement-check" tabindex="4" required type="checkbox" value="true" data-gtm-form-interact-field-id="1">
+                                                <label class="agreement-text" for="agreement-check">
+                                                    <span>[필수] 이용약관</span>
+                                                </label>
+                                                <div class="agreement-add-text">
+                                                    <a class="agreement-add-link" href="{% url 'terms:service' %}" target="_blank">
+                                                        <span>보기</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="agreement-error hidden">이 항목은 필수 입니다</div>
+                                    </div>
+                                    <!-- [필수]개인정보 수집·이용 동의서 -->
+                                    <div class="agreement-content">
+                                        <div class="agreement-divison-content">
+                                            <div class="agreement-divison">
+                                                <input class="agreement-button essential" id="agreement-user" tabindex="4" required type="checkbox" value="true" data-gtm-form-interact-field-id="2">
+                                                <label class="agreement-text" for="agreement-user">
+                                                    <span>[필수] 개인정보 수집·이용 동의서</span>
+                                                </label>
+                                                <div class="agreement-add-text">
+                                                    <a class="agreement-add-link" href="{% url 'terms:privacy' %}" target="_blank">
+                                                        <span>보기</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="agreement-error hidden">이 항목은 필수 입니다</div>
+                                    </div>
+                                    <!-- [선택]마케팅 정보 수신동의 -->
+                                    <div class="agreement-content">
+                                        <div class="agreement-divison-content">
+                                            <div class="agreement-divison">
+                                                <input name="marketing-agree" class="agreement-button" id="choice-agreement-send" tabindex="4" type="checkbox" value="true" data-gtm-form-interact-field-id="3">
+                                                <label class="agreement-text" for="choice-agreement-send">
+                                                    <span>[선택] 마케팅 정보 수신동의</span>
+                                                </label>
+                                                <div class="agreement-add-text">
+                                                    <a class="agreement-add-link" href="{% url 'terms:marketing' %}" target="_blank">
+                                                        <span>보기</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- [선택]개인정보 수집·이용 동의서 -->
+                                    <div class="agreement-content">
+                                        <div class="agreement-divison-content">
+                                            <div class="agreement-divison">
+                                                <input name="privacy-agree" class="agreement-button" id="choice-agreement-user" tabindex="4" type="checkbox" value="true" data-gtm-form-interact-field-id="4">
+                                                <label class="agreement-text" for="choice-agreement-user">
+                                                    <span>[선택] 개인정보 수집·이용 동의서</span>
+                                                </label>
+                                                <div class="agreement-add-text">
+                                                    <a class="agreement-add-link" href="{% url 'terms:privacy' %}" target="_blank">
+                                                        <span>보기</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 회원가입 버튼 -->
+                                <button class="join-wrap disabled" type="button">
+                                    <span>회원가입</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 하단 부분 -->
+        <div class="width-full">
+            <!-- 푸터 부분 -->
+            <footer>
+                <div class="footer-wrap">
+                    <div class="fotter-divison-wrap">
+                        <div class="footer-container">
+                            <!-- 푸터 로고 부분 -->
+                            <div class="footer-logo-item">
+                                <a href="/">
+                                    <img class="footer-logo" src="{% static 'public/web/images/logo/logo2.png' %}" viewBox="0 0 56.965 25.467">
+                                </a>
+                            </div>
+                            <div class="footer-text">Every heartbeat at the Event, powered by TEENPLAY!</div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'member/web/js/join-web.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'public/web/images/logo/logo1.png' %}" type="image/x-icon" />
+    {% block static %}{% endblock %}
+    <title>{% block title %}틴플 :: 관리자 페이지{% endblock %}</title>
+</head>
+<body>
+    <!-- 헤더 먼저 해야합니다. 나중에 색상은 바꿔야합니다! -->
+    <header class="header-all">
+        <div class="header-logo-text">
+            <a href="/admin/user/" class="header-logo">
+                <img class="header-logo-icon" src="{% static 'public/web/images/logo/logo4.png' %}" alt="로고" />
+            </a>
+            <div class="header-slash">|</div>
+            <div class="header-admin-text">
+                <span>Admin Center</span>
+            </div>
+        </div>
+    </header>
+    <!-- 헤더  끝 좌측 안내부분 시작 -->
+    <main class="main-all">
+        <!-- 공통으로 들어가는 좌측부분 -->
+        <nav class="main-nav-wrap">
+            <!-- 위에 로그인 정보 및 로그아웃 칸 -->
+            <div class="main-admin-info">
+                <div class="main-admin-wrap">
+                    <div class="main-admin-container">
+                        <button class="main-admin-button">
+                            <img class="main-admin-image" src="{% static 'public/web/images/logo/logo1.png' %}" alt="admin사진" />
+                            <!-- 여기 중간에 뭐 이상한거 있긴한데 의미 없어보임 일단은 보류 -->
+                            <div class="main-admin-image-warp"></div>
+                        </button>
+                    </div>
+                    <h2 class="main-admin-name">TeenPlay</h2>
+                    <a href="/admin/logout/" class="main-admin-logout">
+                        <button class="main-admin-logout-button">
+                            <div class="main-admin-logout-warp">
+                                <div>로그아웃</div>
+                            </div>
+                        </button>
+                    </a>
+                </div>
+            </div>
+    {% block content %}{% endblock %}
+</body>
+{% block js %}{% endblock %}
+</html>

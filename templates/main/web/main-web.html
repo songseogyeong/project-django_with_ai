@@ -1,0 +1,565 @@
+{% extends 'main/web/base.html' %}
+{% load tz %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'public/web/css/main-web.css' %}">
+{% endblock %}
+{% block title %}틴플:: {% endblock %}
+{% block content %}
+    <!-- 메인 부분 -->
+    <main class="main">
+        <div>
+            <div class="sections-wrap">
+                <section class="slide-banner-section">
+                    <div class="slide-banner-wrap">
+                        <div class="slide-banner-container">
+                            <div class="slide-banner-box">
+                                <!-- 첫번째 베너 -->
+                                <div class="slide-content-wrap">
+                                    <div class="slide-content-container">
+                                        <img class="slide-content-background" alt="대전 청년창업사관학교 14기 전국 스타트업 모집 !" src="{% static 'public/web/images/main/festival-img01.png' %}" />
+                                        <div class="slide-text-content">
+                                            <!-- 해당 축제 링크 필요 -->
+                                            <a class="slide-text-link" href="" target="_blank" ondragstart="return false">
+                                                <div class="slide-text-box">
+                                                    <div>
+                                                        <div class="festival-title">대전 청년창업사관학교 14기 전국 스타트업 모집 !</div>
+                                                        <div class="festival-contents">
+                                                            창업지원금에 블루포인트 투자유치 가능성까지
+                                                            <br />
+                                                            블루포인트 심사역들이 직접 기획·운영 하는 대전 청년창업사관학교 !
+                                                        </div>
+                                                    </div>
+                                                    <div class="festival-info">
+                                                        <div>2024. 01. 15.(월) ~ 2024. 02. 05.(월)</div>
+                                                        <div>온라인 접수</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 두번째 베너 -->
+                                <div class="slide-content-wrap">
+                                    <div class="slide-content-container">
+                                        <img class="slide-content-background" alt="2024 테크 트렌드는? ▶CES VOD/리포트 둘러보기" src="{% static 'public/web/images/main/festival-img02.png' %}" />
+                                        <div class="slide-text-content">
+                                            <!-- 해당 축제 링크 필요 -->
+                                            <a class="slide-text-link" href="" target="_blank" ondragstart="return false">
+                                                <div class="slide-text-box">
+                                                    <div>
+                                                        <div class="festival-title">
+                                                            2024 테크 트렌드는?
+                                                            <br />
+                                                            ▶CES VOD/리포트 둘러보기
+                                                        </div>
+                                                        <div class="festival-contents">
+                                                            세계 최대 테크 박람회 'CES'의 모든 것을
+                                                            <br />
+                                                            매일경제 X 포스텍 최고 석학 교수진이 취재·집필한 해설서로 확인해 보세요!
+                                                        </div>
+                                                    </div>
+                                                    <div class="festival-info">
+                                                        <div>상시 모집</div>
+                                                        <div>온라인 행사</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 세번째 베너 -->
+                                <div class="slide-content-wrap">
+                                    <div class="slide-content-container">
+                                        <img class="slide-content-background" alt="[모두의특강] ChatGPT Store 오픈!" src="{% static 'public/web/images/main/festival-img03.jpg' %}" />
+                                        <div class="slide-text-content">
+                                            <!-- 해당 축제 링크 필요 -->
+                                            <a class="slide-text-link" href="" target="_blank" ondragstart="return false">
+                                                <div class="slide-text-box">
+                                                    <div>
+                                                        <div class="festival-title">[모두의특강] ChatGPT Store 오픈!</div>
+                                                        <div class="festival-contents">
+                                                            직접 사용해 본 유용한 앱은 어떤 것일까?
+                                                            <br />
+                                                            그리고 스토어의 미래도 함께 나눠봐요
+                                                        </div>
+                                                    </div>
+                                                    <div class="festival-info">
+                                                        <div>2024. 02. 06.(화) 18:00</div>
+                                                        <div>온라인 행사</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="banner-left-arrow arrow">
+                                <button class="left-arrow-btn" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="left-arrow-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="banner-right-arrow arrow">
+                                <button class="right-arrow-btn" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="right-arrow-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="banner-service-wrap">
+                                <div class="banner-service-container">
+                                    <div class="banner-service-box">
+                                        <div class="banner-service-contents">
+                                            <div class="banner-page-count"></div>
+                                            <div class="banner-more-button">+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 가장 인기있는 활동(인기 활동) -->
+                <section class="popular-activities">
+                    <div class="post-area-wrap">
+                        <div>
+                            <div class="post-area-headers">
+                                <div>
+                                    <div class="post-area-header">
+                                        <h2 class="post-area-title">가장 인기있는 활동</h2>
+                                    </div>
+                                    <div class="post-area-ment">많은 사람들이 참가한 활동을 만나보세요!😉</div>
+                                </div>
+                                <div>
+                                    <a class="more-post-list" href="/activity/list/">
+                                        <span class="more-posts-text">더 많은 활동 보기</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="right-svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post-container">
+                                <div>
+                                    <div class="post-box">
+                                        <div class="post-list">
+                                            {% for pop_activity in popular_activities %}
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <a class="post-thumbnail-link" href="{{ pop_activity.get_absolute_url }}" ondragstart="return false">
+                                                            <img class="post-thumbnail" alt="활동 썸네일 이미지" 
+                                                                 {% if pop_activity.thumbnail_path %}src="/upload/{{ pop_activity.thumbnail_path }}"
+                                                                 {% else %} src="{% static 'public/web/images/logo/logo8.png' %}" {% endif %}
+                                                            />
+                                                        </a>
+                                                        <div class="like-box" {% if not request.session.member %} style="display: none;" {% endif %}>
+                                                            <input type="hidden" name="activity-id" value="{{ pop_activity.id }}">
+                                                            <button class="like-btn" type="button">
+                                                                <span class="full-heart" {% if not pop_activity.is_like %}style="display: none" {% endif %}>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="empty-heart" {% if pop_activity.is_like %}style="display: none" {% endif %}>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>{{ pop_activity.activity_start|date:"N j일(l)" }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <a class="post-title-link" href="{{ pop_activity.get_absolute_url }}" ondragstart="return false">{{ pop_activity.activity_title }}</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">관심 {{ pop_activity.like_count }} | 참가 {{ pop_activity.member_count }}명</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 따끈따끈한 신규 활동(최신 활동) -->
+                <section class="new-activities">
+                    <div class="post-area-wrap">
+                        <div>
+                            <div class="post-area-headers">
+                                <div>
+                                    <div class="post-area-header">
+                                        <h2 class="post-area-title">따끈따끈한 신규 활동</h2>
+                                    </div>
+                                    <div class="post-area-ment">이번 주 새롭게 개설된 활동을 모아봤어요✨</div>
+                                </div>
+                            </div>
+                            <div class="post-container">
+                                <div>
+                                    <div class="post-box">
+                                        <div class="post-list">
+                                            {% for new_activity in new_activities %}
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <a class="post-thumbnail-link" href="{{ new_activity.get_absolute_url }}" ondragstart="return false">
+                                                            <img class="post-thumbnail" alt="활동 썸네일 이미지" 
+                                                                 {% if new_activity.thumbnail_path %}src="/upload/{{ new_activity.thumbnail_path }}"
+                                                                 {% else %} src="{% static 'public/web/images/logo/logo8.png' %}" {% endif %}
+                                                            />
+                                                        </a>
+                                                        <div class="like-box"{% if not request.session.member %} style="display: none;" {% endif %}>
+                                                            <input type="hidden" name="activity-id" value="{{ new_activity.id }}">
+                                                            <button class="like-btn" type="button">
+                                                                <span class="full-heart" {% if not new_activity.is_like %}style="display: none" {% endif %}>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="empty-heart" {% if new_activity.is_like %}style="display: none" {% endif %}>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>{{ new_activity.activity_start|date:"N j일(l)" }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <a class="post-title-link" href="{{ new_activity.get_absolute_url }}" ondragstart="return false">{{ new_activity.activity_title }}</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">관심 {{ new_activity.like_count }} | 참가 {{ new_activity.member_count }}명</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- AI 추천 -->
+                <section class="ai-recommend-activities">
+                    <div class="post-area-wrap">
+                        <div>
+                            <div class="post-area-headers">
+                                <div>
+                                    <div class="post-area-header">
+                                        <h2 class="post-area-title">AI 추천</h2>
+                                    </div>
+                                    <div class="post-area-ment">회원가입 후에 더욱 정교한 추천을 만나보세요!</div>
+                                </div>
+                            </div>
+                            <div class="post-container">
+                                <div>
+                                    <div class="post-box">
+                                        <div class="post-list ai-posts">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 인기 모임 -->
+                <section class="popular-clup">
+                    <div class="post-area-wrap">
+                        <div>
+                            <div class="post-area-headers">
+                                <div>
+                                    <div class="post-area-header">
+                                        <h2 class="post-area-title">AI 추천 모임</h2>
+                                    </div>
+                                    <div class="post-area-ment"></div>
+                                </div>
+                                <div>
+                                    <a class="more-post-list" href="/club/pr-post-list/">
+                                        <span class="more-posts-text">모임 홍보 보러가기</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="right-svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post-container">
+                                <div>
+                                    <div class="post-box">
+                                        <div class="post-list club-ai-posts">
+{#                                            {% for pop_club in popular_clubs %}#}
+{#                                            <div class="post-substance">#}
+{#                                                <div class="clup-wrap">#}
+{#                                                    <div class="clup-container">#}
+{#                                                        <a href="{{ pop_club.get_absolute_url }}" ondragstart="return false">#}
+{#                                                            <div class="clup-profile-box">#}
+{#                                                                <div class="clup-profile-thumbnail">#}
+{#                                                                    {% if pop_club.club_profile_path and pop_club.club_profile_path != ' '%}#}
+{#                                                                        <img class="clup-thumbnail-img" alt="모임 썸네일 이미지" src="/upload/{{ pop_club.club_profile_path }}" />#}
+{#                                                                    {% else %}#}
+{#                                                                        <img class="clup-thumbnail-img" alt="모임 썸네일 이미지" src="{% static 'public/web/images/logo/logo1.png' %}" />#}
+{#                                                                    {% endif %}#}
+{#                                                                </div>#}
+{#                                                                <div class="badge-gap">#}
+{#                                                                    <div class="vacuum"></div>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                            <div class="club-info">#}
+{#                                                                <input type="hidden" name="club-id" value="{{ pop_club.id }}">#}
+{#                                                                <div class="clup-name">{{ pop_club.club_name }}</div>#}
+{#                                                                <div class="clup-activity">#}
+{#                                                                    {{ pop_club.activity_count }}#}
+{#                                                                    <span>개의 활동</span>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </a>#}
+{#                                                        <div class="clup-service">#}
+{#                                                            <!-- 가입대기중인 모임일 경우 -->#}
+{#                                                            <button class="cancel-btn" type="button" {% if pop_club.is_member != -1 %}style="display: none" {% endif %}>#}
+{#                                                                <span>가입대기</span>#}
+{#                                                            </button>#}
+{#                                                            <!-- 가입한 모임일 경우 -->#}
+{#                                                            <div class="clup-btn-box" {% if pop_club.is_member != 1 %}style="display: none" {% endif %}>#}
+{#                                                                <button class="join-status" type="button">#}
+{#                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">#}
+{#                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>#}
+{#                                                                    </svg>#}
+{#                                                                    <span>가입중</span>#}
+{#                                                                </button>#}
+{#                                                                <button id="signal-btn" class="signal-on" type="button">#}
+{#                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="signal-on-svg" viewBox="0 0 20 20" fill="currentColor">#}
+{#                                                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>#}
+{#                                                                    </svg>#}
+{#                                                                    <span>알림 받는 중</span>#}
+{#                                                                </button>#}
+{#                                                            </div>#}
+{#                                                            <!-- 가입되지 않은 모임일 경우 -->#}
+{#                                                            <button class="join-btn" type="button" {% if pop_club.is_member or pop_club.is_manager %}style="display: none" {% endif %}>#}
+{#                                                                <span>가입 신청</span>#}
+{#                                                            </button>#}
+{#                                                            <!-- 내 모임일 경우 -->#}
+{#                                                            <button class="manage-btn" type="button" {% if not pop_club.is_manager %}style="display: none" {% endif %}>#}
+{#                                                                <span>관리하기</span>#}
+{#                                                            </button>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            {% endfor %}#}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <!-- 모달 모음 -->
+    <!-- modal 관심 추가 -->
+    <div class="club-modal-wrap" style="display: none">
+        <div class="club-modal-bg"></div>
+        <div class="club-modal-container">
+            <div class="club-modal-like-wrap">
+                <div>
+                    <h2 class="club-modal-like-title">
+                        <div class="club-modal-like-title-text">관심 활동에 추가되었습니다.</div>
+                    </h2>
+                </div>
+                <div class="club-modal-like-button-wrap">
+                    <button type="button" class="club-modal-like-button">닫기</button>
+                </div>
+            </div>
+            <div class="club-modal-like-wrap unlike">
+                <div>
+                    <h2 class="club-modal-like-title">
+                        <div class="club-modal-like-title-text">관심 활동에서 삭제되었습니다.</div>
+                    </h2>
+                </div>
+                <div class="club-modal-like-button-wrap">
+                    <button type="button" class="club-modal-unlike-button">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modals-wrap">
+        <!-- 모임 신청 모달 -->
+        <div>
+            <div>
+                <div class="join-maodal-container" style="display: none">
+                    <div class="join-modal-shadow"></div>
+                    <div class="join-modal-box">
+                        <div class="join-modal-items">
+                            <div>
+                                <h2 class="modal-header">
+                                    <div class="join-check-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="join-check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="join-application-ment" style="display: none">가입을 신청했습니다.</div>
+                                    <div class="join-cancle-ment" style="display: none">신청을 취소 했습니다.</div>
+                                    <div class="login-ment" style="display: none">로그인이 필요한 서비스입니다.</div>
+                                    <div class="signal-ment" style="display: none"></div>
+                                </h2>
+                                <p class="join-guide-box">
+                                    <span class="join-guide-ment"></span>
+                                </p>
+                            </div>
+                            <div class="move-btn-box">
+                                <button class="continuously-btn" type="button"></button>
+                                <button class="clup-page-btn" type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 인증 메일 모달 -->
+        <div></div>
+        <!-- 검색 모달 -->
+        <div></div>
+        <!-- 슬라이드 베너 리스트 모달 -->
+        <div>
+            <div>
+                <div class="banner-modal-container" style="display: none">
+                    <div class="banner-modal-shadow"></div>
+                    <div class="banner-modal-box">
+                        <div class="banner-modal-items">
+                            <div class="banner-close-wrap">
+                                <div class="banner-close-container">
+                                    <div class="banner-close-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="close-svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 첫번째 베너 -->
+                            <div class="inner-banner-wrap">
+                                <!-- 해당 축제 링크 필요 -->
+                                <img class="slide-content-background" src="https://eventusstorage.blob.core.windows.net/evs/Images/main/ab4dd8e7c0644b9d931e9d06afdcf5d0.png" alt="대전 청년창업사관학교 14기 전국 스타트업 모집 !" />
+                                <div class="slide-text-content">
+                                    <!-- 해당 축제 링크 필요 -->
+                                    <a class="slide-text-link" href="" target="_blank">
+                                        <div class="slide-text-box">
+                                            <div>
+                                                <div class="festival-title">대전 청년창업사관학교 14기 전국 스타트업 모집 !</div>
+                                                <div class="festival-contents">
+                                                    창업지원금에 블루포인트 투자유치 가능성까지
+                                                    <br />
+                                                    블루포인트 심사역들이 직접 기획·운영 하는 대전 청년창업사관학교 !
+                                                </div>
+                                            </div>
+                                            <div class="festival-info">
+                                                <div>2024. 01. 15.(월) ~ 2024. 02. 05.(월)</div>
+                                                <div>온라인 접수</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 두번째 베너 -->
+                            <div class="inner-banner-wrap">
+                                <!-- 해당 축제 링크 필요 -->
+                                <img class="slide-content-background" src="https://eventusstorage.blob.core.windows.net/evs/Images/main/6a57b44727e844258f788b891a0bface.png" alt="2024 테크 트렌드는? ▶CES VOD/리포트 둘러보기" />
+                                <div class="slide-text-content">
+                                    <!-- 해당 축제 링크 필요 -->
+                                    <a class="slide-text-link" href="" target="_blank">
+                                        <div class="slide-text-box">
+                                            <div>
+                                                <div class="festival-title">
+                                                    2024 테크 트렌드는?
+                                                    <br />
+                                                    ▶CES VOD/리포트 둘러보기
+                                                </div>
+                                                <div class="festival-contents">
+                                                    세계 최대 테크 박람회 'CES'의 모든 것을
+                                                    <br />
+                                                    매일경제 X 포스텍 최고 석학 교수진이 취재·집필한 해설서로 확인해 보세요!
+                                                </div>
+                                            </div>
+                                            <div class="festival-info">
+                                                <div>상시 모집</div>
+                                                <div>온라인 행사</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 세번째 베너 -->
+                            <div class="inner-banner-wrap">
+                                <!-- 해당 축제 링크 필요 -->
+                                <img class="slide-content-background" src="https://eventusstorage.blob.core.windows.net/evs/Images/main/c015287b46624d968103047d797d48aa.jpg" alt="[모두의특강] ChatGPT Store 오픈! " />
+                                <div class="slide-text-content">
+                                    <!-- 해당 축제 링크 필요 -->
+                                    <a class="slide-text-link" href="" target="_blank">
+                                        <div class="slide-text-box">
+                                            <div>
+                                                <div class="festival-title">[모두의특강] ChatGPT Store 오픈!</div>
+                                                <div class="festival-contents">
+                                                    직접 사용해 본 유용한 앱은 어떤 것일까?
+                                                    <br />
+                                                    그리고 스토어의 미래도 함께 나눠봐요
+                                                </div>
+                                            </div>
+                                            <div class="festival-info">
+                                                <div>2024. 02. 06.(화) 18:00</div>
+                                                <div>온라인 행사</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        let member = `{{ request.session.member }}`;
+        let memberId = ``;
+        if (member){
+            memberId = `{{ request.session.member.id }}`
+        }
+        const csrftoken =  `{{ csrf_token }}`;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{% static 'activity/web/js/activity-like-module.js' %}"></script>
+    <script src="{% static 'public/web/js/main-web.js' %}"></script>
+    <script src="{% static 'public/web/js/main-post-scroll-web.js' %}"></script>
+{% endblock %}

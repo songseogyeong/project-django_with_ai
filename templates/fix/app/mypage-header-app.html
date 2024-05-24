@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>틴플::</title>
+        <link rel="shortcut icon" href="/staticfiles/images/teenplay_logo/logo1.png" type="image/x-icon" />
+        <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/staticfiles/css/fix/app/header-app.css" />
+    </head>
+    <body class loaded style="position: relative; min-height: 100%; top: 0px">
+        <!-- 해더 부분 -->
+        <header id="header">
+            <!-- 배너 부분 로컬 회원중 인증을 하지 않았을 때 표시 -->
+            <div class="banner-wrap">
+                <span class="certify-message">qwer1234@gmail.com 이메일을 확인하여 인증을 완료해주세요.</span>
+                <a class="send-email">
+                    인증 메일 발송하기
+                    <svg xmlns="http://www.w3.org/2000/svg" class="arrow" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+            <!-- 네비 부분 -->
+            <nav>
+                <div class="main-nav-wrap">
+                    <div class="main-nav-container">
+                        <div class="logo-and-search">
+                            <!-- 메인페이지 경로 -->
+                            <a href="">
+                                <img class="logo-image" src="/staticfiles/images/teenplay_logo/logo2.png" alt="로고" />
+                            </a>
+                        </div>
+                        <div class="home-member-service">
+                            <!-- 메인 페이지 주소 필요 -->
+                            <a class="home-link" href="">틴플레이 홈</a>
+                            <button class="mypage-search-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="search-svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <button class="member-service-btn" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="member-service-svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div class="signal-sign-box">
+                                    <div class="signal-sign-item"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div id="modals-wrap">
+            <!-- 인증 메일 모달 div -->
+            <div>
+                <div>
+                    <!-- 인증 메일 발송하기 클릭 시 block -->
+                    <div class="send-email-modal-container" style="display: none">
+                        <div class="send-email-modal-back"></div>
+                        <div class="send-email-modal-shadow">
+                            <div class="send-email-modal-box">
+                                <div>
+                                    <h2 class="send-header">
+                                        <div class="check-image-box">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+                                        <div>메일이 전송되었습니다.</div>
+                                    </h2>
+                                    <p class="guide-message">메일을 확인해주세요.</p>
+                                </div>
+                                <button class="check-btn" type="button">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 검색 모달 -->
+            <div>
+                <div>
+                    <div class="search-modal-container" style="display: none">
+                        <div class="search-modal-shadow"></div>
+                        <div>
+                            <div class="search-modal-box">
+                                <div class="search-modal-content">
+                                    <div class="search-modal-items">
+                                        <!-- action 주소 필요(검색창에서 엔터시 페이지 이동을 막기위해 작성 서버 작업 시 지우세요) -->
+                                        <form method="get" action="" onsubmit="return false;">
+                                            <div class="search-space">
+                                                <div class="cancle-and-keyword">
+                                                    <button class="back-btn" type="button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="back-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                                        </svg>
+                                                    </button>
+                                                    <div class="search-mobal-input-box">
+                                                        <div class="serch-icon-box">
+                                                            <button class="serch-icon-btn" type="submit">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="search-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <input class="search-input" type="search" name="query" autocomplete="off" placeholder="참여하고 싶은 행사를 검색해보세요" />
+                                                    </div>
+                                                </div>
+                                                <!-- 검색 결과창(활동) 해당사항 없을시 none -->
+                                                <div class="search-activity-section" style="display: none">
+                                                    <div class="search-activity-header">
+                                                        <div class="search-target">활동</div>
+                                                        <div class="search-more">
+                                                            <button class="activity-more-btn" type="submit">검색 결과 더 보기</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 해당 사항 있을 시 5개까지 표시 -->
+                                                    <a class="activity-result" href="">
+                                                        <!-- 검색 결과는 a태그 안에 담고 검색한 글자가 포함된 단어는 강조하여 표기 -->
+                                                        <em>AIUX</em>
+                                                        FORUM
+                                                    </a>
+                                                </div>
+                                                <!-- 검색 결과창(모임 홍보) 해당사항 없을시 none -->
+                                                <div class="search-clup-section" style="display: none">
+                                                    <div class="search-clup-header">
+                                                        <div class="search-target">모임 홍보</div>
+                                                        <div class="search-more">
+                                                            <button class="clup-more-btn" type="submit">검색 결과 더 보기</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 해당 사항 있을 시 5개까지 표시 -->
+                                                    <a class="clup-result" href="">
+                                                        <!-- 검색 결과는 a태그 안에 담고 검색한 글자가 포함된 단어는 강조하여 표기 -->
+                                                        <em>AIUX</em>
+                                                        FORUM
+                                                    </a>
+                                                </div>
+                                                <div class="recently-keyword-section">
+                                                    <div class="recently-keyword-header">
+                                                        <div class="keyword-title">최근 검색어</div>
+                                                        <div class="delete-search-log">
+                                                            <button class="delete-search-log-btn" type="button">검색 기록 삭제</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 최근 검색한 키워드 최신순으로 6개 표시 -->
+                                                    <div class="recently-keyword-app-list">
+                                                        <div class="recently-keyword-item">
+                                                            <a class="search-keyword-link" href="">keyword</a>
+                                                            <button class="cancle-btn" type="button">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="cancle-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="hot-keywords">
+                                                    <div class="hot-keywords-area-title">추천 검색어</div>
+                                                    <div class="recommend-keywords">
+                                                        <div class="recommend-keywords-list">
+                                                            <!-- 클릭 시 해당 키워드로 검색하는 링크 필요(18개) -->
+                                                            <a href="" class="recommend-keywords-link">볼링</a>
+                                                            <a href="" class="recommend-keywords-link">스타트업</a>
+                                                            <a href="" class="recommend-keywords-link">독서</a>
+                                                            <a href="" class="recommend-keywords-link">글쓰기</a>
+                                                            <a href="" class="recommend-keywords-link">데모데이</a>
+                                                            <a href="" class="recommend-keywords-link">야시장</a>
+                                                            <a href="" class="recommend-keywords-link">빙어</a>
+                                                            <a href="" class="recommend-keywords-link">AI</a>
+                                                            <a href="" class="recommend-keywords-link">소개팅</a>
+                                                            <a href="" class="recommend-keywords-link">컨퍼런스</a>
+                                                            <a href="" class="recommend-keywords-link">사업계획서</a>
+                                                            <a href="" class="recommend-keywords-link">마케팅</a>
+                                                            <a href="" class="recommend-keywords-link">세미나</a>
+                                                            <a href="" class="recommend-keywords-link">개발자</a>
+                                                            <a href="" class="recommend-keywords-link">ido</a>
+                                                            <a href="" class="recommend-keywords-link">송어</a>
+                                                            <a href="" class="recommend-keywords-link">축구</a>
+                                                            <a href="" class="recommend-keywords-link">야구</a>
+                                                        </div>
+                                                        <div>
+                                                            <a class="recommend-keywords-more"> + 더보기 </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="order" hidden value="score" />
+                                            <input type="hidden" name="date" hidden value="모든날" />
+                                            <input type="hidden" name="page" hidden value="1" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 마이페이지 목록 모달 -->
+            <div>
+                <aside class="mypage-modal-aside" style="display: none">
+                    <nav class="mypage-modal-nav">
+                        <div class="mypage-modal-header">
+                            <div class="name">
+                                <div>
+                                    <!-- 로그인 상태의 경우 -->
+                                    <strong>서경덕</strong>님
+                                    <!-- 비로그인 상태의 경우 -->
+                                    <a class="login-none" style="display: none" href=""> 로그인 해주세요 </a>
+                                </div>
+                            </div>
+                            <div class="close-box">
+                                <button class="close-btn" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="close-svg" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mypage-modal-main">
+                            <!-- 비로그인 시 none 처리 -->
+                            <div class="member-info-wrap">
+                                <div class="member-email">dlfjs158@nate.com</div>
+                                <!-- 내 정보 수정 페이지 주소 필요 -->
+                                <a class="my-info-link" href="">
+                                    <div>내 정보 수정</div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="right-arrow" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="mypage-list-wrap">
+                                <!-- 해당 페이지 주소 필요 -->
+                                <a class="mypage-item-link" href="">
+                                    <span>나의 위시리스트</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mypage-item-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <!-- 해당 페이지 주소 필요 -->
+                                <a class="mypage-item-link" href="">
+                                    <span>나의 모임</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mypage-item-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <!-- 해당 페이지 주소 필요 -->
+                                <a class="mypage-item-link" href="">
+                                    <span>나의 댓글</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mypage-item-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <!-- 해당 페이지 주소 필요 -->
+                                <a class="mypage-item-link" href="">
+                                    <span>나의 활동</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mypage-item-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <!-- 해당 페이지 주소 필요 -->
+                                <a class="mypage-item-link" href="">
+                                    <span>틴친 목록</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mypage-item-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <!-- 해당 페이지 주소 필요 -->
+                                <a class="mypage-item-link" href="">
+                                    <span>결제 내역</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mypage-item-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <!-- 해당 페이지 주소 필요 -->
+                                <a class="mypage-item-link" href="">
+                                    <span>쪽지 목록</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mypage-item-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <!-- 해당 페이지 주소 필요 -->
+                                <a class="mypage-item-link" href="">
+                                    <span>알림 목록</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mypage-item-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <div class="signal-sign-box">
+                                        <div class="modal-signal-sign-item">
+                                            <div class="signal-sign">N</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="logout-wrap">
+                                <!-- 로그인 상태일 때 보이는 태그 -->
+                                <button class="logout-btn" type="button">로그아웃</button>
+                                <!-- 비로그인 상태일 때 보이는 태그 -->
+                                <div style="display: none">
+                                    <!-- 로그인 페이지 주소 필요 -->
+                                    <a class="login-link" href="">로그인</a>
+                                    <span class="between-stick">|</span>
+                                    <!-- 회원가입 페이지 주소 필요 -->
+                                    <a class="join-link" href="">회원가입</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+    </body>
+    <script src="/staticfiles/js/fix/app/mypage-header-app.js"></script>
+</html>

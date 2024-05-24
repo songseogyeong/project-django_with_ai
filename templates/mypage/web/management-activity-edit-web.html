@@ -1,0 +1,389 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% load tz %}
+{% block static %}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" />
+    <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
+    <!-- datapicker 시작 -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+    <!-- timepicker 시작 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <!-- editer 시작 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <!-- 부트 페이 연동  -->
+    <script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.6.min.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="{% static 'public/web/css/footer-web.css' %}">
+            {# 자기 css #}
+    <link rel="stylesheet" href="{% static 'member/web/css/management-activity-edit-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플 :: 활동 수정{% endblock %}
+
+
+{% block content %}
+    <body>
+        <div id="add-setting" style="position: relative; min-height: 100%; top: 0px !important; font-family: SUIT, sans-serif">
+            <!-- 헤더 부분 -->
+            <header></header>
+            <!-- 메인 부분(모임 홍보쪽 해더) -->
+            <div class="main">
+                <!-- 헤더 밑의 모임 관리 관련 서브헤더 -->
+                <div class="sud-header-wrap">
+                    <div class="sud-header-container">
+                        <div class="sud-header-box">
+                            <!-- 모임 개요 페이지 주소 필요 -->
+                            <a class="sud-header-category" href="/member/activity/?activity_id={{ activity.id }}" style="color: inherit; text-decoration: inherit">활동 개요</a>
+                            <!-- 구성원 페이지 주소 필요 -->
+                            <a class="sud-header-category" href="/member/activity-member/?activity_id={{ activity.id }}" style="color: inherit; text-decoration: inherit">참가자</a>
+                            <!-- 모임 공지사항 페이지 주소 필요 -->
+                            <a class="sud-header-category select-category" href="/member/activity-edit/?activity_id={{ activity.id }}" style="color:  #CE201B;">활동 수정</a>
+                        </div>
+                        <!-- 모임 상세페이지 주소 필요 -->
+                        <a class="clup-detail-link" href="/activity/detail/?id={{ activity.id }}" target="_blank" style="color: inherit; text-decoration: inherit">
+                            <span>활동 페이지 바로가기</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="move-svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="clup-setting-wrap">
+                    <div class="clup-setting-container">
+                        <h1 class="clup-setting-header">활동 수정</h1>
+                        <main id="main-section">
+                            <!-- div 좌측 레이아웃 위치 -->
+                            <div class="host-center-body">
+                                <div class="load-mask-none" style="display: none">데이터 로드중...</div>
+                                <div class="event-body-section">
+                                    <div class="content-section">
+                                        <form class="setting-wrap" name="activity-create" method="post" action="/member/activity-edit/" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="setting-container">
+                                                <div class="setting-box">
+                                                    <div class="setting-col">
+                                                        <div class="normal-setting-box">
+                                                            <div class="normal-setting-between">
+                                                                <div>
+                                                                    <h1 class="normal-setting-title">기본 설정</h1>
+                                                                    <p class="normal-setting-sub-title">노출 정도, 모집 범위 등 행사 정보를 설정해주세요.</p>
+                                                                </div>
+                                                                <div>
+                                                                    <span class="material-symbols-outlined mdi-down"> expand_more </span>
+                                                                    <span class="material-symbols-outlined mdi-up"> expand_less </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="normal-check-items">
+                                                                <div class="normal-content-divide">
+                                                                    <div class="divide-line"></div>
+                                                                </div>
+                                                                <div class="join-deadline-box">
+                                                                    <p class="deadline-title">모집기한</p>
+                                                                    <div class="deadline-content-tie">
+                                                                        <div class="deadline-sub-title">
+                                                                            <div class="deadline-sub-title-text">
+                                                                                <span>시작 일시</span>
+                                                                            </div>
+                                                                            <div class="deadline-choice-tie">
+                                                                                <div class="choice-date">
+                                                                                    <input class="datepicker" id="start-date" placeholder="날짜선택" autocomplete="off" name="recruit-start-date" value="{{ activity.recruit_start |date:"m/d/Y " }}"/>
+                                                                                    <div class="error-message-box-date">
+                                                                                        <div class="error-message-text">필수 항목입니다.</div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="choice-time">
+                                                                                    <input class="timepicker" id="start-time" placeholder="시간선택" autocomplete="off" name="recruit-start-time" value="{{ activity.recruit_start |date:"h:00" }}" />
+                                                                                    <div class="error-message-box-time">
+                                                                                        <div class="error-message-text">필수 항목입니다.</div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="deadline-sub-title">
+                                                                            <div class="deadline-sub-title-text">
+                                                                                <span>마감 일시</span>
+                                                                            </div>
+                                                                            <div class="deadline-choice-tie">
+                                                                                <div class="choice-date">
+                                                                                    <input class="datepicker" id="end-date" placeholder="날짜선택" autocomplete="off" name="recruit-end-date"  value="{{ activity.recruit_end |date:"m/d/Y " }}" />
+                                                                                    <div class="error-message-box-date">
+                                                                                        <div class="error-message-text">필수 항목입니다.</div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="choice-time">
+                                                                                    <input class="timepicker" id="end-time" placeholder="시간선택" autocomplete="off" name="recruit-end-time" value="{{ activity.recruit_end |date:"h:00" }}"/>
+                                                                                    <div class="error-message-box-time">
+                                                                                        <div class="error-message-text">필수 항목입니다.</div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="join-access-method">
+                                                                    <p class="join-access-title">
+                                                                        <span class="join-access-title-text">참가자 승인 유형</span>
+                                                                    </p>
+                                                                    <div class="join-access-tie">
+                                                                        <div class="join-access-aggree">
+                                                                            <span>
+                                                                                <input class="all-open" type="radio" id="access-non-clear" name="access" checked="true" />
+                                                                                <label for="access-non-clear">수동</label>
+                                                                                <span class="access-description">호스트가 참가신청 전까지 대기 상태입니다.</span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="join-info-check-box">
+                                                                    <div>
+                                                                        <p class="join-info-title">참가자 정보 수집 (필수)</p>
+                                                                    </div>
+                                                                    <div class="join-info-content-box">
+                                                                        <div class="info-contents">
+                                                                            <div class="info-contents-items">
+                                                                                <div class="info-content">
+                                                                                    <div class="content-item">
+                                                                                        <input class="checked-in" type="checkbox" checked="checked" value="true" />
+                                                                                        <label for="">이름</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="info-content">
+                                                                                    <div class="content-item">
+                                                                                        <input class="checked-in" type="checkbox" checked="checked" value="true" />
+                                                                                        <label for="">이메일</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="detail-setting-container">
+                                                            <div class="detail-setting-box">
+                                                                <div class="detail-title-box">
+                                                                    <div>
+                                                                        <h1 class="detail-title">행사 상세 정보</h1>
+                                                                        <p class="detail-sub-title">어떤 행사를 구상 중이세요? 명확하게 입력할수록 좋아요!</p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span class="material-symbols-outlined mdi-down"> expand_more </span>
+                                                                        <span class="material-symbols-outlined mdi-up"> expand_less </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="detail-all-box">
+                                                                    <div class="normal-content-divide">
+                                                                        <div class="divide-line"></div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="detail-subject-title">분야/유형</p>
+                                                                        <div class="error-message-box-select">
+                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                        </div>
+                                                                        <div class="detail-row">
+                                                                            <div class="subject-own">
+                                                                                <div class="subject-select-box">
+                                                                                    <select class="subject-category" id="subject-category" name="category">
+                                                                                        <option value="disabled">분야선택</option>
+                                                                                        {% for category in categories %}
+                                                                                            <option value="{{ category.id }}" {% if category.id == activity.category_id %}selected="selected"{% endif %}>{{ category.category_name }}</option>
+                                                                                        {% endfor %}
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="activity-title">
+                                                                        <p class="activity-title-text">행사명</p>
+                                                                        <div class="error-message-box">
+                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                        </div>
+                                                                        <div class="activity-row-input">
+                                                                            <input name="activity-title" class="input-activity-title" id="activity-title-input" placeholder="텍스트 입력" type="text" autocomplete="off" value="{{ activity.activity_title }}" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="activity-intro">
+                                                                        <p class="activity-intro-text">간단소개</p>
+                                                                        <span class="intro-sub-title"> 행사를 다른 채널로 공유할 때 썸네일 이미지와 함께 표시됩니다. </span>
+                                                                    </div>
+                                                                    <div class="activity-row">
+                                                                        <div class="activity-col">
+                                                                            <input name="activity-intro" class="input-activity-intro" id="activity-intro-input" placeholder="소개글 입력" type="text" value="{{ activity.activity_intro }}" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="activity-location">
+                                                                        <p class="activity-location-text">장소</p>
+                                                                        <div class="location-devide-container-row">
+                                                                            <div class="location-devide-container-col">
+                                                                                <div class="input-location-name-row">
+                                                                                    <div class="input-location-name-col">
+                                                                                        <div>
+                                                                                            <span class="location-name-title"> 장소 </span>
+                                                                                            <div class="error-message-box-location">
+                                                                                                <div class="error-message-text">필수 항목입니다.</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <input class="location-name-input-text" placeholder="프론트윈 16F" name="activity-address-location" autocomplete="off"  value="{{ activity.activity_address_location }}" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="input-location-content-row">
+                                                                                    <div class="input-location-content-col">
+                                                                                        <div>
+                                                                                            <span class="location-content-title"> 장소설명 </span>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <input class="location-content-input-text" placeholder="주차는 건물 지하에 하세요" name="activity-address-detail" autocomplete="off" value="{{ activity.activity_address_detail }}" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="activity-image-upload">
+                                                                        <p class="activity-image-upload-title">행사 대표 이미지</p>
+                                                                        <div class="activity-image-upload-container-row">
+                                                                            <div class="activity-image-upload-container-col">
+                                                                                <div class="image-box-row">
+                                                                                    <div class="thumnail-add-box">
+                                                                                        <div class="cover-image" style="background-image: url('/upload/{{ activity.thumbnail_path }}');">
+                                                                                            <div class="file-box-add">
+                                                                                                <label class="input-thumnail-s-button" for="input-thumnail" >썸네일 이미지 추가</label>
+                                                                                                <input type="file" id="input-thumnail" name="thumbnail-path" />
+                                                                                            </div>
+                                                                                            <div class="thumnail-size-text">
+                                                                                                <div class="thumnail-size-cursor-pointer">960*540 px</div>
+                                                                                            </div>
+                                                                                            <div class="cancel-image"></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="thumnail-expand-add-box">
+                                                                                        <div class="expand-cover-image" style="background-image: url('/upload/{{ activity.banner_path }}');">
+                                                                                            <div class="expand-file-box-add">
+                                                                                                <label class="input-expand-s-button" for="input-expand-thumnail">상단 배너 이미지 추가</label>
+                                                                                                <input type="file" id="input-expand-thumnail" name="banner-path" />
+                                                                                            </div>
+                                                                                            <div class="thumnail-size-text-expand">
+                                                                                                <div class="thumnail-size-cursor-pointer-expand">1920*400 px</div>
+                                                                                            </div>
+                                                                                            <div class="cancel-expand-image"></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="image-add-check">
+                                                                                        <div class="banner-image-check">
+                                                                                            <div>
+                                                                                                <input class="back-thumnail-fill" type="checkbox" id="thumanil-checkbox" />
+                                                                                                <label for="thumanil-checkbox">상단 배너 이미지 사용하기</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="join-deadline-box">
+                                                                        <p class="deadline-title">활동기한</p>
+                                                                        <div class="deadline-content-tie">
+                                                                            <div class="deadline-sub-title">
+                                                                                <div class="deadline-sub-title-text">
+                                                                                    <span>시작 일시</span>
+                                                                                </div>
+                                                                                <div class="deadline-choice-tie">
+                                                                                    <div class="choice-date">
+                                                                                        <input name="activity-start-date" class="datepicker" id="activity-start-date" placeholder="날짜선택" autocomplete="off" value="{{ activity.activity_start|date:"m/d/Y "}}" />
+                                                                                        <div class="error-message-box-date">
+                                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="choice-time">
+                                                                                        <input name="activity-start-time" class="timepicker" id="activity-start-time" placeholder="시간선택" autocomplete="off" value="{{ activity.activity_end|date:"h:00"}}"/>
+                                                                                        <div class="error-message-box-time">
+                                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="deadline-sub-title">
+                                                                                <div class="deadline-sub-title-text">
+                                                                                    <span>마감 일시</span>
+                                                                                </div>
+                                                                                <div class="deadline-choice-tie">
+                                                                                    <div class="choice-date">
+                                                                                        <input name="activity-end-date" class="datepicker" id="activity-end-date" placeholder="날짜선택" autocomplete="off"  value="{{ activity.activity_end|date:"m/d/Y "}}" />
+                                                                                        <div class="error-message-box-date">
+                                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="choice-time">
+                                                                                        <input name="activity-end-time" class="timepicker" id="activity-end-time" placeholder="시간선택" autocomplete="off"value="{{ activity.activity_end|date:"h:00" }}" />
+                                                                                        <div class="error-message-box-time">
+                                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- presentation 가져오기 -->
+                                                                    <div class="activity-presentation-container">
+                                                                        <p class="activity-resentation-title">행사 정보</p>
+                                                                        <div class="presentation-row">
+                                                                            <div class="presentation-col">
+                                                                                <div class="presentation-box">
+                                                                                    <div class="presentation-size"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="close-button">
+                                                    <div class="close-button-relative">
+                                                        <div class="close-button-relative-col">
+                                                            <span class="button-save">취소</span>
+                                                            <span class="button-edit" >수정</span>
+                                                            <span class="button-activity-open" id="last"> 수정하기 </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" id="member-id" name="member-id" value="{{ request.session.member.id }}">
+                                                <input type="hidden" name="activity-id" value="{{ activity.id }}">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        const activityContent = `{{ activity.activity_content|safe }}`
+        const activityimgge = '{{  activity.thumbnail_path  }}'
+        const activitybaanerimg = '{{ activity.banner_path }}'
+    </script>
+    <script src="{% static 'member/web/js/management-activity-edit-web.js' %}"></script>
+{% endblock %}

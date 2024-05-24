@@ -1,0 +1,358 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'member/web/css/my-info-web.css' %}">
+            <style>
+            .hidden-checkbox {
+             display: none;
+             }
+            .check-btn{
+                margin-top: 0;
+            }
+        </style>
+{% endblock %}
+
+{% block title %}틴플:: 내 정보 수정{% endblock %}
+{% block content %}
+        <!-- 메인 부분 -->
+        
+    <form id="mypage-delete-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <main class="mypage-main">
+            <div class="mypage-wrap">
+                <div>
+                    <div class="mypage-container">
+                        <div class="mypage-box">
+                            <div class="side-bar">
+                                <div class="side-bar-title">마이페이지</div>
+                                <div class="side-bar-items">
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-wishlist/">나의 위시리스트</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-my-club/">나의 모임</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-reply/">나의 댓글</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-activity/">나의 활동</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-teenchin/">틴친 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-payment/">결제 내역</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-letter/">쪽지 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-alram/">알림 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a class="target-color" href="/member/mypage-info/">내 정보 수정</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contents">
+                                <div class="main-info-modify">
+                                    <div class="main-info-title">내 정보 수정</div>
+                                    <!-- 이메일과 이름 칸 -->
+                                    <div>
+                                        <div>
+                                            <div class="modify-target-title">이메일(ID)</div>
+                                            <!-- 회원의 이메일이 들어가는 자리 -->
+                                            <div class="profile-email">{{member.member_email}}</div>
+                                        </div>
+                                        <div class="nickname-box">
+                                            <div class="modify-target-title">이름</div>
+                                            <div class="nickname-view">
+                                                <span >{{member.member_nickname}}</span>
+                                                <button class="change-btn" type="button">변경</button>
+                                            </div>
+                                            <div class="nickname-modify" style="display: none">
+                                                <div>
+                                                    <div>
+                                                        <input class="nickname-input" autocomplete="off" type="text" placeholder="이름을 입력해 주세요" name="member-nickname">
+                                                    </div>
+                                                </div>
+                                                <a class="nickname-fix">확인</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 프로필 이미지 변경 칸 -->
+                                    <div>
+                                       <div class="profile-title">프로필 업로드</div>
+                                        <div class="profile-setting">
+                                            <div class="profile-thumbnail-box">
+                                                <!-- 프로필 썸네일이 들어가는 자리 -->
+                                                {% if request.session.member_files %}
+                                                    {% for file in request.session.member_files %}
+                                                        <img src="/upload/{{ file.profile_path }}" class="profile-thumbnail" id="preview-thumbnail">
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <img  class= "profile-thumbnail" id="preview-thumbnail" src="{% static 'public/web/images/logo/logo1.png' %}">
+                                                {% endif %}
+                                            </div>
+                                            <button class="profile-upload-btn" type="button" onclick="openFileInput()">프로필 업로드</button>
+                                        </div>
+                                        <input id="profile-input" type="file" name="photo" accept="image/*" style="display: none;" onchange="previewImage(this)" />
+                                        <label class="profile-input-label" for="profile-input"></label>
+                                        <input class="profile-input-thumbnail" />
+                                    </div>
+                                    <!-- 전화번호 입력 칸 -->
+                                    <div>
+                                        <span class="modify-target-title"> 전화번호</span>
+                                        <div class="phone-input-box">
+                                            <div>
+                                                <input class="phone-input" autocomplete="off" type="text" placeholder="예) 010-0000-0000" name="member-phone" value="{{ member.member_phone }}" oninput="autoHyphen(this)" maxlength="13">
+                                            </div>
+                                        </div>
+                                        <div class="phone-error" id="phone-error">전화번호 양식을 지켜주세요</div>
+                                    </div>
+                                    <!-- 주소 입력 칸 -->
+                                    <div>
+                                        <span class="modify-target-title"> 주소 </span>
+                                        <div class="address-input-box">
+                                            <div>
+                                                <input class="address-input" autocomplete="off" type="text" value="{{ member.member_address}}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 관심분야 선택 칸 -->
+                                    <div>
+                                        <div style="display: flex; flex-direction: row; align-content: center;">
+                                            <span class="modify-target-title"> 관심분야 </span>
+                                            <div class="ai-description-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="ai-description-icon-icon" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                <div class="ai-description-wrap">
+                                                    <div class="ai-description-text">
+                                                        선택하신 관심분야는 틴플레이 내 AI 추천 서비스에 활용될 수 있습니다.
+                                                        <br>
+                                                        더 정확한 추천을 위해 선택을 권장드려요!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="interest-select-box">
+                                        {% for category in categories %}
+                                            <input type="checkbox" class="hidden-checkbox" id="{{ category.id }}" name="selected_categories" value="{{ category.id }}"
+                                                   {% for item in category_statuses %}
+                                                       {% if item.category_id == category.id and item.status %}
+                                                           checked
+                                                       {% endif %}
+                                                   {% endfor %}
+                                            >
+                                            <label class="interest-category {% for member_category in request.session.member_category %}{% if member_category.category_id == category.id and member_category.status %}selected-category{% endif %}{% endfor %}" for="{{ category.id }}">
+                                                {{ category.category_name }}
+                                            </label>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+                                    <!-- 관심 키워드 입력 칸 -->
+                                    <div class="keyword-input-wrap">
+                                        <div style="display: flex; flex-direction: row; align-content: center;">
+                                            <span class="modify-target-title"> 관심 키워드 (최대 10글자) </span>
+                                            <div class="ai-keyword-description-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="ai-keyword-description-icon-icon" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                <div class="ai-keyword-description-wrap">
+                                                    <div class="ai-keyword-description-text">
+                                                        입력하신 키워드는 틴플레이 내 AI 추천 서비스에 활용될 수 있습니다.
+                                                        <br>
+                                                        더 정확한 추천을 위해 입력을 권장드려요!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="keyword-input-container">
+                                                <input type="text" placeholder="키워드 1" name="keyword1" id="keyword1" class="keyword-input" value="{{ member.member_keyword1 }}" maxlength="10">
+                                                <input type="text" placeholder="키워드 2" name="keyword2" id="keyword2" class="keyword-input" value="{{ member.member_keyword2 }}" maxlength="10">
+                                                <input type="text" placeholder="키워드 3" name="keyword3" id="keyword3" class="keyword-input" value="{{ member.member_keyword3 }}" maxlength="10">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-info-modify">
+                                    <div class="sub-info-title">부가 정보</div>
+                                    <div class="sub-modify-section">
+                                        <div>
+                                            <span class="modify-target-title"> 성별 </span>
+                                            <div class="gender-box">
+                                                <div>
+                                                    <div class="male-box">
+                                                        <input type="radio" name="gender" id="male" value= 1 {% if member.member_gender == 1 %} checked {% endif %} />
+                                                        <label for="male" class="male-label">남성</label>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="female-box">
+                                                        <input type="radio" name="gender" id="female" value= 2 {% if member.member_gender == 2 %} checked {% endif %} />
+                                                        <label for="female" class="female-label">여성</label>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="none-box">
+                                                        <input type="radio" name="gender" id="none" value= 0 {% if member.member_gender == 0 %} checked {% endif %} />
+                                                        <label for="none" class="none-label">선택안함</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="modify-target-title"> 출생연도 </span>
+                                            <!-- js로 for문 사용하여 innerHTML 사용함 -->
+                                            <select class="birth-year" name="member-age" id=""  required>
+                                                <option disabled value="{{ member.member_birth }}" selected>{{ member.member_birth }}</option>
+                                            </select>
+                                        </div>
+{#                                        <div>#}
+{#                                            <span class="modify-target-title"> 관심지역 </span>#}
+{#                                            <select class="areas-interrest" name="address-add" id="" required>#}
+{#                                                <option disabled value="" selected>선택하기</option>#}
+{#                                                <option value="서울">서울</option>#}
+{#                                                <option value="부산">부산</option>#}
+{#                                                <option value="대구">대구</option>#}
+{#                                                <option value="인천">인천</option>#}
+{#                                                <option value="광주">광주</option>#}
+{#                                                <option value="대전">대전</option>#}
+{#                                                <option value="울산">울산</option>#}
+{#                                                <option value="세종">세종</option>#}
+{#                                                <option value="경기">경기</option>#}
+{#                                                <option value="강원">강원</option>#}
+{#                                                <option value="충북">충북</option>#}
+{#                                                <option value="충남">충남</option>#}
+{#                                                <option value="전북">전북</option>#}
+{#                                                <option value="전남">전남</option>#}
+{#                                                <option value="경북">경북</option>#}
+{#                                                <option value="경남">경남</option>#}
+{#                                                <option value="제주">제주</option>#}
+{#                                            </select>#}
+{#                                        </div>#}
+{#                                        <div>#}
+{#                                            <span class="modify-target-title"> 가입경로 </span>#}
+{#                                            <!-- 회원정보의 선택 값의 태그에 selected 넣어기 -->#}
+{#                                            <select class="subscription-path" name="" id="" disabled>#}
+{#                                                <option value="선택안함">선택안함</option>#}
+{#                                                <option value="행사신청페이지">행사신청페이지</option>#}
+{#                                                <option value="지인추천">지인추천</option>#}
+{#                                                <option value="이벤터스 광고">이벤터스 광고</option>#}
+{#                                                <option value="네이버 블로그">네이버 블로그</option>#}
+{#                                                <option value="인터넷 검색">인터넷 검색</option>#}
+{#                                                <option value="페이스북">페이스북</option>#}
+{#                                                <option value="인스타그램">인스타그램</option>#}
+{#                                                <option value="기타" selected>기타</option>#}
+{#                                            </select>#}
+{#                                        </div>#}
+                                        <div>
+                                            <div class="marketing-agree-box">
+                                                <div>
+                                                    <div class="marketing-input-content">
+                                                        <div class="marketing-input-items">
+                                                          <input id="marketing-checkbox" type="checkbox" name="member-marketing_agree" {% if member.member_marketing_agree %} checked {% endif %} value="1" />
+                                                          <label class="marketing-checkbox-label" for="marketing-checkbox">[선택] 마케팅 정보 수신동의</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- 마케팅 정보 수신동의 주소 필요 -->
+                                                <a class="consent-form-link" href="" target="_blank">보기</a>
+                                            </div>
+                                            <div class="collection-agree-box">
+                                                <div>
+                                                    <div class="collection-input-content">
+                                                        <div class="collection-input-items">
+                                                           <input id="collection-checkbox" type="checkbox" name="member-privacy_agree" {% if member.member_privacy_agree%} checked {% endif %} value="1" />
+                                                            <label class="collection-checkbox-label" for="collection-checkbox">[선택]개인정보 수집·이용 동의서</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- 개인정보 수집·이용 동의서 주소 필요 -->
+                                                <a class="consent-form-link" href="" target="_blank">보기</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gap-line"></div>
+                                <div class="withdrawal-save">
+                                    <a class="withdrawal-link"  href="{% url 'member:mypage-delete' %}">틴플 탈퇴하기</a>
+                                    <div>
+                                        <button class="save-btn" type="button">저장하기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 푸터 부분 -->
+        <footer></footer>
+        <!-- 저장 모달창 부분 -->
+        <div>
+            <div>
+                <div>
+                    <div class="save-modal-wrap" style="display: none">
+                        <div class="save-modal-shadow"></div>
+                        <div class="save-modal-container">
+                            <div class="save-modal-box">
+                                <div>
+                                    <h2 class="modal-header-box">
+                                        <div class="check-svg-box">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="modal-header-title">저장 되었습니다.</div>
+                                    </h2>
+                                </div>
+                                <div class="modal-btn-box">
+                                    <button class="close-btn" type="button">닫기</button>
+                                    <button class="check-btn" type="submit">확인</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 파일 확장자 틀릴 경우 모달 -->
+            <div class="extension-error-modal-wrap">
+                <div class="extension-error-modal-shadow"></div>
+                <div class="extension-error-modal-container">
+                    <div class="extension-error-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="extension-error-modal-title">유형에 맞지 않는 파일입니다.</div>
+                            </h2>
+                        </div>
+                        <div class="extension-error-modal-btn-box">
+                            <button class="extension-error-modal-close-btn" type="button">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'member/web/js/my-info-web.js' %}"></script>
+<script>
+
+</script>
+{% endblock %}

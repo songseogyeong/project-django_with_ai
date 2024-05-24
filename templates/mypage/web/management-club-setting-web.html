@@ -1,0 +1,281 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/web/css/management-club-setting-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플:: 모임 설정{% endblock %}
+{% block content %}
+    <body style="position: relative; min-height: 100%; top: 0px">
+    <!-- 헤더 부분 -->
+    <header></header>
+    <!-- 메인 부분(모임 홍보쪽 해더) -->
+    <main class="main">
+        <!-- 헤더 밑의 모임 관리 관련 서브헤더 -->
+        <div class="sud-header-wrap">
+            <div class="sud-header-container">
+                <div class="sud-header-box">
+                    <!-- 모임 개요 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-club/{{ club_id }}">모임 개요</a>
+                    <!-- 구성원 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-member/{{ club_id }}">구성원</a>
+                    <!-- 모임 공지사항 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-notice/{{ club_id }}">모임 공지사항</a>
+                    <!-- 모임 설정 페이지 주소 필요 -->
+                    <a class="sud-header-category select-category" href="/member/mypage-setting/{{ club_id }}">모임 설정</a>
+                </div>
+                <!-- 모임 상세페이지 주소 필요 -->
+                <a class="club-detail-link" href="/club/detail/?id={{ club_id }}" target="_blank">
+                    <span>모임 페이지 바로가기</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="move-svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="club-setting-wrap">
+            <div class="club-setting-container">
+                <h1 class="club-setting-header">모임 설정</h1>
+                <form action="{% url 'member:mypage-setting' club_id=club_id %}" name="club-setting-form" method="post"
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="club-setting-box">
+                        <div class="club-name-items">
+                            <div class="club-name-title">모임명</div>
+                            <div class="club-name-setting">
+                                <div>
+                                    <input class="club-name-input" id="club-name" name="club-name" autocomplete="off"
+                                           type="text" maxlength="20" placeholder="한글, 영문, 특수문자 포함 20자"
+                                           value="{{ clubName }}"/>
+                                    <!-- 입력마다 숫자 변경 -->
+                                    <div class="input-value-count"></div>
+                                    <!-- <div class="club-name-input-error">항목을 입력하세요</div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="email-phone-box">
+                            <div class="email-items">
+                                <div class="club-manager-email-box">
+                                    <label style="display: block" for="club-manager-email-input">
+                                        <div class="club-manager-email-title">카테고리</div>
+                                    </label>
+                                </div>
+                                <div class="pr-write-title-wrap">
+                                    <select name="club-category" class="pr-write-fields" required>
+                                        <option value class="pr-write-default">카테고리</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.id }}" {% if category.id == club_category_id %}selected{% endif %}>{{ category.category_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+{#                                <input name="manager-email" id="club-manager-email-input" autocomplete="off"#}
+{#                                       type="text" value="{{ memberEmail }}"/>#}
+{#                                <!-- <div class="none-email-warning" style="display: none">항목을 입력하세요</div> -->#}
+                            </div>
+                            <div class="phone-items">
+                                <div class="club-manager-phone-box">
+                                    <label style="display: block" for="club-manager-phone-input">
+                                        <div class="club-manager-phone-title">지역</div>
+                                    </label>
+                                </div>
+                                <div class="pr-write-desc-wrap">
+                                    <select name="club-region" class="pr-write-desc-fields" required>
+                                        <option value class="pr-write-desc-default">지역</option>
+                                        {% for region in regions %}
+                                            <option value="{{ region.id }}" {% if region.id == region_id %}selected{% endif %}>{{ region.region }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+{#                                <input name="manager-phone" id="club-manager-phone-input" autocomplete="off"#}
+{#                                       type="text" value="{{ memberPhone }}"/>#}
+{#                                <!-- <div class="none-phone-warning" style="display: none">항목을 입력하세요</div> -->#}
+                            </div>
+                        </div>
+                        <div class="club-category-items">
+                            <div class="club-category-title">추가 카테고리</div>
+                            <div class="club-sub-category-warning hidden">추가 카테고리는 최대 3개까지 선택이 가능합니다.</div>
+                            <div class="interest-select-box">
+                                {% for category in categories %}
+                                    <input type="checkbox" class="hidden-checkbox" id="{{ category.id }}" name="club-sub-category" value="{{ category.id }}" {% for sub_category_id in club_sub_category_id %}{% if category.id == sub_category_id %}checked{% endif %}{% endfor %}>
+                                    <label class="interest-category {% for sub_category_id in club_sub_category_id %}{% if category.id == sub_category_id %}selected-category{% endif %}{% endfor %}" for="{{ category.id }}">
+                                        {{ category.category_name }}
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="club-profile-items">
+                            <div class="club-profile-title">모임 프로필 업로드</div>
+                            <div class="club-profile-setting">
+                                <div class="club-profile-thumbnail-box">
+                                    <!-- 프로필 썸네일이 들어가는 자리 -->
+                                    <img class="club-profile-thumbnail" src="/upload/{{ clubProfilePath }}"/>
+                                </div>
+                                <button class="club-profile-upload-btn" type="button">모임 프로필 업로드</button>
+                            </div>
+                        </div>
+                        <label class="club-profile-input-label" for="club-profile-input"></label>
+                        <input id="club-profile-input" type="file" name="club-profile" accept="image/*"/>
+                        <input class="club-profile-input-thumbnail" type="file" accept="image/*"/>
+                        <div class="club-background-items">
+                            <div class="club-background-title">모임 커버</div>
+                            <div class="club-background-setting">
+                                <!-- 배경화면 이미지가 없을 경우 -->
+                                <div class="none-background-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5" stroke="currentColor" class="none-background-sng">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+                                    </svg>
+                                    <div class="none-background-container">
+                                        <button type="button" class="background-upload-btn">이미지 업로드</button>
+                                        <span class="background-upload-guide"> 또는 드래그 앤 드롭 하세요 </span>
+                                    </div>
+                                    <div class="example-img-size">2000 * 263 이상 (7.6 : 1)</div>
+                                </div>
+
+                                <!-- 배경화면 이미지가 있을 경우 -->
+                                <div class="prev-img-box">
+                                    <button class="prev-img-cancel" type="button">
+                                        <svg fill="#d2d2d2" height="20px" width="20px" version="1.1" id="Layer_1"
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             viewBox="0 0 300.003 300.003" xml:space="preserve">
+                                            <g>
+                                                <g>
+                                                    <path d="M150,0C67.159,0,0.001,67.159,0.001,150c0,82.838,67.157,150.003,149.997,150.003S300.002,232.838,300.002,150
+                                                        C300.002,67.159,232.839,0,150,0z M206.584,207.171c-5.989,5.984-15.691,5.984-21.675,0l-34.132-34.132l-35.686,35.686
+                                                        c-5.986,5.984-15.689,5.984-21.672,0c-5.989-5.991-5.989-15.691,0-21.68l35.683-35.683L95.878,118.14
+                                                        c-5.984-5.991-5.984-15.691,0-21.678c5.986-5.986,15.691-5.986,21.678,0l33.222,33.222l31.671-31.673
+                                                        c5.986-5.984,15.694-5.986,21.675,0c5.989,5.991,5.989,15.697,0,21.678l-31.668,31.671l34.13,34.132
+                                                        C212.57,191.475,212.573,201.183,206.584,207.171z"/>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <img class="background-thumbnail" src="/upload/{{ clubBannerPath }}"/></div>
+
+
+                            </div>
+                            <div class="background-file-wrap" style="display: none">
+                                <div class="background-file-container">
+                                    <div class="background-file-name-box">
+                                        <!-- 파일 이름과 확장자 필요 -->
+                                        <div class="background-file-name"></div>
+                                    </div>
+                                    <div class="capacity-cancle-box">
+                                        <!-- 파일의 용량 필요 -->
+                                        <div class="background-file-capacity"></div>
+                                        <button class="background-cancle-box" type="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                 fill="currentColor" class="background-cancle-svg">
+                                                <path fill-rule="evenodd"
+                                                      d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+                                                      clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <input class="background-img-input" type="file" name="background-img" id=""
+                                   accept="image/*"/>
+                        </div>
+                        <div class="club-oneline-intro-items">
+                            <div class="club-oneline-intro-title">모임 간략 정보</div>
+                            <div class="club-oneline-intro-setting">
+                                <input class="club-oneline-intro-input" id="" name="club-intro" autocomplete="off"
+                                       type="text" value="{{ clubIntro }}"/>
+                            </div>
+                        </div>
+                        <div class="club-details-intro-items">
+                            <div class="club-details-intro-title">모임 상세 정보</div>
+                            <div>
+                                <textarea class="club-details-intro-setting" name="club-details" id="" cols="30"
+                                          rows="10">{{ clubInfo }}</textarea>
+                            </div>
+                        </div>
+                        <div class="club-manager-info-items">
+                            <div class="club-manager-info-header">
+                                <div class="club-manager-info-title">모임 담당자 정보 관리</div>
+                                <div class="club-manager-info-warning">이메일 또는 전화번호는 필수 입력 항목입니다.</div>
+                            </div>
+                            <div class="club-manager-info-setting">
+                                <div>
+                                    <div class="club-manager-name-box">
+                                        <label style="display: block" for="club-manager-name-input">
+                                            <div class="club-manager-name-title">이름*</div>
+                                        </label>
+                                    </div>
+                                    <input name="manager-name" id="club-manager-name-input" autocomplete="off"
+                                           type="text" value="{{ memberNickname }}"/>
+                                    <!-- <div class="none-name-warning" style="display: none">항목을 입력하세요</div> -->
+                                </div>
+                                <div class="email-phone-box">
+                                    <div class="email-items">
+                                        <div class="club-manager-email-box">
+                                            <label style="display: block" for="club-manager-email-input">
+                                                <div class="club-manager-email-title">이메일*</div>
+                                            </label>
+                                        </div>
+                                        <input name="manager-email" id="club-manager-email-input" autocomplete="off"
+                                               type="text" value="{{ memberEmail }}"/>
+                                        <!-- <div class="none-email-warning" style="display: none">항목을 입력하세요</div> -->
+                                    </div>
+                                    <div class="phone-items">
+                                        <div class="club-manager-phone-box">
+                                            <label style="display: block" for="club-manager-phone-input">
+                                                <div class="club-manager-phone-title">전화번호*</div>
+                                            </label>
+                                        </div>
+                                        <input name="manager-phone" id="club-manager-phone-input" autocomplete="off"
+                                               type="text" value="{{ memberPhone }}"/>
+                                        <!-- <div class="none-phone-warning" style="display: none">항목을 입력하세요</div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-line"></div>
+                        <div class="club-delete-save-box">
+                            <!-- 모임 삭제 페이지 주소 필요 -->
+                            <a class="club-delete-link" href="/member/mypage-club-delete/{{ club_id }}/">모임 삭제</a>
+                            <!-- submit으로 바꿔야됨 -->
+                            <button class="club-save-btn" type="submit">저장</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- 푸터 부분 -->
+    <footer></footer>
+    <!-- 모달 부분 -->
+    <div>
+        <!-- 파일 확장자 틀릴 경우 모달 -->
+        <div class="extension-error-modal-wrap">
+            <div class="extension-error-modal-shadow"></div>
+            <div class="extension-error-modal-container">
+                <div class="extension-error-modal-box">
+                    <div>
+                        <h2 class="modal-header-box">
+                            <div class="extension-error-modal-title">유형에 맞지 않는 파일입니다.</div>
+                        </h2>
+                    </div>
+                    <div class="extension-error-modal-btn-box">
+                        <button class="extension-error-modal-close-btn" type="button">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const clubBannerPath = '{{ clubBannerPath }}';
+        const csrf_token = '{{ csrf_token }}';
+        const club_id = '{{ club_id }}';
+    </script>
+    <script src="{% static 'member/web/js/management-mypage-module.js' %}"></script>
+    <script src="{% static 'member/web/js/management-club-setting-web.js' %}"></script>
+{% endblock %}

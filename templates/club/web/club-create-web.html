@@ -1,0 +1,187 @@
+{% extends 'club/web/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'club/web/css/club-create-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플 :: 모임 개설하기{% endblock %}
+
+{% block main %}
+    <main class="club-create">
+        <div id="app">
+            <div class="create-container">
+                <!-- (서버담당을 위해 작성합니다. 배포 시 주석을 지웁시다.) -->
+                <!-- 1단계: 모임 이름 작성 -->
+                <form name="club-create-form" action="{% url 'club:create' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="name-form-wrap">
+                        <div class="name-form-title-wrap">
+                            <span class="name-form-title">새로운 모임을 개설</span>
+                        </div>
+                        <div class="name-form-icon-wrap">
+                            <div class="name-form-number-wrap">
+                                <span class="name-form-number">1</span>
+                            </div>
+                            <div class="name-form-dash"></div>
+                            <div class="name-form-circle"></div>
+                            <div class="name-form-dash"></div>
+                            <div class="name-form-circle"></div>
+                        </div>
+                        <div class="name-form-content-wrap">
+                            <div class="name-form-text-wrap">
+                                <div class="name-form-text-title">모임의 이름을 입력해주세요.</div>
+                                <div class="name-form-text-content">
+                                    틴플레이에서 모임의 이름이 됩니다.
+                                    <br />
+                                    활동과 모임의 성향에 맞는 이름을 정해주세요.
+                                </div>
+                                <div class="name-form-input-wrap">
+                                    <div>
+                                        <div>
+                                            <input name="club-name" type="text" class="name-form-input" placeholder="ex) 틴플레이" maxlength="10" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="name-form-button-wrap">
+                                    <button type="button" class="name-form-button disabled">다음</button>
+                                </div>
+                            </div>
+                            <div class="name-form-img-wrap">
+                                <img src="https://event-us.kr/Content/neweventus/image/hostcenter/hostcenter_create_info_01.png" alt="모임생성 이미지" class="name-form-img" />
+                                <div class="name-form-chat-img-wrap">
+                                    <img src="https://event-us.kr/Content/neweventus/image/hostcenter/hostcenter_create_info_02.png" alt="메시지 이미지" class="name-form-chat-img" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- (서버담당을 위해 작성합니다. 배포 시 주석을 지웁시다.) -->
+                    <!-- 개설 2단계: 모임에 대한 소개글 입력 -->
+                    <div class="desc-form-wrap">
+                        <div class="desc-form-title-wrap">
+                            <span class="desc-form-title">새로운 모임을 개설</span>
+                        </div>
+                        <div class="desc-form-icon-wrap">
+                            <div class="desc-form-circle-blue"></div>
+                            <div class="desc-form-dash"></div>
+                            <div class="desc-form-number-wrap">
+                                <span class="desc-form-number">2</span>
+                            </div>
+                            <div class="desc-form-dash"></div>
+                            <div class="desc-form-circle"></div>
+                        </div>
+                        <div class="desc-form-content-wrap">
+                            <div class="desc-form-text-wrap">
+                                <!-- 대괄호 안에는 이전에 입력한 모임명을 넣습니다. -->
+                                <div class="desc-form-text-title">[틴플레이]에 대한 소개글을 작성해주세요.</div>
+                                <div class="desc-form-text-content">
+                                    모임에 대해 한 마디로 소개해주세요.
+                                    <br />
+                                    소개글은 마이페이지에서 언제든 수정할 수 있어요.
+                                </div>
+                                <div class="desc-form-input-wrap">
+                                    <div>
+                                        <div>
+                                            <input name="club-intro" type="text" class="desc-form-input" placeholder="우리 모임을 한 마디로 표현한다면?" maxlength="100" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desc-form-button-wrap">
+                                    <button type="button" class="desc-form-prev-button">이전 단계</button>
+                                    <button type="button" class="desc-form-button disabled">다음</button>
+                                </div>
+                            </div>
+                            <div class="desc-form-img-wrap">
+                                <img src="https://event-us.kr/Content/neweventus/image/hostcenter/hostcenter_create_info_03.png" alt="모임생성 이미지" class="desc-form-img" />
+                                <div class="desc-form-chat-img-wrap">
+                                    <img src="https://event-us.kr/Content/neweventus/image/hostcenter/hostcenter_create_info_04.png" alt="메시지 이미지" class="desc-form-chat-img" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- (서버담당을 위해 작성합니다. 배포 시 주석을 지웁시다.) -->
+                    <!-- 개설 3단계: 모임에 대한 소개글 입력 -->
+                    <div class="img-form-wrap">
+                        <div class="img-form-title-wrap">
+                            <span class="img-form-title">새로운 모임을 개설</span>
+                        </div>
+                        <div class="img-form-icon-wrap">
+                            <div class="img-form-circle-blue"></div>
+                            <div class="img-form-dash"></div>
+                            <div class="img-form-circle-blue"></div>
+                            <div class="img-form-dash"></div>
+                            <div class="img-form-number-wrap">
+                                <span class="img-form-number">3</span>
+                            </div>
+                        </div>
+                        <div class="img-form-content-wrap">
+                            <div class="img-form-text-wrap">
+                                <div class="img-form-text-title">[틴플레이] 모임을 고유한 이미지로 꾸며주세요</div>
+                                <div class="img-form-text-content">모임의 프로필, 모임 커버가 직접 등록한 이미지로 채워집니다.</div>
+                                <div class="img-form-profile-size-error">최대 10MB 이하의 이미지만 첨부할 수 있습니다.</div>
+                                <div class="img-form-settings-wrap">
+                                    <div class="cover-thumbnail-wrap" onclick="openCover()">
+                                        <div class="cover-thumbnail-container"></div>
+                                        <img class="cover-thumbnail" src="https://event-us.kr/Content/neweventus/image/hostcenter/hostcenter_create_upload_01.png" alt="커버 썸네일" />
+                                        <div class="cover-upload-wrap">모임 커버 업로드</div>
+                                        <span class="upload-span-gray">&nbsp;&nbsp; 2000*263 이상 (7.6:1) </span>
+                                        <div class="cover-hidden">
+                                            <input name="club-banner" type="file" id="background-image" data-ratio="7.6:1" accept="image/*" />
+                                        </div>
+                                        <div class="cover-delete-wrap">
+                                            <img src="{% static 'club/web/images/club-create/cover_delete_icon_white.png' %}" class="cover-delete" />
+                                            <img src="{% static 'club/web/images/club-detail/teenplay_delete_icon_hover.png' %}" class="cover-delete-hover" />
+                                        </div>
+                                    </div>
+                                    <div class="club-detail-wrap">
+                                        <div class="img-form-thumbnail-wrap" onclick="openProfile()">
+                                            <div class="img-form-thumbnail-bg"></div>
+                                            <div class="img-form-img-wrap">
+                                                <img src="https://event-us.kr/Content/neweventus/image/hostcenter/hostcenter_create_upload_01.png" alt="썸네일" class="img-form-thumbnail" />
+                                                <div class="profile-delete-wrap">
+                                                    <img src="{% static 'club/web/images/club-create/cover_delete_icon_white.png' %}" class="profile-delete" />
+                                                    <img src="{% static 'club/web/images/club-detail/teenplay_delete_icon_hover.png' %}" class="profile-delete-hover" />
+                                                </div>
+                                            </div>
+                                            <div class="img-form-hidden">
+                                                <input name="club-profile" type="file" id="profile-image" accept="image/*" data-ratio="1:1" />
+                                            </div>
+                                        </div>
+                                        <div class="club-detail-title-wrap">
+                                            <div class="club-detail-name-wrap">
+                                                <div class="club-detail-name">틴플레이</div>
+                                            </div>
+                                            <div class="club-detail-stats-wrap">
+                                                <span>
+                                                    <span class="club-detail-stats-name"> 구성원 </span>
+                                                    <span class="club-detail-stats-count">0</span>
+                                                </span>
+                                                <span class="club-detail-stats-event">
+                                                    <span class="club-detail-stats-name"> 누적활동 </span>
+                                                    <span class="club-detail-stats-count">0</span>
+                                                </span>
+                                            </div>
+                                            <div class="club-detail-introduction">안녕하세요! 틴플레이입니다. 우리 모두 틴플해요~!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-form-buttons-wrap">
+                                    <div class="img-form-button-wrap">
+                                        <button type="button" class="img-form-prev-button">이전 단계</button>
+                                        <button type="button" class="img-form-button">모임 개설 완료</button>
+                                    </div>
+                                    <div class="img-form-skip-wrap">
+                                        <span class="img-form-skip">이 단계 건너뛰기</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'club/web/js/club-create-web.js' %}"></script>
+{% endblock %}

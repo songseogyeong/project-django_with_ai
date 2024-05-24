@@ -1,0 +1,616 @@
+{% extends 'activity/web/base.html' %}
+{% load static %}
+{% load tz %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'activity/web/css/activity-detail-web.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" />
+{% endblock %}
+{% block title %}틴플 :: {{ activity.activity_title }}{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="main-bg">
+            <div class="main-content-container">
+                <div class="content-container">
+                    <img class="content-image" {% if activity.thumbnail_path %} src="/upload/{{ activity.thumbnail_path }}" {% else %}src="{% static 'public/web/images/logo/logo8.png' %}" {% endif %}/>
+                    <div class="content-main-text">{{ activity.activity_intro }}</div>
+                    <div class="right-content-box">
+                        <div class="right-sticky">
+                            <div class="right-notranslation">
+                                <div class="flex-divide">
+                                    <form class="activity-detail-category-form" action="/activity/list/" method="post" style="cursor: pointer;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="category-id" value="{{ category.id }}">
+                                        <div class="divide-link-f"> <span>{{ category.category_name }}</span></div>
+                                    </form>
+                                </div>
+                                <div class="divide-title-bold">{{ activity.activity_title }}</div>
+                                <input type="hidden" name="club-id" value="{{ club.id }}">
+                                <input type="hidden" name="activity-id" value="{{ activity.id }}">
+                                <div class="club-profile-box">
+                                    <a class="club-link" href="{{ club.get_absolute_url }}">
+                                        {% if club.club_profile_path != '' %}
+                                            <img class="c-profile-img" src="/upload/{{ club.club_profile_path }}" alt="" />
+                                        {% else %}
+                                            <img class="c-profile-img" src="{% static 'public/web/images/logo/logo1.png' %}" alt="" />
+                                        {% endif %}
+                                        <div class="profile-text">
+                                            <span> {{ club.club_name }} </span>
+                                        </div>
+                                        <div class="profile-arrow-icon">
+                                            <svg class="profile-right-arrow-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z"
+                                                    fill="#4A5568"
+                                                ></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="hidden-divide-text"></div>
+                                <input type="hidden" name="is-like" value="{{ is_like }}">
+                                <div class="divide-click-box">
+                                    <form class="divide-click-items" action="">
+                                        <div class="divide-click-hidden-item">
+                                            <div class="divide-hidden-bg">
+                                                <div class="hidden-name-group">
+                                                    <input name="group-id" type="hidden" value="group4" />
+                                                    <input name="group-num" type="hidden" value="1" />
+                                                    <div class="divide-activity-ex-box">
+                                                        <div class="devide-justify-between">
+                                                            <div>
+                                                                <span>{{ activity.activity_start|date:"N j일(l) H:i시" }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="devide-items-center">
+                                                            <div class="divide-count-flex">
+                                                                <div class="leftover-box">
+                                                                    <div class="leftover-text-c">
+                                                                        <span class="activity-like-count"></span>
+                                                                        <span>{{ activity_member_count }}명 참가중</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+{#                                                            <div class="pay-type">무료</div>#}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="join-button-box" {% if activity_member_check or not activity_recruit_check %}style="display: none;" {% endif %}>
+                                            <div class="join-button-item">
+                                                <button class="real-button" type="button">신청하기</button>
+                                            </div>
+                                        </div>
+                                        <div class="end-item-box" {% if activity_recruit_check %}style="display: none;" {% endif %}>
+                                            <div class="end-item">
+                                                <div class="end-message">모집 기간이 아닙니다.</div>
+                                            </div>
+                                        </div>
+                                        <div class="manage-activity-box" {% if not activity_member_check %} style="display: none" {% endif %}>
+                                            <div class="manage-button-item">
+                                                <button class="manage-item-button" type="button">관리하기</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="divide-button-tie">
+                                        <button class="share-button" id="share-button" type="button">
+                                            <span>공유</span>
+                                            <svg class="share-button-image" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M8.68387 13.3419C8.88616 12.9381 9 12.4824 9 12C9 11.5176 8.88616 11.0619 8.68387 10.6581M8.68387 13.3419C8.19134 14.3251 7.17449 15 6 15C4.34315 15 3 13.6569 3 12C3 10.3431 4.34315 9 6 9C7.17449 9 8.19134 9.67492 8.68387 10.6581M8.68387 13.3419L15.3161 16.6581M8.68387 10.6581L15.3161 7.34193M15.3161 7.34193C15.8087 8.32508 16.8255 9 18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 6.48237 15.1138 6.93815 15.3161 7.34193ZM15.3161 16.6581C15.1138 17.0619 15 17.5176 15 18C15 19.6569 16.3431 21 18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15C16.8255 15 15.8087 15.6749 15.3161 16.6581Z"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                        <button class="like-act-button" type="button">
+                                            <span>관심활동</span>
+                                            <svg class="like-act-button-image" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-content-box">
+                        <div class="sticky-selection">
+                            <ul class="section-list">
+                                <li class="list-one">
+                                    <button class="act-intro" type="button">
+                                        <span>활동 소개</span>
+                                    </button>
+                                </li>
+                                <li class="list-two">
+                                    <button class="act-location" type="button">
+                                        <span>활동 장소</span>
+                                    </button>
+                                </li>
+                                <li class="list-three">
+                                    <button class="act-info" type="button">
+                                        <span>모임 정보</span>
+                                    </button>
+                                </li>
+                                <li class="list-four">
+                                    <button class="act-noti" type="button">
+                                        <span>모임 공지</span>
+                                    </button>
+                                </li>
+                                <li class="list-five">
+                                    <button class="act-inquiry" type="button">
+                                        <span>댓글</span>
+                                    </button>
+                                </li>
+                                <li class="list-six">
+                                    <button class="act-suggestion" type="button">
+                                        <span>추천 활동</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <section class="info-section">
+                            <dl class="summary-info">
+                                <div class="summary-box-one">
+                                    <dt class="info-title">
+                                        <span>일시</span>
+                                    </dt>
+                                    <dd class="info-content">
+                                        <span> {{ activity.activity_start|date:"N j일(l) H:i" }} ~ {{ activity.activity_end|date:"N j일(l) H:i" }}</span>
+                                    </dd>
+                                </div>
+                                <div class="summary-box-two">
+                                    <dt class="support-title">
+                                        <span>신청</span>
+                                    </dt>
+                                    <dd class="support-content">
+                                        <span> {{ activity.recruit_start|date:"N j일(l) H:i" }} ~ {{ activity.recruit_end|date:"N j일(l) H:i" }}</span>
+                                        {% if activity_recruit_check %}
+                                            <span class="support-is">모집중</span>
+                                        {% endif %}
+                                    </dd>
+                                </div>
+                                <div class="summary-box-four">
+                                    <dt class="act-text-location">
+                                        <span>장소</span>
+                                    </dt>
+                                    <dd class="act-text-location-content">
+                                        <span> {{ activity.activity_address_location }} </span>
+                                    </dd>
+                                </div>
+                            </dl>
+                            <div class="activity-border-line"></div>
+                            <div class="relative-box">
+                                <div class="relative">
+                                    <div class="max-overflow-hidden">
+                                        <!-- <style class="shadow"  type="text/css"></style> -->
+                                        <div class="overflow-hidden-box">
+                                            <div class="sandbox">
+                                                <h3 class="sandbox-title">
+                                                    <div class="title-content">
+                                                        <div class="title-text">
+                                                            <!-- 내용 들어갑니다 -->
+                                                            {{ activity.activity_content|safe }}
+                                                        </div>
+                                                    </div>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="is-hidden-shadow"></div>
+                                </div>
+                                <div class="flex-items-end-container">
+                                    <div class="filp-more">
+                                        <button class="filp-button" type="button">
+                                            <span>활동 소개 더보기</span>
+                                            <svg class="filp-more-button-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                        <!-- 추가 -->
+                                        <div class="filp-more-hidden">
+                                            <button class="filp-button-hidden" type="button">
+                                                <span>활동 소개 접기</span>
+                                                <svg class="filp-more-button-image-rotate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="map-section">
+                            <div>
+                                <div class="map-text-title">
+                                    <span>활동 장소</span>
+                                </div>
+                            </div>
+                            <dl class="location-container">
+                                <div class="map-text-content-box">
+                                    <dt class="map-text-sub-title">장소</dt>
+                                    <dd class="map-content"> {{ activity.activity_address_location }}</dd>
+                                </div>
+                                <!-- 지도가 들어갈 장소입니다. -->
+                                <div class="map-address-text-content-box">
+                                    <dt class="map-text-sub-title">장소 설명</dt>
+                                    <dd class="map-content"> {{ activity.activity_address_detail }}</dd>
+                                </div>
+                                <div class="map-box"></div>
+                            </dl>
+                        </section>
+                        <section class="club-section">
+                            <div class="club-info-title">
+                                <span>모임 정보</span>
+                            </div>
+                            <div class="club-s-profile">
+                                <div class="club-s-profile-box">
+                                    <a class="club-s-profile-image" href="{{ club.get_absolute_url }}">
+                                        {% if club.club_profile_path != '' %}
+                                            <img class="club-s-profile-image-location" src="/upload/{{ club.club_profile_path }}" />
+                                        {% else %}
+                                            <img class="club-s-profile-image-location" src="{% static 'public/web/images/logo/logo1.png' %}" />
+                                        {% endif %}
+                                    </a>
+                                    <div class="club-s-profile-content-box">
+                                        <div class="s-profile-notranslate-items">
+                                            <div class="s-profile-inline-text">
+                                                <a class="s-profile-inline-text-link" href="{{ club.get_absolute_url }}">
+                                                    <span class="font-bold">{{ club.club_name }}</span>
+                                                    <svg class="s-profile-club-line" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z"
+                                                            fill="#4A5568"
+                                                        ></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="font-bold-sub">모임에 가입하고 최신 활동 소식을 가장 빠르게 받아보세요!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="feed-section">
+                            <div class="feed-main-title-box">
+                                <div class="feed-main-title">
+                                    <span>공지/안내</span>
+                                </div>
+                                <div class="club-notice-more">
+                                        <a href="/club/detail/?id={{ club.id }}&view=notice" class="club-notice-more-link">
+                                            <span>공지사항 더보기</span>
+                                            <svg class="s-profile-club-line" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z"
+                                                    fill="#4A5568"
+                                                ></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                            </div>
+                            <div class="feed-middle-grid"></div>
+                            <div class="feed-box">
+                                {% if club_notices|length == 0 %}
+                                <div class="feed-item">
+                                    <span>등록된 공지/안내가 없습니다.</span>
+                                </div>
+                                {% else %}
+                                    {% for club_notice in club_notices %}
+                                        <div>
+                                            <div class="club-notice-boxes">
+                                                <div class="club-notice-box">
+                                                    <div>
+                                                        <div class="club-notice-title-wrap">
+                                                            <div class="club-notice-title-container">
+                                                                <!-- 이 안에 제목이 들어갑니다. -->
+                                                                <div class="club-notice-title">{{ club_notice.notice_title }}</div>
+                                                            </div>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" style="display: block" class="club-notice-show-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" class="club-notice-hide-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path></svg>
+                                                        </div>
+                                                        <div class="club-notice-created-date">{{ club_notice.created_date|date:"Y.m.d" }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="club-notice-content-wrap" style="display: none">
+                                                    <!-- 이 안에 내용이 들어갑니다. -->
+                                                    <div class="club-notice-content">{{ club_notice.notice_content|linebreaksbr }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </section>
+                        <section class="comment-section">
+                            <div class="comment-title">댓글</div>
+                            <!-- 댓글 추가 부분 -->
+                            <div class="k-comment-list-box-wrap">
+                                <div class="k-comment-line"></div>
+                                <div class="k-comment-list-all-wrap"></div>
+                            </div>
+                            <div class="show-more-btn-wrap">
+                                <button class="show-more-btn">
+                                    <div>더보기</div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="show-more-arrow" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- 댓글 작성 부분 -->
+                            <div class="k-comment-input-box-all-wrap">
+                                <div class="k-comment-input-box-wrap">
+                                    <div class="k-comment-input-wrap">
+                                        <div class="k-comment-input-username-container">{{ request.session.member.member_nickname }}</div>
+                                        <div class="k-comment-input-container">
+                                            <textarea class="k-comment-input-guide" name="content" type="text" placeholder="댓글을 남겨주세요. 욕설, 비방글은 무통보 삭제됩니다." autocomplete="off" required=""></textarea>
+                                            <div class="k-comment-input-upload-wrap">
+                                                <div class="k-comment-input-upload-container">
+                                                    <button class="k-comment-input-upload-button" id="comment-upload-button" type="button">등록</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 댓글 구분선 -->
+                            <div class="comment-line"></div>
+                        </section>
+                    </div>
+                </div>
+                <div class="hidden-lg-block"></div>
+            </div>
+            <div class="activity-another-container">
+                <section class="activity-list-box">
+                    <div class="activity-list-items">
+                        <div class="activity-list-more-title">
+                            <div>
+                                <div class="more-activity-title-text">
+                                    <span>이런 활동은 어때요?</span>
+                                </div>
+                            </div>
+                            <div>
+                                <a class="more-activity-link" href="/activity/list/">
+                                    <span>더 많은 활동 보기</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="more-arrow-icon" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="activity-find-more-list">
+                            {% for recommended_activity in recommended_activities %}
+                                <div class="k-activity-window-bg">
+                                    <div class="k-activity-window">
+                                        <div class="k-act-window-image">
+                                            <a class="k-act-image-block" href="/activity/detail/?id={{ recommended_activity.id }}">
+{#                                                <img class="k-act-image" src="/upload/{{ recommended_activity.thumbnail_path }}" alt="" />#}
+                                                {% if activity.thumbnail_path %}
+                                                    <img class="k-act-image" src="/upload/{{ activity.thumbnail_path }}" alt="" />
+                                                {% else %}
+                                                    <img class="k-act-image" src="/static/public/web/images/logo/logo8.png" alt="" />
+                                                {% endif %}
+                                            </a>
+                                            <input type="hidden" name="recommended-activity-id" value="{{ recommended_activity.id }}">
+                                            <input type="hidden" name="is-liked" value="{{ recommended_activity.is_liked }}">
+                                            <div class="k-like-button-box">
+                                                <button class="k-like-btn-shadow" type="button">
+                                                    <span class="k-like-btn-display-none">
+                                                        <svg class="k-like-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="k-like-btn-display">
+                                                        <svg class="k-like-btn-two" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="k-act-window-content">
+                                            <div class="k-act-content-date-location">
+                                                <div class="k-act-content-date">
+                                                    <span class="k-act-content-date-text-inline">{{ recommended_activity.activity_start|date:"m월d일(l) H시" }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="k-act-content-title">
+                                                <a class="k-move-content" href="/activity/detail/id={{ recommended_activity.id }}">{{ recommended_activity.activity_title }}</a>
+                                            </div>
+                                            <div class="k-act-content-money">
+                                                <div class="k-check-view">
+                                                    <span class="k-check-view-text">{{ recommended_activity.member_count }}명 참가중</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <div class="bg-for-modal"></div>
+    <!-- 관심 활동 모달 -->
+    <div class="k-club-modal-wrap" style="display: none">
+        <div class="k-club-modal-bg"></div>
+        <div class="k-club-modal-container">
+            <div class="k-club-modal-like-wrap">
+                <div>
+                    <h2 class="k-club-modal-like-title">
+                        <div class="k-club-modal-like-title-text">관심 활동에 추가되었습니다.</div>
+                        <div class="k-club-modal-like-title-text-delete">관심 활동에서 삭제되었습니다.</div>
+                    </h2>
+                </div>
+                <div class="k-club-modal-like-button-wrap">
+                    <button type="button" class="k-club-modal-like-button">닫기</button>
+                </div>
+            </div>
+            <div class="k-club-modal-like-wrap unlike">
+                <div>
+                    <h2 class="k-club-modal-like-title">
+                        <!-- <div class="k-club-modal-like-title-text">관심 활동에서 삭제되었습니다.</div> -->
+                    </h2>
+                </div>
+                <div class="k-club-modal-like-button-wrap">
+                    <button type="button" class="k-club-modal-unlike-button">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 공유하기 모달 -->
+    <div class="share-modal-wrap">
+        <div class="share-modal-container">
+            <div>
+                <h2 class="share-title">공유하기</h2>
+            </div>
+            <div class="share-items">
+                <button class="link-copy-item" type="button">
+                    <div class="link-copy-image-bg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="link-copy-image" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+            <button class="share-close-button" type="button">닫기</button>
+        </div>
+    </div>
+    <!-- 틴친 프로필 모달 부분  -->
+    <div class="profile hidden">
+        <div class="modal-full-wrap" role="dialog" aria-modal="true" data-headlessui-state="open" aria-labelledby="headlessui-dialog-title-42" aria-describedby="headlessui-description-43">
+            <div class="modal-screen"></div>
+            <div class="modal-divison">
+                <!-- 틴친 프로필 정보 부분 -->
+                <div class="teenchin-box post-update-wrap" data-headlessui-state="open">
+                    <div class="teenchin-items">
+                        <!-- 틴친 프로필 사진 부분 -->
+                        <div class="profile-img-contents">
+                            <div class="profile-img-box">
+                                <img class="profile-default-img" src="" alt="프로필사진">
+                            </div>
+                            <!-- 틴친 프로필 이미지 여백 부분 -->
+                            <div class="profile-img-gap"></div>
+                        </div>
+                        <!-- 틴친 프로필 이름 부분 -->
+                        <div class="profile-info-contents">
+                            <div class="profile-name"></div>
+                        </div>
+                        <!-- 틴친 프로필 버튼 부분 -->
+                        <div class="teenchin-btn-container">
+                            <div class="teenchin-btn-box">
+                                <!-- 틴친 신청 버튼 부분 -->
+                                <button class="teenchin-add-btn" type="button">
+                                    <svg class="add-svg" fill="currentColor" version="1.0" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                        <g><path d="M16,29A13,13,0,1,1,29,16,13,13,0,0,1,16,29ZM16,5A11,11,0,1,0,27,16,11,11,0,0,0,16,5Z M16,23a1,1,0,0,1-1-1V10a1,1,0,0,1,2,0V22A1,1,0,0,1,16,23Z M22,17H10a1,1,0,0,1,0-2H22a1,1,0,0,1,0,2Z" /></g>
+                                    </svg>
+                                    <span>틴친 신청</span>
+                                </button>
+                                <!-- 틴친 신청중 버튼 부분 -->
+                                <button class="teenchin-request-btn hidden" type="button">
+                                    <svg class="request-svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z"
+                                        />
+                                    </svg>
+                                    <span>신청중</span>
+                                </button>
+                                <!-- 틴친 수락대기 버튼 부분 -->
+                                <button class="teenchin-accept-btn hidden" type="button">
+                                    <svg class="request-svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z"
+                                        />
+                                    </svg>
+                                    <span>수락대기</span>
+                                </button>
+                                <!-- 틴친중 버튼 부분 -->
+                                <button class="teenchin-btn hidden" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>틴친중</span>
+                                </button>
+                                <!-- 쪽지 보내기 버튼 부분 -->
+                                <button class="send-letter-btn" type="button">
+                                    <svg aria-label="게시물 공유" class="send-svg" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                                        <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line>
+                                        <polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon>
+                                    </svg>
+                                    <span>쪽지 보내기</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 쪽지 보내기 모달 부분 -->
+    <div class="send-modal-wrap hidden">
+        <div class="modal-full-wrap" role="dialog" aria-modal="true" data-headlessui-state="open" aria-labelledby="headlessui-dialog-title-42" aria-describedby="headlessui-description-43">
+            <div class="modal-screen"></div>
+            <div class="modal-divison">
+                <!-- 쪽지 보내기 부분 -->
+                <div class="send-modal-container">
+                    <div class="send-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="send-modal-title">쪽지 보내기</div>
+                            </h2>
+                        </div>
+                        <div class="sender-receiver-box">
+                            <div class="sender-box">
+                                <div class="sender-title">보낸 사람</div>
+                                <!-- 회원의 이름과 이메일이 필요 -->
+                                <div class="send-sender-email"></div>
+                            </div>
+                            <div class="receiver-box">
+                                <div class="receiver-title">받는 사람</div>
+                                <!-- 형식: 아무개(example@sample.com) -->
+                                <div class="send-receiver-email-box">
+                                    <div class="send-receiver-email"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="letter-content-area">
+                            <!-- 쪽지 내용 필요 -->
+                            <textarea name="send-content" id="letter-content" rows="10" placeholder="쪽지의 내용을 작성해 주세요."></textarea>
+                        </div>
+                        <div class="modal-btn-box">
+                            <button class="send-close-btn" type="button">닫기</button>
+                            <button class="send-check-btn" type="button">보내기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="member-id" value="{{ request.session.member.id }}">
+    <input type="hidden" name="member-name" value="{{ request.session.member.member_nickname }}">
+    <input type="hidden" name="member-email" value="{{ request.session.member.member_email }}">
+{% endblock %}
+{% block js %}
+    <script>
+        const csrf_token = `{{ csrf_token }}`;
+    </script>
+    <script src="{% static 'activity/web/js/activity-teenchin-module.js' %}"></script>
+    <script src="{% static 'activity/web/js/activity-like-module.js' %}"></script>
+    <script src="{% static 'activity/web/js/activity-letter-module.js' %}"></script>
+    <script src="{% static 'activity/web/js/activity-reply-module.js' %}"></script>
+    <script src="{% static 'activity/web/js/activity-detail-web.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+{% endblock %}

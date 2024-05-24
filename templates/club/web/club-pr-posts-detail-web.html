@@ -1,0 +1,263 @@
+{% extends 'club/web/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'wishlist/web/css/wishlist-web.css' %}">
+    <link rel="stylesheet" href="{% static 'club/web/css/club-pr-posts-detail-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플 :: 홍보글 상세{% endblock %}
+
+{% block main %}
+        <main class="pr-detail-main">
+            <div class="pr-detail-wrap">
+                <section class="pr-detail-banner-wrap" >
+                    <div class="pr-detail-banner-container">
+                        <div class="pr-detail-banner-boxes">
+                            <div class="pr-detail-banner-field">{{ club_post.category.category_name }}</div>
+                            <div class="pr-detail-banner-title">{{ club_post.post_title }}</div>
+                            <div class="pr-detail-banner-date">{{ club_post.created_date|date:"Y.m.d" }}</div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 글 내용 -->
+                <div class="pr-detail-content-wrap">
+                    <div class="pr-detail-content-container">
+                        <figure class="pr-detail-content-img-wrap">
+                            <img src="/upload/{{ club_post.image_path }}" class="pr-detail-content-img" />
+                        </figure>
+                        <p>&nbsp;</p>
+                        {{ club_post.post_content|linebreaksbr }}
+                    </div>
+                    <div class="pr-detail-back-wrap">
+                        <button class="pr-list-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="pr-detail-back-icon" viewBox="0 1 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="pr-detail-back-text"> 목록으로 </span>
+                        </button>
+                        {% if club_post.club.member_id == request.session.member.id %}
+                            <div style="display: flex; gap: 12px">
+                                <button class="club-post-modify-btn" type="button">수정하기</button>
+                                <button class="club-post-delete-btn" type="button">삭제하기</button>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="pr-border"></div>
+                    <!-- 모임 정보 -->
+                    <section class="pr-detail-group-wrap">
+                        <div class="pr-detail-group-title">
+                            <span>모임 정보</span>
+                        </div>
+                        <div class="pr-detail-group-container">
+                            <div class="pr-detail-group-boxes">
+                                <a href="/club/detail/?id={{ club_post.club.id }}" class="pr-detail-group-img-wrap">
+                                    {% if club_post.club.club_profile_path %}
+                                        <img src="/upload/{{ club_post.club.club_profile_path }}" class="pr-detail-group-img" />
+                                    {% else %}
+                                        <img src="{% static 'public/web/images/logo/logo1.png' %}" class="pr-detail-group-img" />
+                                    {% endif %}
+                                </a>
+                                <div class="pr-detail-group-box">
+                                    <div class="pr-detail-group-items">
+                                        <div class="pr-detail-group-name-wrap">
+                                            <a href="/club/detail/?id={{ club_post.club.id }}" class="pr-detail-group-name-link">
+                                                <span class="pr-detail-group-name">{{ club_post.club.club_name }}</span>
+                                                <svg class="pr-detail-group-name-icon" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#CE201B"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="pr-detail-group-msg-wrap">모임에 가입하고 최신 활동 소식을 가장 빠르게 받아보세요!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- 댓글 부분 -->
+                    <div class="comment-all-wrap">
+                        <!-- 댓글 작성 부분 -->
+                        <div class="comment-input-box-all-wrap">
+                            <div class="comment-input-box-wrap">
+                                <div class="comment-input-wrap">
+                                    <div class="comment-input-username-container">{{ request.session.member.member_nickname }}</div>
+                                    <div class="comment-input-container">
+                                        <textarea class="comment-input-guide" name="write-content" type="text" placeholder="댓글을 남겨주세요. 욕설, 비방글은 무통보 삭제됩니다." autocomplete="off" required=""></textarea>
+                                        <div class="comment-input-upload-wrap">
+                                            <div class="comment-input-upload-container">
+                                                <button class="comment-input-upload-button" id="comment-upload-button" type="button">등록</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 댓글 개수 정보 부분 -->
+                        <div class="comment-count-wrap"></div>
+                        <!-- 전체 댓글 부분 -->
+                        <div class="comment-list-box-wrap">
+                            <!-- 댓글 수정 부분 -->
+                            
+                        </div>
+                        <div class="show-more-btn-wrap">
+                            <button class="show-more-btn">
+                                <div>더보기</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="show-more-arrow" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{% endblock %}
+
+{% block modal %}
+    <div class="bg-for-modal"></div>
+    <!-- 틴친 프로필 모달 부분  -->
+    <div class="profile hidden">
+        <div class="modal-full-wrap" role="dialog" aria-modal="true" data-headlessui-state="open" aria-labelledby="headlessui-dialog-title-42" aria-describedby="headlessui-description-43">
+            <div class="modal-screen"></div>
+            <div class="modal-divison">
+                <!-- 틴친 프로필 정보 부분 -->
+                <div class="teenchin-box post-update-wrap" data-headlessui-state="open">
+                    <div class="teenchin-items">
+                        <!-- 틴친 프로필 사진 부분 -->
+                        <div class="profile-img-contents">
+                            <div class="profile-img-box">
+                                <img class="profile-default-img" src="" alt="프로필사진">
+                            </div>
+                            <!-- 틴친 프로필 이미지 여백 부분 -->
+                            <div class="profile-img-gap"></div>
+                        </div>
+                        <!-- 틴친 프로필 이름 부분 -->
+                        <div class="profile-info-contents">
+                            <div class="profile-name"></div>
+                        </div>
+                        <!-- 틴친 프로필 버튼 부분 -->
+                        <div class="teenchin-btn-container">
+                            <div class="teenchin-btn-box">
+                                <!-- 틴친 신청 버튼 부분 -->
+                                <button class="teenchin-add-btn" type="button">
+                                    <svg class="add-svg" fill="currentColor" version="1.0" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                        <g><path d="M16,29A13,13,0,1,1,29,16,13,13,0,0,1,16,29ZM16,5A11,11,0,1,0,27,16,11,11,0,0,0,16,5Z M16,23a1,1,0,0,1-1-1V10a1,1,0,0,1,2,0V22A1,1,0,0,1,16,23Z M22,17H10a1,1,0,0,1,0-2H22a1,1,0,0,1,0,2Z" /></g>
+                                    </svg>
+                                    <span>틴친 신청</span>
+                                </button>
+                                <!-- 틴친 신청중 버튼 부분 -->
+                                <button class="teenchin-request-btn hidden" type="button">
+                                    <svg class="request-svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z"/>
+                                    </svg>
+                                    <span>신청중</span>
+                                </button>
+                                <!-- 틴친 수락대기 버튼 부분 -->
+                                <button class="teenchin-accept-btn hidden" type="button">
+                                    <svg class="request-svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z"/>
+                                    </svg>
+                                    <span>수락대기</span>
+                                </button>
+                                <!-- 틴친중 버튼 부분 -->
+                                <button class="teenchin-btn hidden" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>틴친중</span>
+                                </button>
+                                <!-- 쪽지 보내기 버튼 부분 -->
+                                <button class="send-letter-btn" type="button">
+                                    <svg aria-label="게시물 공유" class="send-svg" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                                        <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line>
+                                        <polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon>
+                                    </svg>
+                                    <span>쪽지 보내기</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 쪽지 보내기 모달 부분 -->
+    <div class="send-modal-wrap hidden">
+        <div class="modal-full-wrap" role="dialog" aria-modal="true" data-headlessui-state="open" aria-labelledby="headlessui-dialog-title-42" aria-describedby="headlessui-description-43">
+            <div class="modal-screen"></div>
+            <div class="modal-divison">
+                <!-- 쪽지 보내기 부분 -->
+                <div class="send-modal-container">
+                    <div class="send-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="send-modal-title">쪽지 보내기</div>
+                            </h2>
+                        </div>
+                        <div class="sender-receiver-box">
+                            <div class="sender-box">
+                                <div class="sender-title">보낸 사람</div>
+                                <!-- 회원의 이름과 이메일이 필요 -->
+                                <div class="send-sender-email"></div>
+                            </div>
+                            <div class="receiver-box">
+                                <div class="receiver-title">받는 사람</div>
+                                <!-- 형식: 아무개(example@sample.com) -->
+                                <div class="send-receiver-email-box">
+                                    <div class="send-receiver-email"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="letter-content-area">
+                            <!-- 쪽지 내용 필요 -->
+                            <textarea name="send-content" id="letter-content" rows="10" placeholder="쪽지의 내용을 작성해 주세요."></textarea>
+                        </div>
+                        <div class="modal-btn-box">
+                            <button class="send-close-btn" type="button">닫기</button>
+                            <button class="send-check-btn" type="button">보내기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 삭제모달 -->
+    <div id="admin-user-modal" class="hidden">
+        <h4 class="admin-user-modal-title">정말 삭제하시겠습니까?</h4>
+        <div class="admin-user-modal-button">
+            <div class="admin-user-modal-left">
+                <button class="admin-user-modal-left-button" id="modalCloseButton" type="button">취소</button>
+            </div>
+            <div class="admin-user-modal-right">
+                <button class="admin-user-modal-right-button" id="modalApplyButton" type="button">삭제하기</button>
+            </div>
+        </div>
+    </div>
+    <div id="admin-user-modal-backdrop" class="hidden"></div>
+    <form id="delete-form" action="{% url 'club:pr-post-delete' %}" method="post" style="display: none">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{ club_post.id }}">
+    </form>
+    <form id="search-form" action="/club/pr-post-list/" method="post" style="display: none">
+        {% csrf_token %}
+        <input type="hidden" name="keyword" value="{{request.GET.keyword}}">
+        <input type="hidden" name="category" value="{{request.GET.category}}">
+        <input type="hidden" name="order" value="{{request.GET.order}}">
+        <input type="hidden" name="page" value="{{request.GET.page}}">
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const csrf_token = '{{ csrf_token }}';
+        const clubPostId = {{ club_post.id }}
+        const clubImagePath = '{{ club_post.image_path }}'
+        const memberId = {{ request.session.member.id }}
+        const memberName = '{{ request.session.member.member_nickname }}'
+        const memberEmail = `{{ request.session.member.member_email }}`
+    </script>
+    <script src="{% static 'club/web/js/club-pr-post-teenchin-module.js' %}"></script>
+    <script src="{% static 'club/web/js/club-post-letter-module.js' %}"></script>
+    <script src="{% static 'club/web/js/club-pr-post-reply-module.js' %}"></script>
+    <script src="{% static 'club/web/js/club-pr-posts-detail-web.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+{% endblock %}

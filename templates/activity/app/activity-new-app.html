@@ -1,0 +1,492 @@
+e<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/staticfiles/css/activity/activity-app/activity-new-app.css" />
+        <link rel="shortcut icon" href="/staticfiles/images/teenplay_logo/logo1.png" type="image/x-icon" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" />
+        <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
+        <title>틴플 : 활동 참가 신청</title>
+        <!-- datapicker 시작 -->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+        <!-- timepicker 시작 -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" />
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+        <!-- editer 시작 -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <!-- 부트 페이 연동  -->
+        <script src="https://js.bootpay.co.kr/bootpay-4.3.4.min.js" type="application/javascript"></script>
+    </head>
+    <body>
+        <main id="main-section">
+            <div id="host-center">
+                <!-- div 좌측 레이아웃 위치 -->
+                <div class="host-center-body">
+                    <div class="load-mask-none" style="display: none">데이터 로드중...</div>
+                    <div class="event-body-section">
+                        <div class="create-nav-bar">
+                            <div class="nav-bar-container">
+                                <div class="nav-row">
+                                    <div class="nav-size">
+                                        <div class="nav-content-between">
+                                            <div>
+                                                <span class="activity-name">행사</span>
+                                                <span class="small-right-arrow">
+                                                    <span class="material-symbols-outlined mdi-right"> chevron_right </span>
+                                                </span>
+                                                <span class="activity-join-method">작성하기</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-section">
+                            <form class="setting-wrap">
+                                <div class="setting-container">
+                                    <div class="hint-right-text">
+                                        <a class="hint-text" href="https://event-us-hostguide.oopy.io/468e0de1-6f10-49c3-9a78-e428db0279e6">행사 개설 어렵지 않아요</a>
+                                    </div>
+                                    <div class="setting-box">
+                                        <div class="setting-col">
+                                            <div class="normal-setting-box">
+                                                <div class="normal-setting-between">
+                                                    <div>
+                                                        <h1 class="normal-setting-title">기본 설정</h1>
+                                                        <p class="normal-setting-sub-title">노출 정도, 모집 범위 등 행사 정보를 설정해주세요.</p>
+                                                    </div>
+                                                    <div>
+                                                        <span class="material-symbols-outlined mdi-down"> expand_more </span>
+                                                        <span class="material-symbols-outlined mdi-up"> expand_less </span>
+                                                    </div>
+                                                </div>
+                                                <div class="normal-check-items">
+                                                    <div class="normal-content-divide">
+                                                        <div class="divide-line"></div>
+                                                    </div>
+                                                    <div>
+                                                        <p class="item-title-text">공개 여부</p>
+                                                        <div class="normal-item-contents">
+                                                            <div class="normal-item f">
+                                                                <input class="all-open" type="radio" id="eventus-radio" name="normal-radio" checked="true" />
+                                                                <label class="radio-check-icon" for="eventus-radio">전체 공개</label>
+                                                                <span class="label-desciption"> 누구나 이 행사페이지를 열람할 수 있어요.</span>
+                                                            </div>
+                                                            <div></div>
+                                                            <div class="normal-item s">
+                                                                <input class="all-open" type="radio" id="channel-radio" name="normal-radio" />
+                                                                <label class="radio-small-check-icon" for="channel-radio">부분 공개</label>
+                                                                <span class="label-desciption"> 틴친만 행사페이지를 열람할 수 있어요.</span>
+                                                            </div>
+                                                            <div class="normal-item t">
+                                                                <input class="all-open" type="radio" id="none-radio" name="normal-radio" />
+                                                                <label class="radio-none-check-icon" for="none-radio">공개하지 않음</label>
+                                                                <span class="label-desciption"> 나만 확인 가능해요.</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="join-title-box">
+                                                        <p class="join-title">모집 방법</p>
+                                                        <div class="join-content-items">
+                                                            <div class="join-radio-tie">
+                                                                <span>
+                                                                    <input class="all-open" type="radio" id="join-teenplay-radio" checked="true" name="join-radio" />
+                                                                    <label class="teenplay-join" for="join-teenplay-radio"
+                                                                        >틴친에서 모집해요.
+                                                                        <i data-title="이벤터스에서 모집하면 홍보, 참가자관리, 사전 설문, 통계 데이터, 리포팅까지 올인원으로 관리할 수 있어요.👍🏻 " class="material-symbols-outlined tip"> release_alert </i>
+                                                                    </label>
+                                                                </span>
+                                                            </div>
+                                                            <div class="out-join-tie">
+                                                                <span>
+                                                                    <input class="all-open" type="radio" id="out-link-radio" name="join-radio" />
+                                                                    <label class="out-link-join" for="out-link-radio">외부 플랫폼/링크에서 모집해요 </label>
+                                                                </span>
+                                                                <div class="out-link-display">
+                                                                    <input class="outside-url" type="text" placeholder="https://" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="not-join-tie">
+                                                                <span>
+                                                                    <input class="all-open" type="radio" id="not-join-radio" name="join-radio" />
+                                                                    <label class="not-join-text" for="not-join-radio">모집을 안 해요.</label>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="join-deadline-box">
+                                                        <p class="deadline-title">모집기한</p>
+                                                        <div class="deadline-content-tie">
+                                                            <div class="deadline-sub-title">
+                                                                <div class="deadline-sub-title-text">
+                                                                    <span>시작 일시</span>
+                                                                </div>
+                                                                <div class="deadline-choice-tie">
+                                                                    <div class="choice-date">
+                                                                        <input class="datepicker" id="start-date" placeholder="날짜선택" autocomplete="off" />
+                                                                        <div class="error-message-box-date">
+                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="choice-time">
+                                                                        <input class="timepicker" id="start-time" placeholder="시간선택" autocomplete="off" />
+                                                                        <div class="error-message-box-time">
+                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="deadline-sub-title">
+                                                                <div class="deadline-sub-title-text">
+                                                                    <span>마감 일시</span>
+                                                                </div>
+                                                                <div class="deadline-choice-tie">
+                                                                    <div class="choice-date">
+                                                                        <input class="datepicker" id="end-date" placeholder="날짜선택" autocomplete="off" />
+                                                                        <div class="error-message-box-date">
+                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="choice-time">
+                                                                        <input class="timepicker" id="end-time" placeholder="시간선택" autocomplete="off" />
+                                                                        <div class="error-message-box-time">
+                                                                            <div class="error-message-text">필수 항목입니다.</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="join-access-method">
+                                                        <p class="join-access-title">
+                                                            <span class="join-access-title-text">참가자 승인 유형</span>
+                                                        </p>
+                                                        <div class="join-access-tie">
+                                                            <div class="join-access-aggree">
+                                                                <span>
+                                                                    <input class="all-open" type="radio" id="access-clear" name="access" checked="true" />
+                                                                    <label for="access-clear">자동</label>
+                                                                    <span class="access-description">사용자가 참가신청하면 자동으로 참가확정 상태가 돼요.</span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="join-access-aggree">
+                                                                <span>
+                                                                    <input class="all-open" type="radio" id="access-non-clear" name="access" />
+                                                                    <label for="access-non-clear">수동</label>
+                                                                    <span class="access-description">호스트가 참가신청 전까지 대기 상태입니다.</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="join-info-check-box">
+                                                        <div>
+                                                            <p class="join-info-title">참가자 정보 수집 (필수)</p>
+                                                        </div>
+                                                        <div class="join-info-content-box">
+                                                            <div class="info-contents">
+                                                                <div class="info-contents-items">
+                                                                    <div class="info-content">
+                                                                        <div class="content-item">
+                                                                            <input class="checked-in" type="checkbox" checked="checked" value="true" />
+                                                                            <label for="">이름 *</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="info-content">
+                                                                        <div class="content-item">
+                                                                            <input class="checked-in" type="checkbox" checked="checked" value="true" />
+                                                                            <label for="">이메일 *</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="join-max-count">
+                                                        <p class="join-max-count-title">대기자 접수</p>
+                                                        <span class="join-max-count-sub-title"> 모집수량이 초과된 후에도 신청할 수 있어요. </span>
+                                                        <div class="join-max-count-tie">
+                                                            <div class="join-max-count-access">
+                                                                <span>
+                                                                    <input class="all-open" type="radio" id="count-access" name="max-count" checked="true" />
+                                                                    <label for="count-access">사용</label>
+                                                                </span>
+                                                            </div>
+                                                            <div class="join-max-count-access">
+                                                                <span>
+                                                                    <input class="all-open" type="radio" id="non-count-access" name="max-count" />
+                                                                    <label for="non-count-access">사용 안함</label>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="detail-setting-container">
+                                                <div class="detail-setting-box">
+                                                    <div class="detail-title-box">
+                                                        <div>
+                                                            <h1 class="detail-title">행사 상세 정보</h1>
+                                                            <p class="detail-sub-title">어떤 행사를 구상 중이세요? 명확하게 입력할수록 좋아요!</p>
+                                                        </div>
+                                                        <div>
+                                                            <span class="material-symbols-outlined mdi-down"> expand_more </span>
+                                                            <span class="material-symbols-outlined mdi-up"> expand_less </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="detail-all-box">
+                                                        <div class="normal-content-divide">
+                                                            <div class="divide-line"></div>
+                                                        </div>
+                                                        <div>
+                                                            <p class="detail-subject-title">분야/유형</p>
+                                                            <div class="error-message-box-select">
+                                                                <div class="error-message-text">필수 항목입니다.</div>
+                                                            </div>
+                                                            <div class="detail-row">
+                                                                <div class="subject-own">
+                                                                    <div class="subject-select-box">
+                                                                        <select class="subject-category" id="subject-category">
+                                                                            <option value="disabled" selected="selected">분야선택</option>
+                                                                            <option value="경영">경영</option>
+                                                                            <option value="경제/금융">경제/금융</option>
+                                                                            <option value="과학기술">과학기술</option>
+                                                                            <option value="관광/여행">관광/여행</option>
+                                                                            <option value="디자인/영상">디자인/영상</option>
+                                                                            <option value="라이프">라이프</option>
+                                                                            <option value="마케팅">마케팅</option>
+                                                                            <option value="예술">예술</option>
+                                                                            <option value="의료/의학">의료/의학</option>
+                                                                            <option value="IT프로그래밍">IT프로그래밍</option>
+                                                                            <option value="기타">기타</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="activity-title">
+                                                            <p class="activity-title-text">행사명</p>
+                                                            <div class="error-message-box">
+                                                                <div class="error-message-text">필수 항목입니다.</div>
+                                                            </div>
+                                                            <div class="activity-row-input">
+                                                                <input class="input-activity-title" id="activity-title-input" placeholder="텍스트 입력" type="text" autocomplete="off" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="activity-intro">
+                                                            <p class="activity-intro-text">간단소개</p>
+                                                            <span class="intro-sub-title"> 행사를 다른 채널로 공유할 때 썸네일 이미지와 함께 표시됩니다. </span>
+                                                        </div>
+                                                        <div class="activity-row">
+                                                            <div class="activity-col">
+                                                                <input class="input-activity-intro" id="activity-intro-input" placeholder="소개글 입력" type="text" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="activity-location">
+                                                            <p class="activity-location-text">장소</p>
+                                                            <div class="activity-location-select-row">
+                                                                <div class="activity-location-select-col">
+                                                                    <div class="location-row-item-center">
+                                                                        <div class="location-row-item-col">
+                                                                            <div class="location-select-box">
+                                                                                <select class="location-select-default">
+                                                                                    <option value="place">도로명/지번 주소 검색</option>
+                                                                                    <option value="direct">직접 입력</option>
+                                                                                    <option value="not-yet" selected="selected">아직 정해지지 않음</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="location-devide-container-row">
+                                                                <div class="location-devide-container-col">
+                                                                    <div class="input-location-map-title-row">
+                                                                        <div class="input-location-map-title-col">
+                                                                            <div>
+                                                                                <span class="location-map-text-title"> 주소 </span>
+                                                                                <div class="error-message-box-address">
+                                                                                    <div class="error-message-text">필수 항목입니다.</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div>
+                                                                                <input class="location-map-title-input-text" placeholder="마포대로 어딘가" name="location-content-input" autocomplete="off" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="activity-map-row">
+                                                                        <div class="activity-map-col">
+                                                                            <div class="activity-map-box">
+                                                                                <!-- 지도 삽입 -->
+                                                                                <div class="activity-event-map"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="map-comment">
+                                                                            <span class="map-comment-text"> * 지도 클릭시 해당 위치의 주소를 가져올 수 있습니다. </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-location-name-row">
+                                                                        <div class="input-location-name-col">
+                                                                            <div>
+                                                                                <span class="location-name-title"> 장소 </span>
+                                                                                <div class="error-message-box-location">
+                                                                                    <div class="error-message-text">필수 항목입니다.</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div>
+                                                                                <input class="location-name-input-text" placeholder="프론트윈 16F" name="location-name-input" autocomplete="off" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-location-content-row">
+                                                                        <div class="input-location-content-col">
+                                                                            <div>
+                                                                                <span class="location-content-title"> 장소설명 </span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <input class="location-content-input-text" placeholder="주차는 건물 지하에 하세요" name="location-content-input" autocomplete="off" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="activity-image-upload">
+                                                            <p class="activity-image-upload-title">행사 대표 이미지</p>
+                                                            <div class="activity-image-upload-container-row">
+                                                                <div class="activity-image-upload-container-col">
+                                                                    <div class="image-box-row">
+                                                                        <div class="thumnail-add-box">
+                                                                            <div class="cover-image">
+                                                                                <div class="file-box-add">
+                                                                                    <label class="input-thumnail-s-button" for="input-thumnail">썸네일 이미지 추가</label>
+                                                                                    <input type="file" id="input-thumnail" />
+                                                                                </div>
+                                                                                <div class="thumnail-size-text">
+                                                                                    <div class="thumnail-size-cursor-pointer">960*540 px</div>
+                                                                                </div>
+                                                                                <div class="cancel-image"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="thumnail-expand-add-box">
+                                                                            <div class="expand-cover-image">
+                                                                                <div class="expand-file-box-add">
+                                                                                    <label class="input-expand-s-button" for="input-expand-thumnail">상단 배너 이미지 추가</label>
+                                                                                    <input type="file" id="input-expand-thumnail" />
+                                                                                </div>
+                                                                                <div class="thumnail-size-text-expand">
+                                                                                    <div class="thumnail-size-cursor-pointer-expand">1920*400 px</div>
+                                                                                </div>
+                                                                                <div class="cancel-expand-image"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="image-add-check">
+                                                                            <div class="banner-image-check">
+                                                                                <div>
+                                                                                    <input class="back-thumnail-fill" type="checkbox" id="thumanil-checkbox" />
+                                                                                    <label for="thumanil-checkbox">상단 배너 이미지 사용하기</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="thumnail-hint-text-box">
+                                                                            <span class="thumnail-hint-text"> * 대표 이미지 템플릿을 무료로 제공하고 있어요. 이미지 제작 예시를 확인하고 필요한 템플릿 파일을 다운로드해 보세요. </span>
+                                                                        </div>
+                                                                        <div class="thumnail-hint-text-box add">
+                                                                            <span class="thumnail-hint-text"> * 검증된 디자이너에게 상세페이지 시안부터 출력물까지 직접 의뢰하실수 있습니다. </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="join-deadline-box">
+                                                            <p class="deadline-title">활동기한</p>
+                                                            <div class="deadline-content-tie">
+                                                                <div class="deadline-sub-title">
+                                                                    <div class="deadline-sub-title-text">
+                                                                        <span>시작 일시</span>
+                                                                    </div>
+                                                                    <div class="deadline-choice-tie">
+                                                                        <div class="choice-date">
+                                                                            <input class="datepicker" id="activity-start-date" placeholder="날짜선택" autocomplete="off" />
+                                                                            <div class="error-message-box-date">
+                                                                                <div class="error-message-text">필수 항목입니다.</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="choice-time">
+                                                                            <input class="timepicker" id="activity-start-time" placeholder="시간선택" autocomplete="off" />
+                                                                            <div class="error-message-box-time">
+                                                                                <div class="error-message-text">필수 항목입니다.</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="deadline-sub-title">
+                                                                    <div class="deadline-sub-title-text">
+                                                                        <span>마감 일시</span>
+                                                                    </div>
+                                                                    <div class="deadline-choice-tie">
+                                                                        <div class="choice-date">
+                                                                            <input class="datepicker" id="activity-end-date" placeholder="날짜선택" autocomplete="off" />
+                                                                            <div class="error-message-box-date">
+                                                                                <div class="error-message-text">필수 항목입니다.</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="choice-time">
+                                                                            <input class="timepicker" id="activity-end-time" placeholder="시간선택" autocomplete="off" />
+                                                                            <div class="error-message-box-time">
+                                                                                <div class="error-message-text">필수 항목입니다.</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- presentation 가져오기 -->
+                                                        <div class="activity-presentation-container">
+                                                            <p class="activity-resentation-title">행사 정보</p>
+                                                            <div class="presentation-row">
+                                                                <div class="presentation-col">
+                                                                    <div class="presentation-box">
+                                                                        <div class="presentation-size"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="close-button">
+                                        <div class="close-button-relative">
+                                            <div class="close-button-relative-col">
+                                                <span class="button-save">취소</span>
+                                                <span class="button-edit">수정</span>
+                                                <span class="button-activity-open"> 행사 결제하기 </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script src="/staticfiles/js/activity/app/activity-new-app.js"></script>
+    <!-- 부트 페이 연동 -->
+</html>

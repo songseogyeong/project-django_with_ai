@@ -1,0 +1,299 @@
+{% extends 'activity/web/base.html' %}
+{% load static %}
+{% load tz %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'activity/web/css/activity-join-web.css' %}" />
+{% endblock %}
+{% block title %}틴플 : 활동 참가 신청{% endblock %}
+{% block content %}
+    <main class="main-activity-write">
+        <div class="main-body-app">
+            <div class="body-container">
+                    <div class="body-divide">
+                        <div>
+                            <div class="content-section">
+                                <div class="content-top">
+                                    <div>
+                                        <img class="content-top-image" src="/upload/{{ activity.thumbnail_path }}" />
+                                    </div>
+                                    <div class="content-top-title-box">
+                                        <a class="content-top-title" href="/activity/detail?id={{ activity.id }}" target="_blank">{{ activity.activity_title }}</a>
+                                    </div>
+                                </div>
+                                <div class="content-middle">
+                                    <div class="content-middle-date">
+                                        <span>
+                                            {{ activity.activity_start|date:"N j일(l) H:i시" }} ~ {{ activity.activity_end|date:"N j일(l) H:i시" }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="content-bottom">
+                                    <p>{{ activity.activity_address_location }}</p>
+                                    <p>{{ activity.activity_address_detail }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <section class="group-list">
+                            <div>
+                                <div class="group-box">
+                                    <div class="group-box-items">
+                                        <div class="group-overflow-auto">
+                                            <div class="group-bg-gray">
+                                                <div class="group-content-box">
+                                                    <div class="group-content-center-item">
+                                                        <div class="text-date-base">
+                                                            <span>{{ activity.activity_start|date:"N j일(l) H:i시" }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="group-content-center-item-text">
+                                                        <div class="group-content-item-center">
+                                                            <div class="group-content-item-inline-border">
+                                                                <button class="content-minus-button" type="button">-</button>
+                                                                <div class="content-count">1</div>
+                                                                <button class="content-plus-button" type="button">+</button>
+                                                            </div>
+                                                            <div class="group-content-item-leftover">
+                                                                <div class="leftover-text">
+                                                                    <span>참가 인원</span>
+                                                                    <span>: {{ member_count }}명&nbsp;</span>
+                                                                    <span>|&nbsp;</span>
+                                                                    <span>{{ activity.recruit_end|date:"N j일(l) H:i시" }}까지 모집</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="userinfo">
+                            <form action="/activity/join/" method="post" id="join-form">
+                                {% csrf_token %}
+                                <div class="userinfo-container">
+                                    <div class="userinfo-title">
+                                        <div class="userinfo-title-text">
+                                            <span>신청자 정보</span>
+                                        </div>
+                                        <div class="userinfo-title-sub-text-box">
+                                            <div class="userinfo-title-sub-flex">
+                                                <div class="userinfo-sub-text">
+                                                    <span>신청 정보는 마이페이지 - 나의 활동에서 확인할 수 있습니다.</span>
+                                                </div>
+                                                <div class="userinfo-sub-text-link">
+                                                    <a href="/member/mypage-activity/" target="_blank">
+                                                        <span>나의 활동 보러가기 &gt;</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="userinfo-bg-white">
+                                            <div>
+                                                <div>
+                                                    <div class="userinfo-name-title">
+                                                        <label class="name-title-tie" for="name">
+                                                            <span>이름</span>
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                    </div>
+                                                    <input class="input-name" value="{{ request.session.member.member_nickname }}" type="text" autocomplete="off" autocomplete="false" readonly/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="userinfo-email-container">
+                                        <div class="userinfo-email-bg">
+                                            <div class="userinfo-disabled">
+                                                <div class="userinfo-email-box">
+                                                    <div class="userinfo-email-title">
+                                                        <label class="email-title-tie" for="email">
+                                                            <span class="email-text-gray">이메일</span>
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                    </div>
+                                                    <input class="input-email" value="{{ request.session.member.member_email }}" type="text" autocomplete="off" autocomplete="false" readonly/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="member-id" value="{{ request.session.member.id }}">
+                                <input type="hidden" name="activity-id" value="{{ activity.id }}">
+                            </form>
+                        </section>
+                        <section class="survey">
+                            <div class="survey-bg">
+                                <div class="survey-name-title">
+                                    <div class="survey-title">
+                                        <span>사전 동의</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="survey-content-box">
+                                        <div class="survey-content-title">
+                                            개인정보 제3자 제공에 대한 동의
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="survey-content-text" style="line-height: 90%">
+                                            ①개인정보를 제공받는 자 : {{ activity.club.club_name }} (대표: {{ activity.club.member.member_nickname }}) <br />
+                                            ②개인정보를 제공받는 자의 개인정보 이용 목적 : 설문조사 및 프로모션, 틴플레이, 영업 및 마케팅 자료 활용, 활동 관련 마케팅 <br />
+                                            ③제공하는 개인정보의 항목 : 성명(닉네임), 성별, 휴대폰번호, e-mail주소<br />
+                                            ④개인정보의 보유 및 이용 기간 : 개인정보 취급 목적을 달성하여 더 이상 개인정보가 불필요하게 된 경우 지체 없이 해당 정보를 파기할 것입니다. <br />
+                                            * 정보주체는 해당 개인정보 제3자 제공 동의에 대한 거부 권리가 있습니다. (단, 개인정보 제3자 제공 동의를 하지 않으실 경우에는 참가 신청을 하실 수 없습니다.)
+                                        </div>
+                                        <div class="survey-check-box">
+                                            <div>
+                                                <div>
+                                                    <div>
+                                                        <div>
+                                                            <div class="survey-radio-tie">
+                                                                <input class="ev-radio-111" id="ev-radio-111" type="checkbox"/>
+                                                                <label class="label-ev-radio-111" for="ev-radio-111">동의합니다.</label>
+                                                            </div>
+                                                            <div class="survey-danger-text">이 항목은 필수 입니다.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="survey-important-text">
+                                            <span class="text-danger-survey">필수 설문입니다.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="right-body-divide">
+                            <div class="divide-sticky">
+                                <div class="sticky-padding">
+                                    <div>
+                                        <div class="aggreement-check-box">
+                                            <div class="aggreement-all-text-item">
+                                                <div>
+                                                    <div class="aggreement-between">
+                                                        <div class="aggreement-between-center">
+                                                            <input class="aggreement-all-checks" name="check-all" id="ev-checkbox-117" type="checkbox" />
+                                                            <label class="aggreement-all-checks-text" for="ev-checkbox-117">
+                                                                <span>전체 동의하기</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="aggreement-border-line"></div>
+                                            <div class="aggreement-items-box">
+                                                <div>
+                                                    <div class="aggreement-item-first">
+                                                        <div class="aggreement-between-center">
+                                                            <input class="aggreement-age-check" name="check" type="checkbox" id="age-checks" />
+                                                            <label class="aggreement-age-check-text" for="age-checks">
+                                                                <span class="text-age">(필수) 만 14세 이상입니다.</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="aggreement-text-danger">이 항목은 필수 입니다</div>
+                                                </div>
+                                                <div class="aggreement-item">
+                                                    <div>
+                                                        <div>
+                                                            <div class="aggreement-between">
+                                                                <div class="aggreement-between-center">
+                                                                    <input class="aggreement-personerinfo-check" name="check" type="checkbox" id="personerinfo-check" />
+                                                                    <label class="aggreement-personerinfo-check-text" for="personerinfo-check">
+                                                                        <span class="text-personerinfo">(필수) 개인정보 수집 이용 동의서</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="aggreement-text-danger">이 항목은 필수 입니다</div>
+                                                    </div>
+                                                    <div>
+                                                        <a class="personer-check-link" target="_blank" href="/terms/privacy/">
+                                                            <span class="find-content">내용보기</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="aggreement-item">
+                                                    <div>
+                                                        <div>
+                                                            <div class="aggreement-between">
+                                                                <div class="aggreement-between-center">
+                                                                    <input class="aggreement-service-check" name="check" type="checkbox" id="service-check" />
+                                                                    <label class="aggreement-service-check-text" for="service-check">
+                                                                        <span class="text-service">(필수) 서비스 이용 약관 동의</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="aggreement-text-danger">이 항목은 필수 입니다</div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <a class="service-check-link" target="_blank" href="/terms/service/">
+                                                            <span class="find-content">내용보기</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="aggreement-item">
+                                                    <div>
+                                                        <div>
+                                                            <div class="aggreement-between">
+                                                                <div class="aggreement-between-center">
+                                                                    <input class="aggreement-privacy-check" name="check" type="checkbox" id="privacy-check" />
+                                                                    <label class="aggreement-privacy-check-text" for="privacy-check">
+                                                                        <span class="text-service">(필수) 이메일 무단 수집 거부</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="aggreement-text-danger">이 항목은 필수 입니다</div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <a class="privacy-check-link" target="_blank" href="/terms/email/">
+                                                            <span class="find-content">내용보기</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="aggreement-item">
+                                                    <div>
+                                                        <div>
+                                                            <div class="aggreement-between">
+                                                                <div class="aggreement-between-center">
+                                                                    <input class="aggreement-pay-check" name="check" type="checkbox" id="pay-check" />
+                                                                    <label class="aggreement-pay-check-text" for="pay-check">
+                                                                        <span class="text-service">(필수) 전자금융거래 이용약관 </span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="aggreement-text-danger">이 항목은 필수 입니다</div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <a class="pay-check-link" target="_blank" href="/terms/e-banking/">
+                                                            <span class="find-content">내용보기</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sticky-button-box">
+                                        <button class="no-pay-button" type="button">
+                                            <span>신청하기</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{% static 'activity/web/js/activity-join-web.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'member/web/css/my-signal-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플:: 알림 목록{% endblock %}
+{% block content %}
+        <!-- 메인 부분 -->
+        <main class="mypage-main">
+            <div class="mypage-wrap">
+                <div>
+                    <div class="mypage-container">
+                        <div class="mypage-box">
+                            <div class="side-bar">
+                                <div class="side-bar-title">마이페이지</div>
+                                <div class="side-bar-items">
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-wishlist/">나의 위시리스트</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-my-club/">나의 모임</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-reply/">나의 댓글</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-activity/">나의 활동</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-teenchin/">틴친 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-payment/">결제 내역</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-letter/">쪽지 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a class="target-color" href="/member/mypage-alram/">알림 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-info/">내 정보 수정</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contents">
+                                <div>
+                                    <div class="service-title">알림 목록</div>
+                                        <div id="inner"></div>
+                                    <!-- 무한스크롤로 되어 있어서 더보기 버튼이나 페이지 버튼이 없었음 -->
+                                    <button class="teenchin-more-btn" type="button" id="more-button">
+                                    <div class="more-text-box">
+                                        <div style="margin-right: 0.5rem">더보기</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="down-arrow-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 푸터 부분 -->
+        <footer></footer>
+        <!-- 모달창 모아 놓는 부분 -->
+        <div>
+            <!-- 삭제 모달창 부분 -->
+            <div class="signal-delete-modal" style="display: none">
+                <div class="signal-delete-shadow"></div>
+                <div class="signal-delete-box">
+                    <div class="signal-delete-items">
+                        <div class="signal-delete-title">
+                            <div class="signal-delete-ask">정말 삭제하시겠습니까?</div>
+                        </div>
+                        <div class="signal-delete-btns">
+                            <button class="delete-cancle-btn" id="delete-cancle-btn" type="button">취소하기</button>
+                            <button class="delete-check-btn" id="delete-check-btn" type="button">삭제하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}
+{% block js %}
+    <script>
+    const csrf_Token = '{{ csrf_token }}';
+    const member_id = '{{ request.session.member.id }}'
+    </script>
+    <script src="{% static 'member/web/js/my-signal-module-web.js' %}"></script>
+    <script src="{% static 'member/web/js/my-signal-web.js' %}"></script>
+{% endblock %}

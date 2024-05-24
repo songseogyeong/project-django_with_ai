@@ -1,0 +1,278 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'member/web/css/my-letter-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플:: 쪽지 목록{% endblock %}
+{% block content %}
+        <!-- 메인 부분 -->
+        <main class="mypage-main">
+            <div class="mypage-wrap">
+                <div>
+                    <div class="mypage-container">
+                        <div class="mypage-box">
+                            <div class="side-bar">
+                                <div class="side-bar-title">마이페이지</div>
+                                <div class="side-bar-items">
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-wishlist/">나의 위시리스트</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-my-club/">나의 모임</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-reply/">나의 댓글</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-activity/">나의 활동</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-teenchin/">틴친 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-payment/">결제 내역</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a class="target-color" href="/member/mypage-letter/">쪽지 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-alram/">알림 목록</a>
+                                    </div>
+                                    <div>
+                                        <!-- 주소 필요 -->
+                                        <a href="/member/mypage-info/">내 정보 수정</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contents">
+                                <div class="service-title-box">
+                                    <div style="display: flex">
+                                        <div class="service-title">쪽지 목록</div>
+                                        <div style="padding-left: 30px">
+                                            <button class="send-letter-btn" type="button">쪽지 보내기</button>
+                                        </div>
+                                    </div>
+                                    <div class="tab-list-box">
+                                        <div>
+                                            <div>
+                                                <div class="tab-list-contents">
+                                                    <div>
+                                                        <button class="tab-list-btn" type="button">
+                                                            <span>전체</span>
+                                                            <span> ↓ </span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="tab-list">
+                                                        <button class="tab" name="" >전체</button >
+                                                        <button class="tab" name="sender" >내가 보낸 쪽지</button>
+                                                        <button class="tab" name="receiver">내가 받은 쪽지</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="letter-box">
+                                    <table class="letter-table">
+                                        <tbody>
+                                            <tr class="letter-items">
+                                                <th class="letter-item-content">내용</th>
+                                                <th class="letter-item-sender">보낸 사람</th>
+                                                <th class="letter-item-receiver">받는 사람</th>
+                                                <th class="letter-item-time">날짜</th>
+                                                <th class="letter-item-gab"></th>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="add-more">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <!-- 페이지네이션 1페이지에 10개 -->
+                                <div class="pagination-box">
+                                    <div class="pagination-contents">
+                                        <div class="pagination-items">
+                                            <button class="next-btn" type="button" id="leftButton">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="left-arrow-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="page-numbers" id="pageButtons">
+              
+                                                <!-- <button class="page-number-btn" type="button">
+                                                    <div class="page-number">...</div>
+                                                </button> -->
+                                            </div>
+                                            <button class="next-btn" type="button" id="rightButton">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="right-arrow-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 푸터 부분 -->
+        <footer></footer>
+        <!-- 모달 모아놓은 부분 -->
+        <div>
+            <!-- 삭제 모달 부분 -->
+            <div class="delete-modal-wrap">
+                <div class="delete-modal-shadow"></div>
+                <div class="delete-modal-container">
+                    <div class="delete-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="check-svg-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="modal-header-title">정말 해당 쪽지를 삭제하시겠습니까?</div>
+                            </h2>
+                        </div>
+                        <div class="modal-btn-box">
+                            <button class="close-btn" type="button" id="delete-out">닫기</button>
+                            <button class="check-btn" type="button" id="delete-but" style="margin-top: 0px;" >확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 쪽지 작성 모달 -->
+            <div class="send-modal-wrap">
+                <div class="send-modal-shadow"></div>
+                <div class="send-modal-container">
+                    <div class="send-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="send-modal-title">쪽지 보내기</div>
+                            </h2>
+                        </div>
+                        <div class="sender-receiver-box">
+                            <div class="sender-box">
+                                <div class="sender-title">보낸 사람</div>
+                                <!-- 회원의 이름과 이메일이 필요 -->
+                                <div class="send-sender-email" type="text">{{ member.member_nickname }}({{ member.member_email }})</div>
+                            </div>
+                            <div class="receiver-box">
+                                <div class="receiver-title">받는 사람</div>
+                                <!-- 형식: 아무개(example@sample.com) -->
+                                <input class="send-receiver-email" autocomplete="off" type="text" placeholder="example@sample.com" id="receiver-name"></input>
+                            </div>
+                        </div>
+                        <div class="letter-content-area">
+                            <!-- 쪽지 내용 필요 -->
+                            <textarea id="letter-content" name="send-content" rows="10" placeholder="쪽지의 내용을 작성해 주세요."></textarea>
+                            <p id="add-message"></p>
+                        </div>
+                        <div class="modal-btn-box">
+                            <button class="send-close-btn" type="button" >닫기</button>
+                            <button class="send-check-btn" type="button" id="send-check-button" >보내기</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="check-modal-container" style="display: none;">
+                    <div class="check-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="send-check-svg-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="send-check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="modal-header-title">쪽지가 전송 되었습니다.</div>
+                            </h2>
+                        </div>
+                        <div class="check-modal-btn-box">
+                            <button class="check-btn" type="button">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 쪽지 상세보기 모달 -->
+            <div class="letter-modal-wrap">
+                <div class="letter-modal-shadow"></div>
+                <div class="letter-modal-container">
+                    <div class="letter-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="letter-modal-title">쪽지 상세보기</div>
+                            </h2>
+                        </div>
+                        <div class="sender-receiver-box">
+                            <div class="sender-box">
+                                <div class="sender-title">보낸 사람</div>
+                                <!-- 형식: 아무개(example@sample.com) -->
+                                <div class="sender-email"></div>
+                            </div>
+                            <div class="receiver-box">
+                                <div class="receiver-title">받는 사람</div>
+                                <!-- 형식: 아무개(example@sample.com) -->
+                                <div class="receiver-email"></div>
+                            </div>
+                            <div class="write-time-box">
+                                <div class="write-time-title">작성 날짜</div>
+                                <!-- 형식: 21-02-05 (16:40) -->
+                                <div class="write-time"></div>
+                            </div>
+                        </div>
+                        <div class="letter-content-area">
+                            <!-- 쪽지 내용 필요 -->
+                            <textarea name="letter-content" rows="10" readonly disabled></textarea>
+                        </div>
+                        <div class="modal-btn-box">
+                            <button class="close-btn" type="button">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script>
+    const csrf_Token = '{{ csrf_token }}';
+    const member_id = '{{ request.session.member.id }}'
+    const selectbut = document.querySelectorAll(".tab")
+    let status_letter = '전체'
+    selectbut.forEach((btn)=>{
+        btn.addEventListener("click", async(e)=>{
+            console.log(status_letter)
+            status_letter = btn.name
+            page = 1
+            currentPage = 1
+            const text = await replyService.getList(member_id, currentPage,status_letter, showList);
+            tbody.innerHTML = text;
+            replyService.getList(member_id, 1, status_letter,async (replies, total_pages) => {
+            maxPage = total_pages;
+            // 페이지 버튼 다시 업데이트
+            console.log(maxPage)
+            updatePageButtons();
+            });
+        })
+    })
+
+
+    
+    </script>
+    
+    <script src="{% static 'member/web/js/my-letter-module-web.js' %}"></script>
+    <script src="{% static 'member/web/js/my-letter-web.js' %}"></script>
+
+
+{% endblock %}

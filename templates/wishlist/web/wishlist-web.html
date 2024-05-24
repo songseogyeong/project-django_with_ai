@@ -1,0 +1,440 @@
+{% extends 'wishlist/web/base-web.html' %}
+{% load static %} 
+{% block static %}
+    <link rel="stylesheet" href="{% static 'wishlist/web/css/wishlist-web.css' %}"/>
+{% endblock %}
+
+{% block title %}틴플 :: 공개 위시리스트{% endblock %}
+
+{% block content %}
+        <!-- 메인 부분 -->
+        <main class="main">
+            <div class="main-screen-all-warp">
+                <div class="main-screen-warp">
+                    <div>
+                        <div class="main-wrap">
+                            <div class="main-divison">
+                                <!-- 태그 검색 부분-->
+                                <div class="tags-search">
+                                    <div class="tags-search-wrap">
+                                        <div class="tags-search-title">
+                                            <span>태그 검색</span>
+                                        </div>
+                                            <div class="tag-search-container">
+                                                <div class="tag-search" type="button">
+                                                    <div class="tag-search-tiems">
+                                                        <button class="tag-search-icon" type="submit">
+                                                            <svg class="tag-search-icon-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <input class="tag-search-text" type="text" name="keyword" placeholder="태그를 검색해 보세요" value="{{ keyword }}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- 위시리스트 전체 부분 -->
+                                <div class="wishlist-all-wrap">
+                                    <!-- 메인 화면 상단 카테고리 -->
+                                    <div class="top-categroy-container">
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item all" id="item-all" name="100" type="button">전체</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-culture" name="2" type="button">문화·예술</button>
+                                            
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-exercise" name="3" type="button">운동·액티비티</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-food" name="4" type="button">푸드·드링크</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-hobby" name="1" type="button">취미</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-travel" name="5" type="button">여행·동행</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-develop" name="6" type="button">성장·자기계발</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-friend" name="7" type="button">동네·또래</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-meeting" name="8" type="button">연애·소개팅</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-investment" name="9" type="button">재테크</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-language" name="10" type="button">외국어</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-study" name="11" type="button">스터디</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-festival" name="12" type="button">지역축제</button>
+                                        </div>
+                                        <div class="top-categroy-items">
+                                            <button class="top-categroy-item" id="item-other" name="13" type="button">기타</button>
+                                        </div>
+                                    </div>
+                                    <!-- 위시리스트 전체 포스트 부분 -->
+                                    <div class="main-wishlist-all-wrap">
+                                        <div class="main-wishlist-wrap">
+                                            <!-- 위시리스트 설명 부분 -->
+                                            <div class="explain-wrap">
+                                                <div class="explain-container">
+                                                    <div class="explain-title">✨ Make A Wish</div>
+                                                    <div class="explain-text">틴친과 나의 위시리스트를 공유해요!</div>
+                                                </div>
+                                            </div>
+                                            <!-- 위시리스트 추가 -->
+                                            <div class="add-post">
+                                            </div>
+                                            <!-- 게시글 더보기 버튼 -->
+                                            <div class="post-watch">
+                                                <div class="post-watch-wrap">
+                                                    <button class="post-watch-button" type="button">
+                                                        <span> 더보기 </span>
+                                                        <svg class="post-watch-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 추가 기능 부분 -->
+                                        <div class="extra-all-wrap" style>
+                                            <div class="extra-wrap">
+                                                <div class="extra-divison">
+                                                    <!-- 위시리스트 추가하기 부분 -->
+                                                    <div class="extra-create-container" {% if not request.session.member %} style="display: none;" {% endif %}>
+                                                        <button class="extra-create-button">
+                                                            <svg class="extra-create-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                                                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <!-- 페이지 위로 올리기 부분 -->
+                                                    <button class="extra-up-wrap" type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                                                        <svg class="extra-up-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 위시리스트 입력 모달창 부분 (미로그인 시) -->
+        <!-- <div class="modal-login hidden">
+            <div class="modal-full-wrap" role="dialog" aria-modal="true" data-headlessui-state="open" aria-labelledby="headlessui-dialog-title-42" aria-describedby="headlessui-description-43">
+                <div class="modal-screen"></div>
+                <div class="modal-divison">
+                    <div class="modal-login-wrap" data-headlessui-state="open">
+                        <div class="modal-divison-login-text-wrap">
+                            <h2 class="modal-login-title-container" data-headlessui-state="open">
+                                <div class="modal-login-title">로그인이 필요한 서비스입니다.</div>
+                            </h2>
+                            <p class="modal-login-text-container" data-headlessui-state="open">
+                                <div class="modal-login-text">로그인하고 커뮤니티에 가입하세요</div>
+                            </p>
+                        </div>
+                        <div class="modal-login-button-wrap">
+                            <button class="modal-login-button-close" type="button">취소</button>
+                            <button class="modal-login-button" type="button">로그인 하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- 위시리스트 입력 모달 부분 -->
+        <div class="post-create hidden">
+            <div class="modal-full-wrap" role="dialog" aria-modal="true" data-headlessui-state="open" aria-labelledby="headlessui-dialog-title-42" aria-describedby="headlessui-description-43">
+                <div class="modal-screen"></div>
+                <div class="modal-divison">
+                    <!-- 위시리스트 입력 부분 -->
+                    <div class="post-create-wrap" data-headlessui-state="open">
+                        <!-- 상단 메뉴 -->
+                        <div class="modal-create-top-wrap">
+                            <button class="create-close-container" type="button">
+                                <svg class="create-close-botton-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="create-close-botton-text">돌아가기</span>
+                            </button>
+                            <div style="display: flex">
+                                <select class="create-public-private-container" id="is-private" name="category" required>
+                                    <option class="create-public" value="1" selected>공개</option>
+                                    <option value="0">비공개</option>
+                                </select>
+                                <div class="create-finish-container">
+                                    <button class="create-finish-botton" type="submit">발행하기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 중간 부분 -->
+                        <div class="create-category-wrap">
+                            <select class="create-category-container" id="category" name="category" required>
+                                <option class="create-category-default" value="100" disabled selected>카테고리</option>
+                                <option value="2">문화·예술</option>
+                                <option value="3">운동·액티비티</option>
+                                <option value="4">푸드·드링크</option>
+                                <option value="1">취미</option>
+                                <option value="5">여행·동행</option>
+                                <option value="6">성장·자기계발</option>
+                                <option value="7">동네·또래</option>
+                                <option value="8">연애·소개팅</option>
+                                <option value="9">재테크</option>
+                                <option value="10">외국어</option>
+                                <option value="11">스터디</option>
+                                <option value="12">지역축제</option>
+                                <option value="13">기타</option>
+                            </select>
+                            <input class="create-category-input" id="wishlist-content" name="wishlist-content" placeholder="위시리스트를 입력하세요" required />
+                        </div>
+                        <!-- 태그 부분 -->
+                        <div class="create-tags-wrap">
+                            <div class="create-tags-title-container">
+                                <div class="create-tags-title">
+                                    <span class="create-tags-title-text">태그입력</span>
+                                </div>
+                                <div class="create-tags-input-container">
+                                    <div>
+                                        <input class="create-tags-input" id="tag-name" type="text" placeholder="태그는 최대 5개, 1개당 10자까지 가능" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create-tag-list create-tag"></div>
+                            <div class="create-tag-error hidden">태그는 5개, 1개당 글자수 10자까지 생성이 가능합니다.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 위시리스트 포스트 수정 모달 부분 -->
+        <div class="post-update hidden">
+            <div class="modal-full-wrap" role="dialog" aria-modal="true" data-headlessui-state="open" aria-labelledby="headlessui-dialog-title-42" aria-describedby="headlessui-description-43">
+                <div class="modal-screen"></div>
+                <div class="modal-divison">
+                    <!-- 위시리스트 게시글 수정 모달 부분 -->
+                    <div class="post-update-wrap" data-headlessui-state="open">
+                        <!-- 위시리스트 게시글 수정 상단 부분 -->
+                        <div class="update-top-wrap">
+                            <button class="update-close-container" type="button">
+                                <svg class="update-close-botton-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="update-close-botton-text">돌아가기</span>
+                            </button>
+                            <div style="display: flex">
+                                <select class="update-public-private-container" id="update-private" name="category" required>
+                                    <option class="update-public" value="1" selected>공개</option>
+                                    <option value="0">비공개</option>
+                                </select>
+                                <div class="update-finish-container">
+                                    <button class="update-finish-botton" type="submit">발행하기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 게시글 카테고리 수정 부분 -->
+                        <div class="update-category-wrap">
+                            <select class="update-category-container" id="update-category" name="category" required>
+                                <option class="update-category-default" value="100" disabled selected>카테고리</option>
+                                <option value="2">문화·예술</option>
+                                <option value="3">운동·액티비티</option>
+                                <option value="4">푸드·드링크</option>
+                                <option value="1">취미</option>
+                                <option value="5">여행·동행</option>
+                                <option value="6">성장·자기계발</option>
+                                <option value="7">동네·또래</option>
+                                <option value="8">연애·소개팅</option>
+                                <option value="9">재테크</option>
+                                <option value="10">외국어</option>
+                                <option value="11">스터디</option>
+                                <option value="12">지역축제</option>
+                                <option value="13">기타</option>
+                            </select>
+                            <input class="update-category-input" id="update-content" name="wishlist-content" placeholder="위시리스트를 입력하세요" required>
+                        </div>
+                        <!-- 게시글 태그 수정 부분 -->
+                        <div class="update-tags-wrap">
+                            <div class="update-tags-title-container">
+                                <div class="update-tags-title">
+                                    <span class="update-tags-title-text">태그입력</span>
+                                </div>
+                                <div class="update-tags-input-container">
+                                    <div>
+                                        <input class="update-tags-input" id="tag-name" type="text" placeholder="태그는 최대 5개, 1개당 10자까지 가능" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tag-list tag"></div>
+                            <div class="tag-error-text hidden">태그는 5개, 1개당 글자수 10자까지 생성이 가능합니다.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 틴친 프로필 모달 부분  -->
+        <div class="profile hidden">
+            <div class="modal-full-wrap" role="dialog" aria-modal="true" data-headlessui-state="open" aria-labelledby="headlessui-dialog-title-42" aria-describedby="headlessui-description-43">
+                <div class="modal-screen"></div>
+                <div class="modal-divison teenchin-modal">
+                    <!-- 틴친 프로필 정보 부분 -->
+                    <div class="teenchin-box post-update-wrap" data-headlessui-state="open">
+                        <div class="teenchin-items">
+                            <!-- 틴친 프로필 사진 부분 -->
+                            <div class="profile-img-contents">
+                                <div class="profile-img-box">
+                                    <img class="profile-default-img" src="" alt="프로필사진">
+                                </div>
+                                <!-- 틴친 프로필 이미지 여백 부분 -->
+                                <div class="profile-img-gap"></div>
+                            </div>
+                            <!-- 틴친 프로필 이름 부분 -->
+                            <div class="profile-info-contents">
+                                <div class="profile-name"></div>
+                            </div>
+                            <!-- 틴친 프로필 버튼 부분 -->
+                            <div class="teenchin-btn-container">
+                                <div class="teenchin-btn-box">
+                                    <!-- 틴친 신청 버튼 부분 -->
+                                    <button class="teenchin-add-btn hidden" type="button">
+                                        <svg class="add-svg" fill="currentColor" version="1.0" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                            <g><path d="M16,29A13,13,0,1,1,29,16,13,13,0,0,1,16,29ZM16,5A11,11,0,1,0,27,16,11,11,0,0,0,16,5Z M16,23a1,1,0,0,1-1-1V10a1,1,0,0,1,2,0V22A1,1,0,0,1,16,23Z M22,17H10a1,1,0,0,1,0-2H22a1,1,0,0,1,0,2Z" /></g>
+                                        </svg>
+                                        <span>틴친 신청</span>
+                                    </button>
+                                    <!-- 틴친 신청중 버튼 부분 -->
+                                    <button class="teenchin-request-btn hidden" type="button">
+                                        <svg class="request-svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z"
+                                            />
+                                        </svg>
+                                        <span>틴친 신청중</span>
+                                    </button>
+                                    <!-- 틴친 수락대기 버튼 부분 -->
+                                    <button class="teenchin-accept-btn hidden" type="button">
+                                        <svg class="request-svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z"
+                                            />
+                                        </svg>
+                                        <span>수락대기</span>
+                                    </button>
+                                    <!-- 틴친중 버튼 부분 -->
+                                    <button class="teenchin-btn" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span>틴친중</span>
+                                    </button>
+                                    <!-- 쪽지 보내기 버튼 부분 -->
+                                    <button class="send-letter-btn" type="button">
+                                        <svg aria-label="게시물 공유" class="send-svg" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                                            <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line>
+                                            <polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon>
+                                        </svg>
+                                        <span>쪽지 보내기</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 쪽지 보내기 모달 부분 -->
+        <div class="send-modal-wrap hidden">
+            <div class="modal-full-wrap" role="dialog" aria-modal="true" data-headlessui-state="open" aria-labelledby="headlessui-dialog-title-42" aria-describedby="headlessui-description-43">
+                <div class="modal-screen"></div>
+                <div class="modal-divison">
+                    <!-- 쪽지 보내기 부분 -->
+                    <div class="send-modal-container">
+                        <div class="send-modal-box">
+                            <div>
+                                <h2 class="modal-header-box">
+                                    <div class="send- modal-title">쪽지 보내기</div>
+                                </h2>
+                            </div>
+                            <div class="sender-receiver-box">
+                                <div class="sender-box">
+                                    <div class="sender-title">보낸 사람</div>
+                                    <!-- 회원의 이름과 이메일이 필요 -->
+                                    <div class="send-sender-email"></div>
+                                </div>
+                                <div class="receiver-box">
+                                    <div class="receiver-title">받는 사람</div>
+                                    <!-- 형식: 아무개(example@sample.com) -->
+                                    <div class="send-receiver-email-box">
+                                        <div class="send-receiver-email"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="letter-content-area">
+                                <!-- 쪽지 내용 필요 -->
+                                <textarea name="send-content" id="letter-content" rows="10" placeholder="쪽지의 내용을 작성해 주세요."></textarea>
+                            </div>
+                            <div class="modal-btn-box">
+                                <button class="send-close-btn" type="button">닫기</button>
+                                <button class="send-check-btn" type="button">보내기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="member-id" value="{{ request.session.member.id }}">
+        <input type="hidden" name="member-name" value="{{ request.session.member.member_nickname }}">
+        <input type="hidden" name="member-email" value="{{ request.session.member.member_email }}">
+{% endblock %}
+{% block js %}
+    <script>
+        const categoryButton = document.querySelectorAll(".top-categroy-item")
+        const csrf_token = '{{ csrf_token }}';
+        // 로그인 했는지 안 했는지 검사
+        const member = `{{ request.session.member }}`;
+        let memberId = 0;
+        let memberName = '';
+        let loginCheck = false;
+        if (member) {
+            loginCheck = true;
+            memberId = '{{ request.session.member.id }}';
+            memberName = '{{ request.session.member.member_nickname }}';
+        }
+        // 카테고리 버튼을 눌렀을 때 카테고리에 category_id = name 값 담기
+        let category = 100;
+        categoryButton.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    category = Number(btn.name);
+                })
+            }
+        )
+        // 키워드 검색시 키워드에 검색값 담기
+        let keyword = '없음';
+        const mySearchInput = document.querySelector(".tag-search-text");
+        mySearchInput.addEventListener("keyup", async (e) => {
+            if (e.keyCode === 13) {
+                // console.log(e.target.value)
+                if (!e.target.value) return;
+                keyword = e.target.value;
+            }
+        });
+        const myWishlistId = `{{ wishlistId }}`;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'wishlist/web/js/wishlist-web-module.js' %}"></script>
+    <script src="{% static 'wishlist/web/js/wishlist-web.js' %}"></script>
+{% endblock %}

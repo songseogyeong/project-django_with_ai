@@ -1,0 +1,285 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'member/web/css/management-activity-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플:: 활동 관리{% endblock %}
+{% block content %}
+    <body style="position: relative; min-height: 100%; top: 0px">
+        <!-- 헤더 부분 -->
+        <header></header>
+        <!-- 메인 부분(모임 홍보쪽 해더) -->
+        <main class="main">
+            <div class="sud-header-wrap">
+                <div class="sud-header-container">
+                    <div class="sud-header-box">
+                        <!-- 활동 개요 페이지 주소 필요 -->
+                        <a class="sud-header-category select-category" href="/member/activity/?activity_id={{ activity.id }}">활동 개요</a>
+                        <!-- 참가자 페이지 주소 필요 -->
+                        <a class="sud-header-category" href="/member/activity-member/?activity_id={{ activity.id }}">참가자</a>
+                        <!-- 활동 수정 페이지 주소 필요 -->
+                        <a class="sud-header-category" href="/member/activity-edit/?activity_id={{ activity.id }}">활동 수정</a>
+                    </div>
+                    <!-- 활동 상세페이지 주소 필요 -->
+                    <a class="activity-detail-link" href="/activity/detail/?id={{ activity.id }}" target="_blank">
+                        <span>활동 페이지 바로가기</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="move-svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <!-- 활동 관리 메인 서비스 -->
+            <div class="activity-menagement-wrap">
+                <div class="activity-menagement-container">
+                    <section class="activity-name-activity">
+                        <div class="activity-name-activity-box">
+                            <div class="activity-prfile-box">
+                                <div>
+                                    <div class="activity-prfile">
+                                        {% if activity.thumbnail_path %}
+                                            <img src="/upload/{{ activity.thumbnail_path }}" class="activity-prfile-img" id="preview-thumbnail">
+                                        {% else %}
+                                            <img class="activity-prfile-img" id="preview-thumbnail" src="{% static 'public/web/images/logo/logo1.png' %}">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="activity-name-box">
+                                    <span class="activity-name">{{ activity.activity_title }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="activity-info">
+                        <div class="activity-info-box">
+                            <div class="activity-info-title">활동 관리</div>
+                            <div class="activity-info-list">
+                                <!-- 활동 정보 box -->
+                                <div>
+                                    <div class="member-info-box">
+                                        <div class="member-info-items">
+                                            <div>
+                                                <!-- 참가자 페이지 주소 필요 -->
+                                                <a class="member-list-link" href="/member/activity-member/?activity_id={{ activity.id }}">참가자 ></a>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <!-- 활동 가입 인원 필요 -->
+                                                    <span class="member-count">{{ total_count }}</span>
+                                                    명
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 참여 대기 -->
+                                <div>
+                                    <div class="activity-notice-brief-box">
+                                        <div class="activity-notice-brief-items">
+                                            <a class="activity-notice-brief-link">참여대기</a>
+                                            <div>
+                                                <span class="activity-notice-count">{{ wait_count }}</span>
+                                                명
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 참여중 -->
+                                <div>
+                                    <div class="activity-recruiting-box">
+                                        <div class="activity-recruiting-items">
+                                            <a class="activity-recruiting-link">참여중</a>
+                                            <div>
+                                                <div>
+                                                    <span class="activity-recruiting-count">{{ active_count }}</span>
+                                                    명
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gap"></div>
+                            <div>
+                                <div>
+                                    <!-- 나의 활동이 있을 경우 -->
+                                    <div class="activities-list-title-box">
+                                        <div class="activities-list-title">나의 활동(<span>{{ my_activity }}</span>)</div>
+                                        <div>
+                                            <div>
+                                                <div class="sorting-box">
+                                                    <button type="button" class="sorting-btn">
+                                                        <span class="seleced-sorting">최신순</span>
+                                                        <span class="down-arrow-box">
+                                                            <svg class="down-arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+                                                            </svg>
+                                                        </span>
+                                                    </button>
+                                                    <ul class="sorting-list-ul">
+                                                        <a class="sorting-target tab" id="sorting-target"  name="" >
+                                                            <span>최신순</span>
+                                                        </a>
+                                                        <a class="sorting-target tab" name="old">
+                                                            <span>오래된 순</span>
+                                                        </a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 댓글 목록 부분 -->
+                                    <div class="activity-activities-box">
+                                        <div class="activity-activities-items">
+                                            <div class="activity-activities-categories">
+                                                <div class="activity-activities-name">활동명</div>
+                                                <div class="activity-activities-hits">간단 소개</div>
+                                                <div class="activity-activities-categorys">분야/유형</div>
+                                                <div class="activity-activities-place"></div>
+                                                <div class="activity-activities-open-date">활동기한</div>
+                                            </div>
+                                            <div class="activity-activities-contents">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 페이지네이션 버튼 부분(1페이지당 6개) -->
+                                    <div class="pagination-wrap">
+                                        <div class="pagination-container">
+                                            <div class="pagination-box">
+                                                <button class="next-btn" type="button" id="leftButton">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="left-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                                    </svg>
+                                                </button>
+                                                <div class="pagination-number-box" id="pageButtons">
+                                                </div>
+                                                <button class="next-btn" type="button" id="rightButton">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="right-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 활동이 없을 경우 -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- 공지사항들 부분 -->
+                    <section class="notice-section">
+                        <div class="notice-wrap">
+                            <div class="notice-title-container">
+                                <span>틴플 공지사항</span>
+                                <span style="margin-left: 560px">모임 공지사항</span>
+                            </div>
+                            <div class="notice-container">
+                                <div class="teenplay-notice-box">
+                                    <div class="teenplay-notice-items">
+                                        <div class="teenplay-notice-item">
+                                            <div class="teenplay-notice-content">
+                                                <div class="teenplay-notice-categories">
+                                                    <div class="teenplay-notice-category-kind">분류</div>
+                                                    <div class="teenplay-notice-category-title">공지</div>
+                                                    <div class="teenplay-notice-category-date">게시일</div>
+                                                </div>
+                                                <!-- 최신순으로 사이트 공지사항 4개만 -->
+                                                <div>
+                                                    {% if tennplay_notices|length == 0 %}
+                                                    <div class="feed-item">
+                                                        <span>등록된 공지/안내가 없습니다.</span>
+                                                    </div>
+                                                    {% else %}
+                                                    {% for tennplay_notices in tennplay_notices %}
+                                                    <div>
+                                                        <div class="division-line"></div>
+                                                        <div class="teenplay-notice-info">
+                                                            <div class="teenplay-notice-kind">공지</div>
+                                                            <div class="teenplay-notice-title">
+                                                                <!-- 공지사항 주소 필요 -->
+                                                                <a class="teenplay-notice-link" href="">{{ tennplay_notices.notice_title }}</a>
+                                                            </div>
+                                                            <div class="teenplay-notice-date">{{ tennplay_notices.updated_date|date:"Y.m.d" }}</div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="activity-notice-box">
+                                    <div class="activity-notice-items">
+                                        <div class="activity-notice-item">
+                                            <div class="activity-notice-content">
+                                                <div class="activity-notice-categories">
+                                                    <div class="activity-notice-category-kind">분류</div>
+                                                    <div class="activity-notice-category-title">공지</div>
+                                                    <div class="activity-notice-category-date">게시일</div>
+                                                </div>
+                                                <!-- 최신순으로 사이트 공지사항 4개만 -->
+                                                <div>
+                                                {% if club_notices|length == 0 %}
+                                                <div class="feed-item">
+                                                    <span>등록된 공지/안내가 없습니다.</span>
+                                                </div>
+                                                {% else %}
+                                                {% for club_notice in club_notices %}
+                                                    <div>
+                                                        <div class="division-line"></div>
+                                                        <div class="activity-notice-info">
+                                                            <div class="activity-notice-kind">공지</div>
+                                                            <div class="activity-notice-title">
+                                                                <!-- 공지사항 주소 필요 -->
+                                                                <a class="activity-notice-link" href="/club/detail/?id={{ club_id }}&view=notice">{{ club_notice.notice_content }}</a>
+                                                            </div>
+                                                            <div class="activity-notice-date">{{ club_notice.updated_date|date:"Y.m.d"  }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <!-- 푸터 부분 -->
+{% endblock %}
+
+{% block js %}
+    <script>
+        const member_id = '{{ request.session.member.id }}'
+        const csrf_Token = `{{ csrf_token }}`;
+
+    const selectbut = document.querySelectorAll(".tab")
+    let status_list = '전체'
+    selectbut.forEach((btn)=> {
+        btn.addEventListener("click", async (e) => {
+            status_list = btn.name
+            console.log(status_list)
+            const text =  await activityService.getList(member_id, 1, status_list, showList);
+            inner.innerHTML = text;
+            await activityService.getList(member_id, 1, status_list, async (reply, total_pages) => {
+            maxPage = total_pages;
+            page = 1
+            currentPage = 1
+            updatePageButtons();
+            })
+        })
+    })
+
+
+    </script>
+    <script src="{% static 'member/web/js/management-activity-module-web.js' %}"></script>
+    <script src="{% static 'member/web/js/management-activity-web.js' %}"></script>
+{% endblock %}

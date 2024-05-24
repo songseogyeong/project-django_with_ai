@@ -1,0 +1,100 @@
+{% extends 'club/web/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'club/web/css/club-pr-posts-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플 :: 모임 홍보 게시판{% endblock %}
+
+{% block main %}
+    <main class="pr-main">
+        <div class="pr-wrap">
+            <!-- 배너 -->
+            <section class="pr-top-banner-wrap">
+                <div class="pr-top-banner-container">
+                    <div class="pr-top-banner-text-wrap">
+                        <div class="pr-top-banner-text-title">
+                            틴플레이 모임으로
+                            <br />
+                            계속해서 친하게 지내요
+                        </div>
+                        <div class="pr-top-banner-text-content">
+                            나와 같은 관심사를 가진 틴친들과
+                            <br />
+                            매일 함께하고 싶다면 모임에서 만나요!
+                        </div>
+                    </div>
+                    <div class="pr-top-banner-icon-wrap">
+                        <img src="{% static 'club/web/images/club-pr-posts/club-pr-top-icon.png' %}" class="pr-top-banner-icon" />
+                    </div>
+                </div>
+            </section>
+            <!-- 배너-내용 경계선 -->
+            <div class="pr-border"></div>
+            <!-- 검색창 -->
+            <div class="pr-post-search-wrap">
+                <div class="search-total-container">
+                    <span class="search-total-count"></span>
+                    개의 모임 홍보글이 검색되었습니다.
+                </div>
+                <div class="pr-post-search-container">
+                    <select name="category" class="pr-post-category-box">
+                        <option value="">전체</option>
+                        <option value="취미">취미</option>
+                        <option value="문화·예술">문화·예술</option>
+                        <option value="운동·액티비티">운동·액티비티</option>
+                        <option value="푸드·드링크">푸드·드링크</option>
+                        <option value="여행·동행">여행·동행</option>
+                        <option value="성장·자기개발">성장·자기개발</option>
+                        <option value="동네·또래">동네·또래</option>
+                        <option value="연애·소개팅">연애·소개팅</option>
+                        <option value="재테크">재테크</option>
+                        <option value="외국어">외국어</option>
+                        <option value="스터디">스터디</option>
+                        <option value="지역축제">지역축제</option>
+                        <option value="기타">기타</option>
+                    </select>
+                    <div class="pr-post-search-box">
+                        <button class="pr-post-search-button">
+                            <svg class="pr-post-search-button-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"></path>
+                            </svg>
+                        </button>
+                        <input class="pr-post-search-input" name="keyword" type="text" placeholder="모임 또는 제목을 검색하세요">
+                    </div>
+                </div>
+            </div>
+            <!-- 정렬순 -->
+            <div class="ordering-wrap">
+                <button class="new-ordering" type="button">
+                    <span>최신순</span>
+                </button>
+                <button class="hits-ordering" type="button">
+                    <span>조회순</span>
+                </button>
+            </div>
+            <!-- 내용 -->
+            <div class="pr-content-wrap">
+                <div class="pr-content-container">
+                    <!-- 아래 div가 게시물마다 반복 -->
+                </div>
+                <!-- 페이지네이션 -->
+                <div class="pr-pagination-wrap">
+                    <div class="pr-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const csrf_token = `{{ csrf_token }}`;
+        let page = {{ page }};
+        let category = `{{ category }}`;
+        let order = `{{ order }}`;
+        let keyword = `{{ keyword }}`;
+    </script>
+    <script src="{% static 'club/web/js/club-pr-post-list-module.js' %}"></script>
+    <script src="{% static 'club/web/js/club-pr-posts-web.js' %}"></script>
+{% endblock %}

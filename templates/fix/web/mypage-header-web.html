@@ -1,0 +1,276 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>틴플::</title>
+        <link rel="shortcut icon" href="/staticfiles/images/teenplay_logo/logo1.png" type="image/x-icon" />
+        <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/staticfiles/css/fix/web/header-web.css" />
+    </head>
+    <body class loaded style="position: relative; min-height: 100%; top: 0px">
+        <!-- 해더 부분 -->
+        <header id="header">
+            <!-- 네비 부분 -->
+            <nav>
+                <div class="main-nav-wrap">
+                    <div class="main-nav-container">
+                        <div class="logo-and-search">
+                            <!-- 메인페이지 경로 -->
+                            <a href="/">
+                                <!--  -->
+                                <img class="logo-image" src="{% static 'public/web/images/logo/logo2.png' %}" alt="로고" />
+                            </a>
+                            <div class="search-section">
+                                <button class="search-btn" type="button" style="background-color: white !important">
+                                    <div class="search-inner-items">
+                                        <span class="search-icon-span">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="search-placeholder">참여하고 싶은 활동을 검색해보세요</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="member-service-box">
+                            <div class="member-service-items">
+                                <!-- 로그인 시 보이는 요소 -->
+                                <input type="hidden" name="is-login" value="true">
+                                <div class="member-services">
+                                    <input type="hidden" name="header-member-id" value="{{ request.session.member.id }}">
+                                    <button class="member-service-menu-btn sign" type="button">
+                                        <div class="member-service-menu-content">
+                                            <span class="name-box">
+                                                <span class="nicknaem">{{ request.session.member.member_nickname }}</span>
+                                                <span class="default-nim"> 님 </span>
+                                                <div class="signal-sign-box">
+                                                    <div class="signal-sign-item">
+                                                        <div class="signal-sign">3</div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <!-- 버튼에 클릭 이벤트 발생 시 나타나는 모달창 -->
+                                    <div class="mypage-menu">
+                                        <div class="member-info">
+                                            <div class="pull-nickname">
+                                                <strong>{{ request.session.member.member_nickname }}</strong>
+                                                <span>님</span>
+                                            </div>
+                                            <div class="member-email">{{ request.session.member.member_email }}</div>
+                                            <!-- 내 정보 수정페이지 입력 필요 -->
+                                            <a class="member-info-modify" href="/member/mypage-info/">
+                                                <span>내 정보 수정 ></span>
+                                            </a>
+                                        </div>
+                                        <div class="border-line"></div>
+                                        <a class="teen-friends" href="/member/mypage-teenchin/">
+                                            <span>틴친 목록</span>
+                                        </a>
+                                        <a class="my-activities" href="/member/mypage-activity/">
+                                            <span>나의 활동</span>
+                                        </a>
+                                        <a class="my-clups" href="/member/mypage-my-club/">
+                                            <span>나의 모임</span>
+                                        </a>
+                                        <a class="my-signals" href="/member/mypage-alram/">
+                                            <span>알림 목록</span>
+                                            <div class="mypage-menu-signal-count">3</div>
+                                        </a>
+                                        <div class="border-line"></div>
+                                         <button class="logout-btn" type="button" onclick="location.href='/accounts/logout'">
+                                            <span>로그아웃</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- 로그인, 비로그인 상관없이 보이는 요소 -->
+                                <div class="my-profile-box">
+                                    <!-- 클릭 시 이동할 페이지 작성 필요 -->
+                                    <a class="my-profile" href="/">틴플레이 홈</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div id="modals-wrap">
+            <!-- 검색 모달 -->
+            <div>
+                <div>
+                    <div class="search-modal-container" style="display: none">
+                        <div class="search-modal-shadow"></div>
+                        <div>
+                            <div class="search-modal-box">
+                                <div class="search-modal-content">
+                                    <div class="search-modal-items">
+                                        <div class="search-space">
+                                            <div class="cancle-and-keyword">
+                                                <button class="back-btn" type="button">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="back-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                                    </svg>
+                                                </button>
+                                                <div class="search-box">
+                                                    <div class="serch-icon-box">
+                                                        <button class="serch-icon-btn" type="submit">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="search-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <form method="post" action="/activity/list/" name="list-form">
+                                                        {% csrf_token %}
+                                                        <input class="search-input" type="search" name="keyword" autocomplete="off" placeholder="참여하고 싶은 활동을 검색해보세요" />
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <!-- 검색 결과창(활동) 해당사항 없을시 none -->
+                                            <div class="search-activity-section" style="display: none">
+                                                <div class="search-activity-header">
+                                                    <div class="search-target">활동</div>
+                                                </div>
+                                                <div class="search-realtime-empty">입력하신 단어에 맞는 검색 결과가 없습니다.</div>
+                                                <div class="search-realtime-results">
+                                                </div>
+                                            </div>
+                                            <div class="recently-keyword-section">
+                                                <div class="recently-keyword-header">
+                                                    <div class="keyword-title">최근 검색어</div>
+                                                    <div class="delete-search-log">
+                                                        <button class="delete-search-log-btn" type="button">검색 기록 삭제</button>
+                                                    </div>
+                                                </div>
+                                                <!-- 최근 검색한 키워드 최신순으로 6개 표시 -->
+                                                <div class="recently-keyword-list">
+                                                </div>
+                                            </div>
+                                            <div class="hot-keywords">
+                                                <div class="hot-keywords-area-title">추천 검색어</div>
+                                                <div class="recommend-keywords">
+                                                    <div class="recommend-keywords-list">
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">볼링</span>
+                                                            <input type="hidden" name="keyword" value="볼링">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">스타트업</span>
+                                                            <input type="hidden" name="keyword" value="스타트업">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">독서</span>
+                                                            <input type="hidden" name="keyword" value="독서">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">글쓰기</span>
+                                                            <input type="hidden" name="keyword" value="글쓰기">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">데모데이</span>
+                                                            <input type="hidden" name="keyword" value="데모데이">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">야시장</span>
+                                                            <input type="hidden" name="keyword" value="야시장">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">빙어</span>
+                                                            <input type="hidden" name="keyword" value="빙어">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">AI</span>
+                                                            <input type="hidden" name="keyword" value="AI">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">소개팅</span>
+                                                            <input type="hidden" name="keyword" value="소개팅">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">컨퍼런스</span>
+                                                            <input type="hidden" name="keyword" value="컨퍼런스">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">사업계획서</span>
+                                                            <input type="hidden" name="keyword" value="사업계획서">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">마케팅</span>
+                                                            <input type="hidden" name="keyword" value="마케팅">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">세미나</span>
+                                                            <input type="hidden" name="keyword" value="세미나">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">개발자</span>
+                                                            <input type="hidden" name="keyword" value="개발자">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">ido</span>
+                                                            <input type="hidden" name="keyword" value="ido">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">송어</span>
+                                                            <input type="hidden" name="keyword" value="송어">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">축구</span>
+                                                            <input type="hidden" name="keyword" value="축구">
+                                                        </form>
+                                                        <form method="post" class="recommend-keyword-form" action="/activity/list/">
+                                                            {% csrf_token %}
+                                                            <span class="recommend-keywords-link">야구</span>
+                                                            <input type="hidden" name="keyword" value="야구">
+                                                        </form>
+                                                    </div>
+                                                    <div>
+                                                        <a class="recommend-keywords-more"> + 더보기 </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="order" hidden value="score" />
+                                        <input type="hidden" name="date" hidden value="모든날" />
+                                        <input type="hidden" name="page" hidden value="1" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/staticfiles/js/fix/web/mypage-header-web.js">
+            
+    </script>
+    <script>
+        const csrfToken = `{{ csrf_token }}`;
+    </script>
+</html>

@@ -1,0 +1,345 @@
+{% extends 'festival/app/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'festival/app/css/festival-detail-app.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+{% endblock %}
+{% block title %}지역축제{% endblock %}
+{% block content %}
+    <div class="main-festival">
+        <div class="main-festival-warp">
+            <!-- 이미지쪽 -->
+            <div class="main-festival-img">
+                <img src="https://tong.visitkorea.or.kr/cms/resource/07/3051907_image2_1.jpg" alt="축제사진" class="main-festival-photo" />
+            </div>
+            <!-- 아래 내용쪽 -->
+            <div class="main-festival-content">
+                <!-- 내용 -->
+                <div>
+                    <div class="main-festival-content-top">
+                        <div class="main-festival-content-top-status">진행중</div>
+                        <h2 class="main-festival-content-top-title">강화 양오낚시터 빙어축제</h2>
+                    </div>
+                    <div class="main-festival-content-mid">
+                        <div class="main-festival-content-mid-warp">
+                            <dl class="main-festival-content-mid-warp-dl">
+                                <dt class="main-festival-content-mid-warp-dt">이용요금</dt>
+                                <dd class="main-festival-content-mid-warp-dd">성인 10.000원 소인 5,000원 (36개월~초등학생)</dd>
+                            </dl>
+                            <!-- 공통요소 -->
+                            <dl class="main-festival-content-mid-warp-dladd">
+                                <dt class="main-festival-content-mid-warp-dtadd">개요</dt>
+                                <dd class="main-festival-content-mid-warp-ddadd">
+                                    겨울에만 즐길 수 있는 빙어축제이다.
+                                    <br />
+                                    아이들과 함께 얼음 썰매도 즐기고 빙어낚시, 빙어로 만든 먹거리까지 준비되어있다.
+                                </dd>
+                            </dl>
+                            <dl class="main-festival-content-mid-warp-dladd">
+                                <dt class="main-festival-content-mid-warp-dtadd">주소</dt>
+                                <dd class="main-festival-content-mid-warp-ddadd">인천광역시 강화군 송해면 전망대로 423번길 161</dd>
+                            </dl>
+                            <dl class="main-festival-content-mid-warp-dladd">
+                                <dt class="main-festival-content-mid-warp-dtadd">상세주소</dt>
+                                <dd class="main-festival-content-mid-warp-ddadd">양오낚시터</dd>
+                            </dl>
+                            <dl class="main-festival-content-mid-warp-dladd">
+                                <dt class="main-festival-content-mid-warp-dtadd">행사장소</dt>
+                                <dd class="main-festival-content-mid-warp-ddadd">양오낚시터</dd>
+                            </dl>
+                            <dl class="main-festival-content-mid-warp-dladd">
+                                <dt class="main-festival-content-mid-warp-dtadd">행사 시작일</dt>
+                                <dd class="main-festival-content-mid-warp-ddadd">2023.12.23</dd>
+                            </dl>
+                            <dl class="main-festival-content-mid-warp-dladd">
+                                <dt class="main-festival-content-mid-warp-dtadd">행사 종료일</dt>
+                                <dd class="main-festival-content-mid-warp-ddadd">2024.02.18</dd>
+                            </dl>
+                            <dl class="main-festival-content-mid-warp-dladd">
+                                <dt class="main-festival-content-mid-warp-dtadd">관람 가능연령</dt>
+                                <dd class="main-festival-content-mid-warp-ddadd">전 연령 가능</dd>
+                            </dl>
+                        </div>
+                        <div class="main-festival-content-mid-container">
+                            <button class="main-festival-content-mid-container-button" aria-expanded="false">
+                                <span class="main-festival-content-mid-container-span"> 축제 정보 자세히 보기 </span>
+                                <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="main-festival-content-mid-container-svg">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <!-- 평상시 숨겨져있음 -->
+                            <div class="main-festival-content-mid-container-in hidden">
+                                <dl class="main-festival-content-mid-warp-dl">
+                                    <dt class="main-festival-content-mid-warp-dtadd">공연시간</dt>
+                                    <dd class="main-festival-content-mid-warp-ddadd">08:30 - 17:00</dd>
+                                </dl>
+                                <dl class="main-festival-content-mid-warp-dladd">
+                                    <dt class="main-festival-content-mid-warp-dtadd">관람 소요시간</dt>
+                                    <dd class="main-festival-content-mid-warp-ddadd">기간 내 자유</dd>
+                                </dl>
+                                <dl class="main-festival-content-mid-warp-dladd">
+                                    <dt class="main-festival-content-mid-warp-dtadd">주최자 정보</dt>
+                                    <dd class="main-festival-content-mid-warp-ddadd">양오낚시터</dd>
+                                </dl>
+                                <dl class="main-festival-content-mid-warp-dladd">
+                                    <dt class="main-festival-content-mid-warp-dtadd">주최자 연락처</dt>
+                                    <dd class="main-festival-content-mid-warp-ddadd">010-4075-5851</dd>
+                                </dl>
+                                <dl class="main-festival-content-mid-warp-dladd">
+                                    <dt class="main-festival-content-mid-warp-dtadd">주관사 정보</dt>
+                                    <dd class="main-festival-content-mid-warp-ddadd">양오낚시터</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="main-festival-content-give">
+                            <dl class="main-festival-content-give-dl">
+                                <dt class="main-festival-content-give-dt">제공</dt>
+                                <dd class="main-festival-content-give-dd">
+                                    <a href="" class="main-festival-content-give-a">한국관광공사</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="main-festival-content-url">
+                        <a href="" class="main-festival-content-url-a">
+                            <span class="main-festival-content-url-span"> http://www.yango.co.kr </span>
+                            <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="main-festival-content-url-svg">
+                                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- 광고쪽 -->
+                <div class="main-festival-content-ad">
+                    <div>
+                        <div class="main-festival-content-ad-title">
+                            <div>
+                                <div class="main-festival-content-ad-title-text">틴플에서 지금! 추천하는 행사</div>
+                            </div>
+                            <div>
+                                <a href="" class="main-festival-content-ad-title-a">
+                                    <span>더 많은 행사 보기</span>
+                                    <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="main-festival-content-ad-title-svg">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="main-festival-content-ad-content">
+                            <div class="main-festival-banner-container-top">
+                                <!-- 여기에 광고들 들어갑니당 -->
+                                <div class="main-festival-banner-ad">
+                                    <div class="main-festival-banner-ad-warp">
+                                        <!-- 이미지 -->
+                                        <div class="main-festival-banner-ad-img">
+                                            <a href="" class="main-festival-banner-ad-img-a">
+                                                <img class="main-festival-banner-ad-img-photo" src="https://tong.visitkorea.or.kr/cms/resource/48/3073148_image2_1.jpg" alt="" />
+                                            </a>
+                                            <!-- 좋아요 버튼 -->
+                                            <div class="main-festival-banner-ad-like">
+                                                <button type="button" id="likeButton" class="main-festival-banner-ad-like-button">
+                                                    <span class="unlike-status" style="display: none">
+                                                        <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="like-status-svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="like-status">
+                                                        <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="unlike-status-svg">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="main-festival-banner-ad-content">
+                                            <div class="main-festival-banner-ad-content-date">
+                                                <div>
+                                                    <span class="main-festival-banner-ad-content-date-date">02월20일(화)</span>
+                                                </div>
+                                                <div class="main-festival-banner-ad-content-date-place">
+                                                    <span>강서구</span>
+                                                </div>
+                                            </div>
+                                            <div class="main-festival-banner-ad-content-content">
+                                                <a href="" class="main-festival-banner-ad-content-content-a">신춘저자특강 - 커리어코치협회 주관 - 취업비법 정철상 교수/ 코딩진로 류채윤 대표 / 평범한 직장인 특별한 책쓰기 이주형 작가</a>
+                                            </div>
+                                            <div class="main-festival-banner-ad-cost">
+                                                <div class="main-festival-banner-ad-cost-pay">
+                                                    <span>유료</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-festival-banner-ad">
+                                    <div class="main-festival-banner-ad-warp">
+                                        <!-- 이미지 -->
+                                        <div class="main-festival-banner-ad-img">
+                                            <a href="" class="main-festival-banner-ad-img-a">
+                                                <img class="main-festival-banner-ad-img-photo" src="https://tong.visitkorea.or.kr/cms/resource/48/3073148_image2_1.jpg" alt="" />
+                                            </a>
+                                            <!-- 좋아요 버튼 -->
+                                            <div class="main-festival-banner-ad-like">
+                                                <button type="button" id="likeButton" class="main-festival-banner-ad-like-button">
+                                                    <span class="unlike-status" style="display: none">
+                                                        <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="like-status-svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="like-status">
+                                                        <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="unlike-status-svg">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="main-festival-banner-ad-content">
+                                            <div class="main-festival-banner-ad-content-date">
+                                                <div>
+                                                    <span class="main-festival-banner-ad-content-date-date">02월20일(화)</span>
+                                                </div>
+                                                <div class="main-festival-banner-ad-content-date-place">
+                                                    <span>강서구</span>
+                                                </div>
+                                            </div>
+                                            <div class="main-festival-banner-ad-content-content">
+                                                <a href="" class="main-festival-banner-ad-content-content-a">신춘저자특강 - 커리어코치협회 주관 - 취업비법 정철상 교수/ 코딩진로 류채윤 대표 / 평범한 직장인 특별한 책쓰기 이주형 작가</a>
+                                            </div>
+                                            <div class="main-festival-banner-ad-cost">
+                                                <div class="main-festival-banner-ad-cost-pay">
+                                                    <span>유료</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-festival-banner-ad">
+                                    <div class="main-festival-banner-ad-warp">
+                                        <!-- 이미지 -->
+                                        <div class="main-festival-banner-ad-img">
+                                            <a href="" class="main-festival-banner-ad-img-a">
+                                                <img class="main-festival-banner-ad-img-photo" src="https://tong.visitkorea.or.kr/cms/resource/48/3073148_image2_1.jpg" alt="" />
+                                            </a>
+                                            <!-- 좋아요 버튼 -->
+                                            <div class="main-festival-banner-ad-like">
+                                                <button type="button" id="likeButton" class="main-festival-banner-ad-like-button">
+                                                    <span class="unlike-status" style="display: none">
+                                                        <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="like-status-svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="like-status">
+                                                        <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="unlike-status-svg">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="main-festival-banner-ad-content">
+                                            <div class="main-festival-banner-ad-content-date">
+                                                <div>
+                                                    <span class="main-festival-banner-ad-content-date-date">02월20일(화)</span>
+                                                </div>
+                                                <div class="main-festival-banner-ad-content-date-place">
+                                                    <span>강서구</span>
+                                                </div>
+                                            </div>
+                                            <div class="main-festival-banner-ad-content-content">
+                                                <a href="" class="main-festival-banner-ad-content-content-a">신춘저자특강 - 커리어코치협회 주관 - 취업비법 정철상 교수/ 코딩진로 류채윤 대표 / 평범한 직장인 특별한 책쓰기 이주형 작가</a>
+                                            </div>
+                                            <div class="main-festival-banner-ad-cost">
+                                                <div class="main-festival-banner-ad-cost-pay">
+                                                    <span>유료</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-festival-banner-ad">
+                                    <div class="main-festival-banner-ad-warp">
+                                        <!-- 이미지 -->
+                                        <div class="main-festival-banner-ad-img">
+                                            <a href="" class="main-festival-banner-ad-img-a">
+                                                <img class="main-festival-banner-ad-img-photo" src="https://tong.visitkorea.or.kr/cms/resource/48/3073148_image2_1.jpg" alt="" />
+                                            </a>
+                                            <!-- 좋아요 버튼 -->
+                                            <div class="main-festival-banner-ad-like">
+                                                <button type="button" id="likeButton" class="main-festival-banner-ad-like-button">
+                                                    <span class="unlike-status" style="display: none">
+                                                        <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="like-status-svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="like-status">
+                                                        <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="unlike-status-svg">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="main-festival-banner-ad-content">
+                                            <div class="main-festival-banner-ad-content-date">
+                                                <div>
+                                                    <span class="main-festival-banner-ad-content-date-date">02월20일(화)</span>
+                                                </div>
+                                                <div class="main-festival-banner-ad-content-date-place">
+                                                    <span>강서구</span>
+                                                </div>
+                                            </div>
+                                            <div class="main-festival-banner-ad-content-content">
+                                                <a href="" class="main-festival-banner-ad-content-content-a">신춘저자특강 - 커리어코치협회 주관 - 취업비법 정철상 교수/ 코딩진로 류채윤 대표 / 평범한 직장인 특별한 책쓰기 이주형 작가</a>
+                                            </div>
+                                            <div class="main-festival-banner-ad-cost">
+                                                <div class="main-festival-banner-ad-cost-pay">
+                                                    <span>유료</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-festival-banner-ad-button">
+                                <div class="main-festival-banner-ad-button-warp">
+                                    <div class="main-festival-banner-ad-button-container">
+                                        <!-- 버튼 -->
+                                        <button class="main-festival-button-left" type="button">
+                                            <svg class="main-festival-button-left-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"></path>
+                                            </svg>
+                                        </button>
+                                        <div class="main-festival-banner-ad-button-number">
+                                            <button class="main-festival-banner-ad-button-number-one">
+                                                <div class="main-festival-banner-ad-button-number-one-all">1</div>
+                                            </button>
+                                            <button class="main-festival-banner-ad-button-number-two">
+                                                <div class="main-festival-banner-ad-button-number-one-all">2</div>
+                                            </button>
+                                            <button class="main-festival-banner-ad-button-number-tr">
+                                                <div class="main-festival-banner-ad-button-number-one-all">3</div>
+                                            </button>
+                                        </div>
+                                        <button class="main-festival-button-right" type="button">
+                                            <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="main-festival-button-right-svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'festival/app/js/festival-detail/festival-detail-button-app.js' %}"></script>
+    <script src="{% static 'festival/app/js/festival-detail/festival-detail-like-app.js' %}"></script>
+    <script src="{% static 'festival/app/js/festival-detail/festival-detail-open-app.js' %}"></script>
+{% endblock %}
+

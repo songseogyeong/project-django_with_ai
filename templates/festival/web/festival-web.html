@@ -1,0 +1,316 @@
+{% extends 'festival/web/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="{% static 'festival/web/css/festival-web.css' %}">
+{% endblock %}
+{% block title %}지역축제{% endblock %}
+{% block content %}
+    <div class="main-festival">
+        <!-- 여기서 4개 있는거임 -->
+        <div class="main-festival-search">
+            <button class="main-festival-search-button">
+                <svg class="main-festival-search-button-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"></path>
+                </svg>
+            </button>
+            <input class="main-festival-search-input" type="text" placeholder="지역 또는 축제명을 검색하세요" />
+        </div>
+        <div class="main-festival-total">
+            [전국]
+            <span class="main-festival-total-span"></span>
+            개의 축제가 검색되었습니다.
+        </div>
+        <div class="main-festival-category">
+            <select class="main-festival-category-select">
+                <option value="">유형 선택</option>
+                <option value="1">문화관광축제</option>
+                <option value="2">일반축제</option>
+                <option value="3">전통공연</option>
+                <option value="4">연극</option>
+                <option value="5">뮤지컬</option>
+                <option value="6">오페라</option>
+                <option value="7">전시회</option>
+                <option value="8">박람회</option>
+                <option value="9">컨벤션</option>
+                <option value="10">무용</option>
+                <option value="11">클래식음악회</option>
+                <option value="12">대중콘서트</option>
+                <option value="13">영화</option>
+                <option value="14">스포츠경기</option>
+                <option value="15">기타행사</option>
+            </select>
+            <div class="main-festival-category-date">
+                <div class="main-festival-category-date-warp">
+                    <label class="main-festival-category-date-warp-label">
+                        <input class="main-festival-category-date-warp-input" type="text" placeholder="날짜를 선택하세요" />
+                        <span class="main-festival-category-date-warp-input-span">
+                            <button type="button" class="main-festival-category-date-warp-button">
+                                <svg class="main-festival-category-date-warp-button-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </span>
+                    </label>
+                    <!-- 달력 api인듯? -->
+                    <div class="main-festival-category-date-api"></div>
+                </div>
+            </div>
+            <div class="main-festival-category-date-ceheck">
+                <div class="main-festival-category-date-ceheck-left">
+                    <div>
+                        <div class="main-festival-category-date-ceheck-left-warp">
+                            <div class="main-festival-category-date-ceheck-left-container">
+                                <input id="check-left" type="checkbox" true-value="true" false-value="false" value="true" class="main-festival-category-date-ceheck-left-input" />
+                                <label class="main-festival-category-date-ceheck-left-label" for="check-left">진행중인 축제</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-festival-category-date-ceheck-right">
+                    <div>
+                        <div class="main-festival-category-date-ceheck-right-warp">
+                            <div class="main-festival-category-date-ceheck-right-container">
+                                <input id="check-right" true-value="true" false-value="false" type="checkbox" value="true" class="main-festival-category-date-ceheck-right-input" />
+                                <label class="main-festival-category-date-ceheck-right-label" for="check-right">종료 축제 포함</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 여기가 진짜임 축제 들어가는곳 -->
+        <div class="main-festival-main">
+            <!-- 여기에 div로 계속 들어감 -->
+            <div class="main-festival-main-warp">
+                <!-- 상단 -->
+                <div class="main-festival-main-warp-top">
+                    <a href="" class="main-festival-main-warp-top-a">
+                        <img src="https://tong.visitkorea.or.kr/cms/resource/49/3057649_image2_1.jpg" alt="축제사진" class="main-festival-main-warp-top-img" />
+                    </a>
+                    <div class="main-festival-main-warp-top-message">진행중</div>
+                </div>
+                <!-- 중단 -->
+                <div class="main-festival-main-warp-mid">
+                    <div class="main-festival-main-warp-mid-place">강원</div>
+                    <div class="main-festival-main-warp-mid-bet"></div>
+                    <div class="main-festival-main-warp-mid-date">
+                        <div>24년01월27일(토)</div>
+                        <div class="main-festival-main-warp-mid-date-add">~</div>
+                        <div class="main-festival-main-warp-mid-date-add">24년02월11일(일)</div>
+                    </div>
+                </div>
+                <!-- 하단 -->
+                <div class="main-festival-main-warp-bt">
+                    <a href="" class="main-festival-main-warp-bt-a">대관령눈꽃축제</a>
+                </div>
+            </div>
+            <!-- 2번째 여기부터 -->
+            <div class="main-festival-main-warp">
+                <!-- 상단 -->
+                <div class="main-festival-main-warp-top">
+                    <a href="" class="main-festival-main-warp-top-a">
+                        <img src="https://tong.visitkorea.or.kr/cms/resource/49/3057649_image2_1.jpg" alt="축제사진" class="main-festival-main-warp-top-img" />
+                    </a>
+                    <div class="main-festival-main-warp-top-message">진행중</div>
+                </div>
+                <!-- 중단 -->
+                <div class="main-festival-main-warp-mid">
+                    <div class="main-festival-main-warp-mid-place">강원</div>
+                    <div class="main-festival-main-warp-mid-bet"></div>
+                    <div class="main-festival-main-warp-mid-date">
+                        <div>24년01월27일(토)</div>
+                        <div class="main-festival-main-warp-mid-date-add">~</div>
+                        <div class="main-festival-main-warp-mid-date-add">24년02월11일(일)</div>
+                    </div>
+                </div>
+                <!-- 하단 -->
+                <div class="main-festival-main-warp-bt">
+                    <a href="" class="main-festival-main-warp-bt-a">대관령눈꽃축제</a>
+                </div>
+            </div>
+            <div class="main-festival-main-warp">
+                <!-- 상단 -->
+                <div class="main-festival-main-warp-top">
+                    <a href="" class="main-festival-main-warp-top-a">
+                        <img src="https://tong.visitkorea.or.kr/cms/resource/49/3057649_image2_1.jpg" alt="축제사진" class="main-festival-main-warp-top-img" />
+                    </a>
+                    <div class="main-festival-main-warp-top-message">진행중</div>
+                </div>
+                <!-- 중단 -->
+                <div class="main-festival-main-warp-mid">
+                    <div class="main-festival-main-warp-mid-place">강원</div>
+                    <div class="main-festival-main-warp-mid-bet"></div>
+                    <div class="main-festival-main-warp-mid-date">
+                        <div>24년01월27일(토)</div>
+                        <div class="main-festival-main-warp-mid-date-add">~</div>
+                        <div class="main-festival-main-warp-mid-date-add">24년02월11일(일)</div>
+                    </div>
+                </div>
+                <!-- 하단 -->
+                <div class="main-festival-main-warp-bt">
+                    <a href="" class="main-festival-main-warp-bt-a">대관령눈꽃축제</a>
+                </div>
+            </div>
+            <div class="main-festival-main-warp">
+                <!-- 상단 -->
+                <div class="main-festival-main-warp-top">
+                    <a href="" class="main-festival-main-warp-top-a">
+                        <img src="https://tong.visitkorea.or.kr/cms/resource/49/3057649_image2_1.jpg" alt="축제사진" class="main-festival-main-warp-top-img" />
+                    </a>
+                    <div class="main-festival-main-warp-top-message">진행중</div>
+                </div>
+                <!-- 중단 -->
+                <div class="main-festival-main-warp-mid">
+                    <div class="main-festival-main-warp-mid-place">강원</div>
+                    <div class="main-festival-main-warp-mid-bet"></div>
+                    <div class="main-festival-main-warp-mid-date">
+                        <div>24년01월27일(토)</div>
+                        <div class="main-festival-main-warp-mid-date-add">~</div>
+                        <div class="main-festival-main-warp-mid-date-add">24년02월11일(일)</div>
+                    </div>
+                </div>
+                <!-- 하단 -->
+                <div class="main-festival-main-warp-bt">
+                    <a href="" class="main-festival-main-warp-bt-a">대관령눈꽃축제</a>
+                </div>
+            </div>
+            <div class="main-festival-main-warp">
+                <!-- 상단 -->
+                <div class="main-festival-main-warp-top">
+                    <a href="" class="main-festival-main-warp-top-a">
+                        <img src="https://tong.visitkorea.or.kr/cms/resource/49/3057649_image2_1.jpg" alt="축제사진" class="main-festival-main-warp-top-img" />
+                    </a>
+                    <div class="main-festival-main-warp-top-message">진행중</div>
+                </div>
+                <!-- 중단 -->
+                <div class="main-festival-main-warp-mid">
+                    <div class="main-festival-main-warp-mid-place">강원</div>
+                    <div class="main-festival-main-warp-mid-bet"></div>
+                    <div class="main-festival-main-warp-mid-date">
+                        <div>24년01월27일(토)</div>
+                        <div class="main-festival-main-warp-mid-date-add">~</div>
+                        <div class="main-festival-main-warp-mid-date-add">24년02월11일(일)</div>
+                    </div>
+                </div>
+                <!-- 하단 -->
+                <div class="main-festival-main-warp-bt">
+                    <a href="" class="main-festival-main-warp-bt-a">대관령눈꽃축제</a>
+                </div>
+            </div>
+            <div class="main-festival-main-warp">
+                <!-- 상단 -->
+                <div class="main-festival-main-warp-top">
+                    <a href="" class="main-festival-main-warp-top-a">
+                        <img src="https://tong.visitkorea.or.kr/cms/resource/49/3057649_image2_1.jpg" alt="축제사진" class="main-festival-main-warp-top-img" />
+                    </a>
+                    <div class="main-festival-main-warp-top-message">진행중</div>
+                </div>
+                <!-- 중단 -->
+                <div class="main-festival-main-warp-mid">
+                    <div class="main-festival-main-warp-mid-place">강원</div>
+                    <div class="main-festival-main-warp-mid-bet"></div>
+                    <div class="main-festival-main-warp-mid-date">
+                        <div>24년01월27일(토)</div>
+                        <div class="main-festival-main-warp-mid-date-add">~</div>
+                        <div class="main-festival-main-warp-mid-date-add">24년02월11일(일)</div>
+                    </div>
+                </div>
+                <!-- 하단 -->
+                <div class="main-festival-main-warp-bt">
+                    <a href="" class="main-festival-main-warp-bt-a">대관령눈꽃축제</a>
+                </div>
+            </div>
+            <div class="main-festival-main-warp">
+                <!-- 상단 -->
+                <div class="main-festival-main-warp-top">
+                    <a href="" class="main-festival-main-warp-top-a">
+                        <img src="https://tong.visitkorea.or.kr/cms/resource/49/3057649_image2_1.jpg" alt="축제사진" class="main-festival-main-warp-top-img" />
+                    </a>
+                    <div class="main-festival-main-warp-top-message">진행중</div>
+                </div>
+                <!-- 중단 -->
+                <div class="main-festival-main-warp-mid">
+                    <div class="main-festival-main-warp-mid-place">강원</div>
+                    <div class="main-festival-main-warp-mid-bet"></div>
+                    <div class="main-festival-main-warp-mid-date">
+                        <div>24년01월27일(토)</div>
+                        <div class="main-festival-main-warp-mid-date-add">~</div>
+                        <div class="main-festival-main-warp-mid-date-add">24년02월11일(일)</div>
+                    </div>
+                </div>
+                <!-- 하단 -->
+                <div class="main-festival-main-warp-bt">
+                    <a href="" class="main-festival-main-warp-bt-a">대관령눈꽃축제</a>
+                </div>
+            </div>
+            <div class="main-festival-main-warp">
+                <!-- 상단 -->
+                <div class="main-festival-main-warp-top">
+                    <a href="" class="main-festival-main-warp-top-a">
+                        <img src="https://tong.visitkorea.or.kr/cms/resource/49/3057649_image2_1.jpg" alt="축제사진" class="main-festival-main-warp-top-img" />
+                    </a>
+                    <div class="main-festival-main-warp-top-message">진행중</div>
+                </div>
+                <!-- 중단 -->
+                <div class="main-festival-main-warp-mid">
+                    <div class="main-festival-main-warp-mid-place">강원</div>
+                    <div class="main-festival-main-warp-mid-bet"></div>
+                    <div class="main-festival-main-warp-mid-date">
+                        <div>24년01월27일(토)</div>
+                        <div class="main-festival-main-warp-mid-date-add">~</div>
+                        <div class="main-festival-main-warp-mid-date-add">24년02월11일(일)</div>
+                    </div>
+                </div>
+                <!-- 하단 -->
+                <div class="main-festival-main-warp-bt">
+                    <a href="" class="main-festival-main-warp-bt-a">대관령눈꽃축제</a>
+                </div>
+            </div>
+            <div class="main-festival-main-warp">
+                <!-- 상단 -->
+                <div class="main-festival-main-warp-top">
+                    <a href="" class="main-festival-main-warp-top-a">
+                        <img src="https://tong.visitkorea.or.kr/cms/resource/49/3057649_image2_1.jpg" alt="축제사진" class="main-festival-main-warp-top-img" />
+                    </a>
+                    <div class="main-festival-main-warp-top-message">진행중</div>
+                </div>
+                <!-- 중단 -->
+                <div class="main-festival-main-warp-mid">
+                    <div class="main-festival-main-warp-mid-place">강원</div>
+                    <div class="main-festival-main-warp-mid-bet"></div>
+                    <div class="main-festival-main-warp-mid-date">
+                        <div>24년01월27일(토)</div>
+                        <div class="main-festival-main-warp-mid-date-add">~</div>
+                        <div class="main-festival-main-warp-mid-date-add">24년02월11일(일)</div>
+                    </div>
+                </div>
+                <!-- 하단 -->
+                <div class="main-festival-main-warp-bt">
+                    <a href="" class="main-festival-main-warp-bt-a">대관령눈꽃축제</a>
+                </div>
+            </div>
+        </div>
+        <button class="main-festival-bt" type="button" onclick="addFestivals()">
+            <span class="main-festival-bt-span">더보기</span>
+            <svg class="main-festival-bt-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 1 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div class="main-festival-last">
+            제공:
+            <a href="" class="main-festival-last-a">한국관광공사</a>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="{% static 'festival/web/js/festival/festival-list-module.js' %}"></script>
+    <script src="{% static 'festival/web/js/festival/festival-calendar-web.js' %}"></script>
+    <script src="{% static 'festival/web/js/festival/festival-add-content-web.js' %}"></script>
+    <script src="{% static 'festival/web/js/festival/festival-list-web.js' %}"></script>
+{% endblock %}
+

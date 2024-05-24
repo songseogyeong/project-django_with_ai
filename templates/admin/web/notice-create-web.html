@@ -1,0 +1,160 @@
+{% extends 'admin/web/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'admin/web/css/notice/notice-create-web.css' %}">
+{% endblock %}
+{% block title %}틴플 :: 관리자 페이지{% endblock %}
+{% block content %}
+            <!-- 메뉴 선택할수 있는 칸 -->
+            <ul class="main-admin-select">
+                <!-- 유저관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/user/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/admin-user-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">유저 관리</span>
+                    </a>
+                </li>
+                <!-- 쪽지 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/message/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/message-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">쪽지 관리</span>
+                    </a>
+                </li>
+                <!-- 틴플레이관리 -->
+{#                <li class="main-user-other">#}
+{#                    <a href="/admin/teenplay/" class="main-user-warp">#}
+{#                        <img class="main-user-image" src="{% static 'admin/web/images/play-img.png' %}" alt="user-image" />#}
+{#                        <span class="main-user-text">틴 플레이 관리</span>#}
+{#                    </a>#}
+{#                </li>#}
+                <!-- 게시글 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/promote/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/post-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">게시글 관리</span>
+                    </a>
+                </li>
+                <!-- 전체모임 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/meeting/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/meeting-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">전체 모임관리</span>
+                    </a>
+                </li>
+                <!-- 축제관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/festival/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/festival-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">축제 관리</span>
+                    </a>
+                </li>
+                <!-- 공지사항 관리 -->
+                <li class="main-user">
+                    <a href="/admin/notice/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/loudspeaker-img.png' %}" alt="user-image" />
+                        <span class="main-user-texta">공지사항 관리</span>
+                    </a>
+                </li>
+                <!-- 댓글관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/comment/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/comment-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">댓글 관리</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- 사실상 여기만 수정하면 모든게 끝입니다! -->
+        <div class="main-festival-add">
+            <form name="notice-create-form" action="/admin/notice/write/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="main-festival-add-warp">
+                    <!-- 맨위에 작성버튼 -->
+                    <div class="main-festival-add-top">
+                        <div class="main-festival-add-top-in">
+                            <h3 class="main-festival-add-top-text">공지사항 작성하기</h3>
+                            <div class="main-festival-add-top-choice">
+                                <a href="/admin/notice/" class="main-festival-add-top-cancle-button">
+                                    <button class="main-festival-add-top-cancle-text" type="button">취소하기</button>
+                                </a>
+                                <div class="main-festival-add-top-create-text">
+                                    <button class="main-festival-add-top-create-button disabled" type="button">작성하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 썸네일 이름넣는곳 -->
+                    <!-- 축제정보 왼쪽 -->
+                    <div class="main-festival-info">
+                        <div>
+                            <div class="main-festival-info-main">
+                                <strong class="main-festival-info-main-text">공지사항 정보</strong>
+                            </div>
+                            <span class="main-festival-info-sub">공자사항에 대한 정보를 입력해주세요.</span>
+                        </div>
+                    </div>
+                    <!-- 축제정보 오른쪽 -->
+                    <div class="main-festival-info-detail">
+                        <div class="main-festival-info-detail-box">
+                            <!-- 축제 제목 -->
+                            <div>
+                                <p class="main-festival-info-detail-titel">공지사항 제목</p>
+                                <label class="main-festival-info-detail-label">
+                                    <input name="notice_title" class="main-festival-info-detail-input" placeholder="제목을 입력해주세요" type="text" value="" />
+                                </label>
+                                <!-- 값 미입력시 -->
+                                <div id="red-title" class="hidden">
+                                    <div class="redbox">
+                                        <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                        </svg>
+                                        값을 입력해주세요.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 공지 내용 입력  -->
+                            <div>
+                                <p class="main-festival-info-subtitle">공지사항 내용</p>
+                                <textarea name="notice_content" class="main-festival-info-detail-textarea" placeholder="내용을 입력해주세요"></textarea>
+                                <!-- 값 미입력시 -->
+                                <div id="red-content" class="hidden">
+                                    <div class="redbox">
+                                        <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                        </svg>
+                                        값을 입력해주세요.
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="main-festival-info-categoty-titel">공지사항 카테고리</p>
+                                <div class="main-festival-add-radio">
+                                    <div class="main-festival-box">
+                                        <input type="radio" id="radio-notice" name="notice_type" value="0"/>
+                                        <label data-id="0" style="cursor: pointer">공지사항</label>
+                                    </div>
+                                    <div class="main-festival-box">
+                                        <input type="radio" id="radio-qr" name="notice_type" value="1"/>
+                                        <label data-id="1" style="cursor: pointer">자주묻는질문</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 추가로 경계 -->
+                    <hr class="main-festival-line" />
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock %}
+{% block js %}
+    <script>
+        const csrf_token = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'admin/web/js/notice/notice-create/admin-notice-create-web.js' %}"></script>
+{#    <script src="{% static 'admin/web/js/notice/admin-notice-module-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/notice/notice-create/admin-notice-create-button-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/notice/notice-create/admin-notice-create-redbox-web.js' %}"></script>#}
+{% endblock %}

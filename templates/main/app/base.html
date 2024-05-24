@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'public/app/css/header-app.css' %}">
+    <link rel="stylesheet" href="{% static 'public/app/css/footer-app.css' %}">
+    <link rel="shortcut icon" href="{% static 'public/app/images/logo/logo1.png' %}" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport" />
+    {% block static %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body loaded style="position: relative; min-height: 100%; top: 0px">
+    {% include 'fix/app/header-app.html' %}
+    {% block content %}{% endblock %}
+    {% include 'fix/app/footer-app.html' %}
+</body>
+<script src="{% static 'public/app/js/header-app.js' %}"></script>
+{% block js %}{% endblock %}
+</html>

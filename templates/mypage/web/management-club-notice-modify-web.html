@@ -1,0 +1,87 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/web/css/management-club-notice-write-web.css' %}">
+{% endblock %}
+{% block title %}틴플:: 모임 공지사항 수정하기{% endblock %}
+{% block content %}
+    <body style="position: relative; min-height: 100%; top: 0px">
+    <!-- 헤더 부분 -->
+    <header></header>
+    <!-- 메인 부분(모임 홍보쪽 해더) -->
+    <main class="main">
+        <!-- 헤더 밑의 모임 관리 관련 서브헤더 -->
+        <div class="sud-header-wrap">
+            <div class="sud-header-container">
+                <div class="sud-header-box">
+                    <!-- 모임 개요 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-club/{{ club_id }}">모임 개요</a>
+                    <!-- 구성원 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-member/{{ club_id }}">구성원</a>
+                    <!-- 모임 공지사항 페이지 주소 필요 -->
+                    <a class="sud-header-category select-category" href="/member/mypage-notice/{{ club_id }}">모임 공지사항</a>
+                    <!-- 모임 설정 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-setting/{{ club_id }}">모임 설정</a>
+                </div>
+                <!-- 모임 상세페이지 주소 필요 -->
+                <a class="club-detail-link" href="/club/detail/?id={{ club_id }}" target="_blank">
+                    <span>모임 페이지 바로가기</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="move-svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <!-- 공지사항 작성하는 공간 -->
+        <form class="notice-write-form" name="notice-write" method="post"
+              action="/member/mypage-notice-modify/{{ club_id }}/?id={{ clubNotice.id }}">
+            {% csrf_token %}
+            <div class="notice-write-msg-wrap">
+                <div class="notice-write-msg-container">
+                    <div class="notice-write-msg-boxes">
+                        <div class="notice-write-msg-title-wrap">
+                            <span>모임 공지사항 수정하기</span>
+                        </div>
+                        <div class="notice-write-msg-desc">모임의 구성원들에게 공지해주세요!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="notice-write-input-wrap">
+                <div class="notice-write-buttons-wrap">
+                    <a href="/member/mypage-notice/{{ club_id }}" class="notice-write-back-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                             class="notice-write-back-icon">
+                            <path fill-rule="evenodd"
+                                  d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="notice-write-back-text">돌아가기</span>
+                    </a>
+                    <div>
+                        <button class="notice-write-button" disabled>수정완료</button>
+                    </div>
+                </div>
+                <div class="notice-write-title-wrap">
+                    <div class=""></div>
+                    <input type="text" name="title" class="notice-write-title" required placeholder="제목을 입력하세요"
+                           value="{{ clubNotice.notice_title }}"/>
+                </div>
+                <div class="notice-write-content-wrap">
+                    <textarea name="content" rows="10" class="notice-write-content" required
+                              placeholder="구성원들에게 어떤 내용을 알리고 싶나요?">{{ clubNotice.notice_content }}</textarea>
+                </div>
+            </div>
+        </form>
+    </main>
+    <!-- 푸터 부분 -->
+    <footer></footer>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const club_id = '{{ club_id }}';
+    </script>
+    <script src="{% static 'member/web/js/management-club-notice-write-web.js' %}"></script>
+{% endblock %}

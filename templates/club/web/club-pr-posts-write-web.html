@@ -1,0 +1,115 @@
+{% extends 'club/web/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'club/web/css/club-pr-posts-write-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플 :: 홍보글 작성하기{% endblock %}
+
+{% block main %}
+    <main class="pr-write-main">
+        <form action="{% url 'club:pr-post-write' %}" method="post" name="write" enctype="multipart/form-data" class="pr-write-form">
+            {% csrf_token %}
+            <div class="pr-write-msg-wrap">
+                <div class="pr-write-msg-container">
+                    <div class="pr-write-msg-boxes">
+                        <div class="pr-write-msg-title-wrap">
+                            <span>모임 홍보글 작성하기</span>
+                        </div>
+                        <div class="pr-write-msg-desc">틴친들에게 우리 모임을 홍보해주세요!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pr-write-input-wrap">
+                <div class="pr-write-buttons-wrap">
+                    <a href="{% url 'club:pr-post-list' %}" class="pr-write-back-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="pr-write-back-icon">
+                            <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="pr-write-back-text">돌아가기</span>
+                    </a>
+                    <span class="club-name">{{ club_name }}</span>
+                    <div>
+                        <button class="pr-write-button" disabled>작성완료</button>
+                    </div>
+                </div>
+                <div class="pr-write-title-wrap">
+                    <select name="category" class="pr-write-fields" required>
+                        <option value class="pr-write-default">카테고리</option>
+                        <option value="문화·예술">문화·예술</option>
+                        <option value="운동·액티비티">운동·액티비티</option>
+                        <option value="푸드·드링크">푸드·드링크</option>
+                        <option value="취미">취미</option>
+                        <option value="여행·동행">여행·동행</option>
+                        <option value="성장·자기개발">성장·자기개발</option>
+                        <option value="동네·또래">동네·또래</option>
+                        <option value="연애·소개팅">연애·소개팅</option>
+                        <option value="재테크">재테크</option>
+                        <option value="외국어">외국어</option>
+                        <option value="스터디">스터디</option>
+                        <option value="기타">기타</option>
+                    </select>
+                    <input type="text" name="title" class="pr-write-title" required placeholder="제목을 입력하세요" />
+                </div>
+                <div class="pr-write-content-wrap">
+                    <textarea name="content" rows="10" class="pr-write-content" required placeholder="틴친들에게 어떤 내용을 알리고 싶나요?"></textarea>
+                </div>
+                <div class="pr-write-image-wrap">
+                    <div class="pr-write-image-container">
+                        <input type="file" class="pr-write-image-hidden" hidden name="image" accept="image/png, image/jpeg, image/jpg" />
+                        <div>
+                            <div class="pr-write-image-msg-wrap">
+                                <div class="pr-write-image-msg">이미지 업로드</div>
+                                <span class="pr-write-image-modal-wrap">
+                                    <button class="pr-write-image-modal-btn" type="button">ⓘ</button>
+                                    <div class="pr-write-image-modal-container">
+                                        <div class="pr-write-image-modal-boxes">
+                                            <div class="pr-write-image-modal">업로드한 이미지는 게시글 상단에 표시됩니다.</div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="pr-write-error">이미지를 업로드하셔야 합니다.</div>
+                            <div class="pr-write-size-error">10MB 이하의 이미지만 첨부할 수 있습니다.</div>
+                        </div>
+                        <div class="pr-write-box-wrap">
+                            <div class="pr-write-box-container">
+                                <div>
+                                    <button class="pr-write-box-button" type="button">파일 선택</button>
+                                </div>
+                                <div class="pr-write-box-text-wrap">
+                                    <div class="pr-write-box-text">(최대 10MB)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pr-write-uploaded-image-wrap">
+                            <div class="pr-write-uploaded-image-container">
+                                <div class="pr-file-name-wrap">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="pr-file-icon">
+                                            <path fill-rule="evenodd" d="M18.97 3.659a2.25 2.25 0 00-3.182 0l-10.94 10.94a3.75 3.75 0 105.304 5.303l7.693-7.693a.75.75 0 011.06 1.06l-7.693 7.693a5.25 5.25 0 11-7.424-7.424l10.939-10.94a3.75 3.75 0 115.303 5.304L9.097 18.835l-.008.008-.007.007-.002.002-.003.002A2.25 2.25 0 015.91 15.66l7.81-7.81a.75.75 0 011.061 1.06l-7.81 7.81a.75.75 0 001.054 1.068L18.97 6.84a2.25 2.25 0 000-3.182z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="pr-file-name"></div>
+                                </div>
+                                <div class="pr-file-info-wrap">
+                                    <div class="pr-file-size">68.28kb</div>
+                                    <button class="pr-remove-btn" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="pr-file-remove-icon">
+                                            <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd"></path
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="club_id" value="{{ club_id }}">
+        </form>
+    </main>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'club/web/js/club-pr-posts-write-web.js' %}"></script>
+{% endblock %}

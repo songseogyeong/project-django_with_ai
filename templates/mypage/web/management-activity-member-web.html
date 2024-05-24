@@ -1,0 +1,337 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+     <link rel="stylesheet" href="{% static 'member/web/css/management-activity-member-web.css' %}">
+{% endblock %}
+{% block title %}틴플:: 모임 참가자 관리{% endblock %}
+{% block content %}
+    <body style="position: relative; min-height: 100%; top: 0px">
+        <!-- 헤더 부분 -->
+        <header></header>
+        <!-- 메인 부분(모임 홍보쪽 해더) -->
+        <main class="main">
+            <!-- 헤더 밑의 모임 관리 관련 서브헤더 -->
+            <div class="sud-header-wrap">
+                <div class="sud-header-container">
+                    <div class="sud-header-box">
+                        <!-- 모임 개요 페이지 주소 필요 -->
+                        <a class="sud-header-category" href="/member/activity/?activity_id={{ activity_id}}">활동 개요</a>
+                        <!-- 구성원 페이지 주소 필요 -->
+                        <a class="sud-header-category select-category" href="/member/activity-member/?activity_id={{ activity_id }}">참가자</a>
+                        <!-- 모임 공지사항 페이지 주소 필요 -->
+                        <a class="sud-header-category" href="/member/activity-edit/?activity_id={{ activity_id }}">활동 수정</a>
+                    </div>
+                    <!-- 모임 상세페이지 주소 필요 -->
+                    <a class="clup-detail-link" href="/activity/detail/?id={{ activity_id }}" target="_blank">
+                        <span>활동 페이지 바로가기</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="move-svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <!-- 구성원 관리 메인 서비스 -->
+            <div class="member-management-wrap">
+                <div class="member-management-container">
+                    <div class="member-management-title">
+                        <div class="member-management-title-items">
+                            <div class="member-management-title-item">
+                                <span>참가자</span>
+                            </div>
+                            <div class="member-management-intro">활동 참가자들을 관리해 보세요.</div>
+                        </div>
+                    </div>
+                    <div class="member-search-box">
+                        <select class="member-status-box" name="status" id="">
+                            <option value="">전체 상태</option>
+                            <option value="waiting">참가대기</option>
+                            <option value="attending">참가중</option>
+                        </select>
+                        <div>
+                            <input class="member-search-input" type="text" name="" id="member-search-input" autocomplete="off" placeholder="이름,이메일" />
+                        </div>
+                    </div>
+                    <div class="member-management-assistance">
+                        <!-- (전체 구성원 수)개중 (페이지수)-(해당 페이지에 구성원 수)개 -->
+                        <div class="count-on-page"></div>
+                        <div class="send-letter-box">
+                            <span class="checked-member-contents">
+                                <span>현재 선택된 참가자</span>
+                                <!-- 선택된 인원 수 표시 -->
+                                <span class="checked-member-count">명</span>
+                            </span>
+                            <span class="send-to-checked-member">쪽지 보내기</span>
+                        </div>
+                    </div>
+                    <div class="member-list-box">
+                        <div class="member-list">
+                            <!-- 항목 리스트 -->
+                            <div class="list-categories">
+                                <div class="checked-all-category">전체선택</div>
+                                <div class="member-name-category">이름</div>
+                                <div class="member-email-category">이메일</div>
+                                <div class="member-age-gender-category">연령/성별</div>
+                                <div class="member-interest-filed-category">관심분야</div>
+                                <div class="member-status-category">상태</div>
+                                <div class="member-join-date-category">신청일</div>
+                                <div class="member-secession-category">취소하기</div>
+                            </div>
+                            <!-- 맴버 정보 리스트 -->
+                            <div class="member-info-details">
+                                
+                                
+                            </div>
+                            <!-- 페이지네이션 버튼 부분(1페이지당 6개) -->
+                            <div class="pagination-wrap">
+                                <div class="pagination-container">
+                                    <div class="pagination-box">
+                                        <button class="next-btn" type="button" id="leftButton">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="left-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                        <div class="pagination-number-box" id="pageButtons">
+
+                                        </div>
+                                        <button class="next-btn" type="button" id="rightButton">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="right-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 푸터 부분 -->
+        <footer></footer>
+        <!-- 모달 모은 부분 -->
+        <div>
+            <!-- 선택된 구성원이 없을 경우 나타나는 모달 -->
+            <div class="none-modal-wrap">
+                <div class="none-modal-shadow"></div>
+                <div class="none-modal-container">
+                    <div class="none-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="none-modal-title">구성원을 선택해주세요.</div>
+                            </h2>
+                        </div>
+                        <div class="none-modal-btn-box">
+                            <button class="none-modal-close-btn" type="button">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 쪽지 작성 모달 -->
+            <div class="send-modal-wrap">
+                <div class="send-modal-shadow"></div>
+                <div class="send-modal-container">
+                    <div class="send-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="send-modal-title">쪽지 보내기</div>
+                            </h2>
+                        </div>
+                        <div class="sender-receiver-box">
+                            <div class="sender-box">
+                                <div class="sender-title">보낸 사람</div>
+                                <!-- 회원의 이름과 이메일이 필요 -->
+                                <div class="send-sender-email">{{ request.session.member.member_nickname }}({{ request.session.member.member_email }})</div>
+                            </div>
+                            <div class="receiver-box">
+                                <div class="receiver-title">받는 사람</div>
+                                <!-- 형식: 아무개(example@sample.com) -->
+                                <div class="send-receiver-email"></div>
+                            </div>
+                        </div>
+                        <div class="letter-content-area">
+                            <!-- 쪽지 내용 필요 -->
+                            <textarea name="send-content" rows="10" placeholder="쪽지의 내용을 작성해 주세요."></textarea>
+                        </div>
+                        <div class="modal-btn-box">
+                            <button class="send-close-btn" type="button">닫기</button>
+                            <button class="send-check-btn" type="button" disabled>보내기</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 보내기 클릭 시 확인 모달 -->
+                <div class="check-modal-container" style="display: none">
+                    <div class="check-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="send-check-svg-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="send-check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="modal-header-title">쪽지가 전송 되었습니다.</div>
+                            </h2>
+                        </div>
+                        <div class="check-modal-btn-box">
+                            <button class="check-btn" type="button">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 취소 버튼 클릭 시 나타나는 모달 -->
+            <div class="kick-out-modal-wrap">
+                <div class="kick-out-modal-shadow"></div>
+                <div class="kick-out-modal-container">
+                    <div class="kick-out-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <!-- 예시) 서경덕님의 활동 참여를 취소하시겠습니까? -->
+                                <div class="kick-out-modal-title"></div>
+                            </h2>
+                        </div>
+                        <div class="kick-out-modal-btn-box">
+                            <button class="kick-out-modal-cancle-btn" type="button">취소</button>
+                            <button class="kick-out-btn" type="button">취소하기</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 취소하기 클릭시 나오는 모달 -->
+                <div class="kick-out-check-modal-container" style="display: none">
+                    <div class="kick-out-check-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="kick-out-check-svg-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="kick-out-check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <!-- 예시) 서경덕님의 활동 참여를 취소했습니다. -->
+                                <div class="modal-header-title"></div>
+                            </h2>
+                        </div>
+                        <div class="kick-out-check-modal-btn-box">
+                            <button class="kick-out-check-btn" type="button">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 참가대기 버튼 클릭 시 나타나는 모달 -->
+            <div class="join-modal-wrap">
+                <div class="join-modal-shadow"></div>
+                <div class="join-modal-container">
+                    <div class="join-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <!-- 예시) 서경덕님의 참가를 승인하시겠습니까? -->
+                                <div class="join-modal-title"></div>
+                            </h2>
+                        </div>
+                        <div class="join-modal-btn-box">
+                            <button class="join-modal-cancle-btn" type="button">취소</button>
+                            <button class="join-btn" type="button">승인하기</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 승인하기 클릭시 나오는 모달 -->
+                <div class="join-check-modal-container" style="display: none">
+                    <div class="join-check-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="join-check-svg-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="join-check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <!-- 예시) 서경덕님의 참가를 승인했습니다. -->
+                                <div class="modal-header-title"></div>
+                            </h2>
+                        </div>
+                        <div class="join-check-modal-btn-box">
+                            <button class="join-check-btn" type="button">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 참가중 버튼 클릭 시 나타나는 모달 -->
+            <div class="stop-modal-wrap">
+                <div class="stop-modal-shadow"></div>
+                <div class="stop-modal-container">
+                    <div class="stop-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <!-- 예시) 서경덕님의 상태를 변경하시겠습니까? -->
+                                <div class="stop-modal-title"></div>
+                            </h2>
+                        </div>
+                        <div class="stop-modal-btn-box">
+                            <button class="stop-modal-cancle-btn" type="button">취소</button>
+                            <button class="stop-btn" type="button">변경하기</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 변경하기 클릭시 나오는 모달 -->
+                <div class="stop-check-modal-container" style="display: none">
+                    <div class="stop-check-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="stop-check-svg-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="stop-check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <!-- 예시) 서경덕님의 상태를 변경했습니다. -->
+                                <div class="modal-header-title"></div>
+                            </h2>
+                        </div>
+                        <div class="stop-check-modal-btn-box">
+                            <button class="stop-check-btn" type="button">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script>
+            
+    const csrf_Token = '{{ csrf_token }}';
+    const member_id = '{{ request.session.member.id }}'
+    const activity_id = '{{ activity_id }}'
+
+    const statussel = document.querySelector(".member-status-box");
+    let member_status = '';
+    statussel.addEventListener("change", async (e)=> {
+    member_status = statussel.value;
+    page = 1
+    currentPage = 1
+    await activityMemberService.getList(member_id, page,activity_id,member_status,search, showList).then((text) => {
+    inner.innerHTML = text;
+    updatePageButtons();
+    insertCheckedMemberCount();
+});
+});
+    
+    let search = '';
+    const textInsert = document.getElementById("member-search-input");
+    textInsert.addEventListener("keyup", async (e) => {
+        if (e.keyCode  === 13 ) {
+            search = textInsert.value;  // 수정: 변수에 입력된 텍스트 할당
+            console.log(search);  // 예시: 할당된 값을 콘솔에 출력
+            textInsert.value = ''
+            page = 1
+            currentPage = 1
+            await activityMemberService.getList(member_id, page,activity_id,member_status,search, showList).then((text) => {
+            inner.innerHTML = text;
+            updatePageButtons();
+            insertCheckedMemberCount();
+            });
+            
+        }
+    });
+
+    </script>
+    <script src="{% static 'member/web/js/management-activity-module-module-web.js'%}"></script>
+    <script src="{% static 'member/web/js/management-activity-member-web.js'%}"></script>
+{% endblock %}

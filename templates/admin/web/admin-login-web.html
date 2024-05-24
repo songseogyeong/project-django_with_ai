@@ -1,0 +1,54 @@
+{% extends 'admin/web/base-login-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'admin/web/css/login/admin-login-web.css' %}">
+{% endblock %}
+{% block title %}틴플 :: 관리자 로그인{% endblock %}
+{% block content %}
+    <div class="admin-login">
+        <div class="admin-login-warp">
+            <img class="main-login-logo" src="{% static 'public/web/images/logo/logo2.png' %}" alt="틴플로고" />
+            <div class="main-login-explain">틴플레이 관리자 페이지입니다.</div>
+            <form action="/admin/login/" method="post" name="admin-login-form">
+                {% csrf_token %}
+                <input name="admin_id" oninput="updateButtonStatus()" type="text" class="main-login-id" maxlength="20" placeholder="아이디" />
+                <div id="red-id" class="hidden">
+                    <div class="redbox">
+                        <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                        </svg>
+                        아이디를 입력해주세요.
+                    </div>
+                </div>
+                <div class="pw-box">
+                    <input name="admin_password" oninput="updateButtonStatus()" type="password" class="main-login-pw" maxlength="20" placeholder="비밀번호" />
+                    <span class="main-login-pw-show" onclick="togglePasswordVisibility()"></span>
+                </div>
+                <div id="red-pw" class="hidden">
+                    <div class="redbox">
+                        <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                        </svg>
+                        비밀번호를 입력해주세요.
+                    </div>
+                </div>
+                <button class="main-login-button">로그인</button>
+            </form>
+        </div>
+    </div>
+    <div id="admin-message-modal" class="hidden">
+        <h4 class="admin-message-modal-title">회원정보를 잘못입력하였습니다.</h4>
+        <div class="admin-message-modal-button">
+            <div class="admin-message-modal-left">
+                <button class="admin-message-modal-left-button" id="modalCloseButton">닫기</button>
+            </div>
+        </div>
+    </div>
+    <div id="admin-message-modal-backdrop" class="hidden"></div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'admin/web/js/login/admin-login-button-web.js' %}"></script>
+    <script src="{% static 'admin/web/js/login/admin-login-hide-web.js' %}"></script>
+    <script src="{% static 'admin/web/js/login/admin-login-login-web.js' %}"></script>
+    <script src="{% static 'admin/web/js/login/admin-login-redbox-web.js' %}"></script>
+{% endblock %}

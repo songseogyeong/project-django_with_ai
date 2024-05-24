@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>틴플 :: 쪽지 목록</title>
+        <link rel="shortcut icon" href="/staticfiles/images/teenplay_logo/logo1.png" type="image/x-icon" />
+        <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/staticfiles/css/mypage/app/my-letter-app.css" />
+    </head>
+    <body loaded style="position: relative; min-height: 100%; top: 0px">
+        <!-- 마이페이지 헤더 부분 -->
+        <header></header>
+        <!-- 메인 부분 -->
+        <main class="mypage-main">
+            <div class="mypage-wrap">
+                <div>
+                    <div class="mypage-container">
+                        <div class="mypage-box">
+                            <div class="contents">
+                                <div class="service-title-box">
+                                    <div style="display: flex">
+                                        <div class="service-title">쪽지 목록</div>
+                                        <div style="padding-left: 167px">
+                                            <button class="send-letter-btn" type="button">쪽지 보내기</button>
+                                        </div>
+                                    </div>
+                                    <div class="tab-list-box">
+                                        <div>
+                                            <div>
+                                                <div class="tab-list-contents">
+                                                    <div>
+                                                        <button class="tab-list-btn" type="button">
+                                                            <span>전체</span>
+                                                            <span> ↓ </span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="tab-list">
+                                                        <a class="tab">전체</a>
+                                                        <a class="tab">내가 보낸 쪽지</a>
+                                                        <a class="tab">내가 받은 쪽지</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="letter-box">
+                                    <table class="letter-table">
+                                        <tbody>
+                                            <tr class="letter-items">
+                                                <th class="letter-item-content">내용</th>
+                                                <th class="letter-item-sender">보낸 사람</th>
+                                                <!-- <th class="letter-item-receiver">받는 사람</th> -->
+                                                <th class="letter-item-time">날짜</th>
+                                                <th class="letter-item-gab"></th>
+                                            </tr>
+                                            <tr class="letter-details">
+                                                <td class="letter-content">
+                                                    <a class="letter-text" type="button">나는 오늘도 남지않고 도망간다~ 잘 있어라~</a>
+                                                </td>
+                                                <td class="letter-sender">양현</td>
+                                                <td class="letter-receiver">조관익</td>
+                                                <td class="letter-write-time">02/05</td>
+                                                <!-- 도시락 버튼 -->
+                                                <th class="comment-setting">
+                                                    <div>
+                                                        <button type="button" color="transparent" class="comment-set-button">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="14" height="14" opacity="1" class="comment-set-button-style">
+                                                                <g fill="#888" fill-rule="evenodd">
+                                                                    <circle cx="4" cy="20" r="4"></circle>
+                                                                    <circle cx="20" cy="20" r="4"></circle>
+                                                                    <circle cx="36" cy="20" r="4"></circle>
+                                                                </g>
+                                                            </svg>
+                                                        </button>>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr class="letter-details">
+                                                <td class="letter-content">
+                                                    <a class="letter-text" type="button">양현씨 어디에요. 양현씨 어디에요. 양현씨 어디에요. 양현씨 어디에요. 양현씨 어디에요. 양현씨 어디에요. 양현씨 어디에요. 양현씨 어디에요.</a>
+                                                </td>
+                                                <td class="letter-sender">서경덕</td>
+                                                <td class="letter-receiver">양현</td>
+                                                <td class="letter-write-time">02/04</td>
+                                                <!-- 도시락 버튼 -->
+                                                <th class="comment-setting">
+                                                    <button type="button" color="transparent" class="comment-set-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="14" height="14" opacity="1" class="comment-set-button-style">
+                                                            <g fill="#888" fill-rule="evenodd">
+                                                                <circle cx="4" cy="20" r="4"></circle>
+                                                                <circle cx="20" cy="20" r="4"></circle>
+                                                                <circle cx="36" cy="20" r="4"></circle>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            <tr class="letter-details">
+                                                <td class="letter-content">
+                                                    <a class="letter-text" type="button">규산님 pr주신거 처리했고 닫으실 이슈랑 만들어야하는 마일스톤과 이슈 내용 알려주시면 바로 반영하겠습니다.</a>
+                                                </td>
+                                                <td class="letter-sender">송서경</td>
+                                                <td class="letter-receiver">김규산</td>
+                                                <td class="letter-write-time">02/03</td>
+                                                <!-- 도시락 버튼 -->
+                                                <th class="comment-setting">
+                                                    <button type="button" color="transparent" class="comment-set-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="14" height="14" opacity="1" class="comment-set-button-style">
+                                                            <g fill="#888" fill-rule="evenodd">
+                                                                <circle cx="4" cy="20" r="4"></circle>
+                                                                <circle cx="20" cy="20" r="4"></circle>
+                                                                <circle cx="36" cy="20" r="4"></circle>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            <tr class="letter-details">
+                                                <td class="letter-content">
+                                                    <a class="letter-text" type="button">대충 실험을 위해 긴 위시리스트가 있다고 가정하고 쓰고 싶은데 적당한 내용이 떠오르지 않아 적당히 적어보는 내용입니다.</a>
+                                                </td>
+                                                <td class="letter-sender">서경덕</td>
+                                                <td class="letter-receiver">양현</td>
+                                                <td class="letter-write-time">02/03</td>
+                                                <!-- 도시락 버튼 -->
+                                                <th class="comment-setting">
+                                                    <button type="button" color="transparent" class="comment-set-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="14" height="14" opacity="1" class="comment-set-button-style">
+                                                            <g fill="#888" fill-rule="evenodd">
+                                                                <circle cx="4" cy="20" r="4"></circle>
+                                                                <circle cx="20" cy="20" r="4"></circle>
+                                                                <circle cx="36" cy="20" r="4"></circle>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            <tr class="letter-details">
+                                                <td class="letter-content">
+                                                    <a class="letter-text" type="button">대충 실험을 위해 긴 위시리스트가 있다고 가정하고 쓰고 싶은데 적당한 내용이 떠오르지 않아 적당히 적어보는 내용입니다.</a>
+                                                </td>
+                                                <td class="letter-sender">서경덕</td>
+                                                <td class="letter-receiver">양현</td>
+                                                <td class="letter-write-time">02/03</td>
+                                                <!-- 도시락 버튼 -->
+                                                <th class="comment-setting">
+                                                    <button type="button" color="transparent" class="comment-set-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="14" height="14" opacity="1" class="comment-set-button-style">
+                                                            <g fill="#888" fill-rule="evenodd">
+                                                                <circle cx="4" cy="20" r="4"></circle>
+                                                                <circle cx="20" cy="20" r="4"></circle>
+                                                                <circle cx="36" cy="20" r="4"></circle>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            <tr class="letter-details">
+                                                <td class="letter-content">
+                                                    <a class="letter-text" type="button">대충 실험을 위해 긴 내용이 있다고 가정하고 쓰고 싶은데 적당한 내용이 떠오르지 않아 적당히 적어보는 내용입니다. 아무리 생각해도 길게 적을 만한게 없어서 최대한 말을 늘려서 적으려고 노력하고 있습니다. 모달 만든 사람 진짜... 하... 어떤 내용을 적는게 좋을까요?</a>
+                                                </td>
+                                                <td class="letter-sender">서경덕</td>
+                                                <td class="letter-receiver">양현</td>
+                                                <td class="letter-write-time">02/03</td>
+                                                <!-- 도시락 버튼 -->
+                                                <th class="comment-setting">
+                                                    <button type="button" color="transparent" class="comment-set-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="14" height="14" opacity="1" class="comment-set-button-style">
+                                                            <g fill="#888" fill-rule="evenodd">
+                                                                <circle cx="4" cy="20" r="4"></circle>
+                                                                <circle cx="20" cy="20" r="4"></circle>
+                                                                <circle cx="36" cy="20" r="4"></circle>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            <tr class="letter-details">
+                                                <td class="letter-content">
+                                                    <a class="letter-text" type="button">대충 실험을 위해 긴 위시리스트가 있다고 가정하고 쓰고 싶은데 적당한 내용이 떠오르지 않아 적당히 적어보는 내용입니다.</a>
+                                                </td>
+                                                <td class="letter-sender">서경덕</td>
+                                                <td class="letter-receiver">양현</td>
+                                                <td class="letter-write-time">02/03</td>
+                                                <!-- 도시락 버튼 -->
+                                                <th class="comment-setting">
+                                                    <button type="button" color="transparent" class="comment-set-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="14" height="14" opacity="1" class="comment-set-button-style">
+                                                            <g fill="#888" fill-rule="evenodd">
+                                                                <circle cx="4" cy="20" r="4"></circle>
+                                                                <circle cx="20" cy="20" r="4"></circle>
+                                                                <circle cx="36" cy="20" r="4"></circle>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            <tr class="letter-details">
+                                                <td class="letter-content">
+                                                    <a class="letter-text" type="button">대충 실험을 위해 긴 내용이 있다고 가정하고 쓰고 싶은데 적당한 내용이 떠오르지 않아 적당히 적어보는 내용입니다. 아무리 생각해도 길게 적을 만한게 없어서 최대한 말을 늘려서 적으려고 노력하고 있습니다. 어떤 내용을 적는게 좋을까요?</a>
+                                                </td>
+                                                <td class="letter-sender">서경덕</td>
+                                                <td class="letter-receiver">양현</td>
+                                                <td class="letter-write-time">02/01</td>
+                                                <!-- 도시락 버튼 -->
+                                                <th class="comment-setting">
+                                                    <button type="button" color="transparent" class="comment-set-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" width="14" height="14" opacity="1" class="comment-set-button-style">
+                                                            <g fill="#888" fill-rule="evenodd">
+                                                                <circle cx="4" cy="20" r="4"></circle>
+                                                                <circle cx="20" cy="20" r="4"></circle>
+                                                                <circle cx="36" cy="20" r="4"></circle>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="test">아직 주고 받은 쪽지가 없습니다.</div>
+                                <!-- 페이지네이션 1페이지에 10개 -->
+                                <div class="pagination-box">
+                                    <div class="pagination-contents">
+                                        <div class="pagination-items">
+                                            <button class="prev-btn disabled" type="button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="left-arrow-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="page-numbers">
+                                                <button class="page-number-btn focus-page" type="button">
+                                                    <div class="page-number">1</div>
+                                                </button>
+                                                <button class="page-number-btn" type="button">
+                                                    <div class="page-number">2</div>
+                                                </button>
+                                                <button class="page-number-btn" type="button">
+                                                    <div class="page-number">3</div>
+                                                </button>
+                                                <button class="page-number-btn" type="button">
+                                                    <div class="page-number">4</div>
+                                                </button>
+                                                <button class="page-number-btn" type="button">
+                                                    <div class="page-number">5</div>
+                                                </button>
+                                                <!-- <button class="page-number-btn" type="button">
+                                                    <div class="page-number">...</div>
+                                                </button> -->
+                                            </div>
+                                            <button class="next-btn" type="button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="right-arrow-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 푸터 부분 -->
+        <footer></footer>
+        <!-- 모달 모아놓은 부분 -->
+        <div>
+            <!-- 쪽지 삭제 모달창 -->
+            <div class="comment-modal-wrap hidden">
+                <div class="comment-modal-bg"></div>
+                <div class="comment-modal-container">
+                    <div class="comment-menu-open-wrap app" aria-labelledby="main-wishlist-content-menu" role="menu" tabindex="0" data-headlessui-state="open">
+                        <div class="comment-menu-open-container app" role="none">
+                            <div class="comment-menu-open-divison app" role="none">
+                                <button class="comment-menu-open-choice app" type="button" id="comment-menu-open-delete" role="menuitem" tabindex="-1">삭제</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 삭제 모달 부분 -->
+            <!-- <div class="delete-modal-wrap">
+                <div class="delete-modal-shadow"></div>
+                <div class="delete-modal-container">
+                    <div class="delete-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="check-svg-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="modal-header-title">정말 해당 쪽지를 삭제하시겠습니까?</div>
+                            </h2>
+                        </div>
+                        <div class="modal-btn-box">
+                            <button class="close-btn" type="button">닫기</button>
+                            <button class="check-btn" type="button">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 쪽지 작성 모달 -->
+            <div class="send-modal-wrap">
+                <div class="send-modal-shadow"></div>
+                <div class="send-modal-container">
+                    <div class="send-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="send-modal-title">쪽지 보내기</div>
+                            </h2>
+                        </div>
+                        <div class="sender-receiver-box">
+                            <div class="sender-box">
+                                <div class="sender-title">보낸 사람</div>
+                                <!-- 회원의 이름과 이메일이 필요 -->
+                                <div class="send-sender-email" type="text">아무개(example@sample.com)</div>
+                            </div>
+                            <div class="receiver-box">
+                                <div class="receiver-title">받는 사람</div>
+                                <!-- 형식: 아무개(example@sample.com) -->
+                                <input class="send-receiver-email" autocomplete="off" type="text" placeholder="example@sample.com"></input>
+                            </div>
+                        </div>
+                        <div class="letter-content-area">
+                            <!-- 쪽지 내용 필요 -->
+                            <textarea name="send-content" rows="10" placeholder="쪽지의 내용을 작성해 주세요."></textarea>
+                        </div>
+                        <div class="modal-btn-box">
+                            <button class="send-close-btn" type="button">닫기</button>
+                            <button class="send-check-btn" type="button">보내기</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="check-modal-container" style="display: none;">
+                    <div class="check-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="send-check-svg-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="send-check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="modal-header-title">쪽지가 전송 되었습니다.</div>
+                            </h2>
+                        </div>
+                        <div class="check-modal-btn-box">
+                            <button class="check-btn" type="button">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 쪽지 상세보기 모달 -->
+            <div class="letter-modal-wrap">
+                <div class="letter-modal-shadow"></div>
+                <div class="letter-modal-container">
+                    <div class="letter-modal-box">
+                        <div>
+                            <h2 class="modal-header-box">
+                                <div class="letter-modal-title">쪽지 상세보기</div>
+                            </h2>
+                        </div>
+                        <div class="sender-receiver-box">
+                            <div class="sender-box">
+                                <div class="sender-title">보낸 사람</div>
+                                <!-- 형식: 아무개(example@sample.com) -->
+                                <div class="sender-email"></div>
+                            </div>
+                            <div class="receiver-box">
+                                <div class="receiver-title">받는 사람</div>
+                                <!-- 형식: 아무개(example@sample.com) -->
+                                <div class="receiver-email"></div>
+                            </div>
+                            <div class="write-time-box">
+                                <div class="write-time-title">작성 날짜</div>
+                                <!-- 형식: 21-02-05 (16:40) -->
+                                <div class="write-time"></div>
+                            </div>
+                        </div>
+                        <div class="letter-content-area">
+                            <!-- 쪽지 내용 필요 -->
+                            <textarea name="letter-content" rows="10" readonly disabled></textarea>
+                        </div>
+                        <div class="modal-btn-box">
+                            <button class="close-btn" type="button">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/staticfiles/js/mypage/app/my-letter-app.js"></script>
+</html>

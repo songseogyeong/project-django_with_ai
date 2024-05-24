@@ -1,0 +1,1820 @@
+{% extends 'main/app/base.html' %}
+{% load static %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'public/app/css/main-app.css' %}" />
+{% endblock %}
+{% block content %}
+    <!-- 메인 부분 -->
+    <main class="main">
+        <div>
+            <div class="sections-wrap">
+                <section class="slide-banner-section">
+                    <div class="slide-banner-wrap">
+                        <div class="slide-banner-container">
+                            <div class="slide-banner-box">
+                                <!-- 첫번째 베너 -->
+                                <div class="slide-content-wrap">
+                                    <div class="slide-content-container">
+                                        <img class="slide-content-background" alt=" KYOBO x 창업도약패키지" src="{% static 'public/app/images/main/main-app-banner01.png' %}" />
+                                        <div class="slide-text-content">
+                                            <!-- 해당 축제 링크 필요 -->
+                                            <a class="slide-text-link" href="" target="_blank" ondragstart="return false">
+                                                <div class="slide-text-box">
+                                                    <div>
+                                                        <div class="festival-title">KYOBO x 창업도약패키지</div>
+                                                        <div class="festival-contents">
+                                                            사업설명회 : 24. 2. 19.(월) 15:00 / 광화문 교보생명빌딩 17층 이노스테이지
+                                                            <br />
+                                                            협업분야 : 보험·AI
+                                                        </div>
+                                                    </div>
+                                                    <div class="festival-info">
+                                                        <div>2024. 01. 30.(화) ~ 2024. 02. 23.(금)</div>
+                                                        <div>온라인 접수</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 두번째 베너 -->
+                                <div class="slide-content-wrap">
+                                    <div class="slide-content-container">
+                                        <img class="slide-content-background" alt="AI와 비즈니스의 만남! 다양한 사례를 확인하세요. " src="{% static 'public/app/images/main/main-app-banner02.png' %}" />
+                                        <div class="slide-text-content">
+                                            <!-- 해당 축제 링크 필요 -->
+                                            <a class="slide-text-link" href="" target="_blank" ondragstart="return false">
+                                                <div class="slide-text-box" style="color: rgb(53, 37, 40)">
+                                                    <div>
+                                                        <div class="festival-title">
+                                                            AI와 비즈니스의 만남!
+                                                            <br />
+                                                            다양한 사례를 확인하세요.
+                                                        </div>
+                                                        <div class="festival-contents">
+                                                            #요즘핫한 AI 이렇게 씁니다. #조찬모임
+                                                            <br />
+                                                            #비즈니스와 AI 융합에 관심 있으신 분 #AI전환을 고민하시는 분
+                                                        </div>
+                                                    </div>
+                                                    <div class="festival-info">
+                                                        <div>2024. 02. 27.(화) 07:30</div>
+                                                        <div>오프라인 행사</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 세번째 베너 -->
+                                <div class="slide-content-wrap">
+                                    <div class="slide-content-container">
+                                        <img class="slide-content-background" alt="가장 효과적인 생존전략 d·camp officehours" src="{% static 'public/app/images/main/main-app-banner03.png' %}" />
+                                        <div class="slide-text-content">
+                                            <!-- 해당 축제 링크 필요 -->
+                                            <a class="slide-text-link" href="" target="_blank" ondragstart="return false">
+                                                <div class="slide-text-box" style="color: rgb(53, 37, 40)">
+                                                    <div>
+                                                        <div class="festival-title">
+                                                            가장 효과적인 생존전략
+                                                            <br />
+                                                            d·camp officehours
+                                                        </div>
+                                                        <div class="festival-contents">
+                                                            스타트업 생존 패키지,
+                                                            <br />
+                                                            투자 검토는 물론 사업 고도화에 필요한 라인업을 만나보세요!
+                                                        </div>
+                                                    </div>
+                                                    <div class="festival-info">
+                                                        <div>2024. 02. 20.(화) ~ 2024. 02. 29.(목)</div>
+                                                        <div>오프라인 행사</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="banner-service-wrap">
+                                <div class="banner-service-container">
+                                    <div class="banner-service-box">
+                                        <div class="banner-service-contents">
+                                            <div class="banner-page-count"></div>
+                                            <div class="banner-more-button">+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 가장 인기있는 활동(인기 활동) -->
+                <section class="popular-activities">
+                    <div class="post-area-wrap">
+                        <div>
+                            <div class="post-area-headers">
+                                <div>
+                                    <div class="post-area-header">
+                                        <h2 class="post-area-title">가장 인기있는 활동</h2>
+                                    </div>
+                                    <div class="post-area-ment">많은 사람들이 참가한 활동을 만나보세요!😉</div>
+                                </div>
+                                <div>
+                                    <!-- 활동 목록 주소 필요 -->
+                                    <a class="more-post-list" href="">
+                                        <span class="more-posts-text">더 많은 활동 보기</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="right-svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post-container">
+                                <div>
+                                    <div class="post-box">
+                                        <div class="post-list">
+                                            <!-- 첫번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 두번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 세번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 네번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 다섯번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 여섯번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 일곱번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 여덟번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 따끈따끈한 신규 활동(최신 활동) -->
+                <section class="new-activities">
+                    <div class="post-area-wrap">
+                        <div>
+                            <div class="post-area-headers">
+                                <div>
+                                    <div class="post-area-header">
+                                        <h2 class="post-area-title">따끈따끈한 신규 활동</h2>
+                                    </div>
+                                    <div class="post-area-ment">이번 주 새롭게 개설된 행사를 모아봤어요✨</div>
+                                </div>
+                            </div>
+                            <div class="post-container">
+                                <div>
+                                    <div class="post-box">
+                                        <div class="post-list">
+                                            <!-- 첫번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 두번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 세번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 네번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 다섯번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 여섯번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 일곱번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 여덟번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- AI 추천 -->
+                <section class="ai-recommend-activities">
+                    <div class="post-area-wrap">
+                        <div>
+                            <div class="post-area-headers">
+                                <div>
+                                    <div class="post-area-header">
+                                        <h2 class="post-area-title">AI 추천</h2>
+                                    </div>
+                                    <div class="post-area-ment">회원가입 후에 더욱 정교한 추천을 만나보세요!</div>
+                                </div>
+                            </div>
+                            <div class="post-container">
+                                <div>
+                                    <div class="post-box">
+                                        <div class="post-list">
+                                            <!-- 첫번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 두번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 세번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 네번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 다섯번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 여섯번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 일곱번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 여덟번째 인기 활동 -->
+                                            <div class="post-substance">
+                                                <div class="post-info">
+                                                    <div class="post-thumbnail-box">
+                                                        <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                        <a class="post-thumbnail-link" href="" ondragstart="return false">
+                                                            <!-- 대표 이미지 링크 필요 -->
+                                                            <img class="post-thumbnail" alt="매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)" src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/3b2ccf4884974994bc1141c67c1440a5.png" />
+                                                        </a>
+                                                        <div class="like-box">
+                                                            <button class="like-btn" type="button">
+                                                                <span style="display: none">
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="like-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path data-v-e13ecf0e="" fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>
+                                                                    <svg data-v-e13ecf0e="" xmlns="http://www.w3.org/2000/svg" class="unlike-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path data-v-e13ecf0e="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-contents">
+                                                        <div class="start-date-place">
+                                                            <div>
+                                                                <span>01/22(월)</span>
+                                                            </div>
+                                                            <div>
+                                                                <span>온라인</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-title">
+                                                            <!-- 해당 활동 상세페이지 주소 필요 -->
+                                                            <a class="post-title-link" href="" ondragstart="return false">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                        </div>
+                                                        <div class="entry-fee-hits">
+                                                            <div class="hits">
+                                                                <span class="hits-text">조회 706</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 인기 모임 -->
+                <section class="popular-clup">
+                    <div class="post-area-wrap">
+                        <div>
+                            <div class="post-area-headers">
+                                <div>
+                                    <div class="post-area-header">
+                                        <h2 class="post-area-title">인기 모임</h2>
+                                    </div>
+                                    <div class="post-area-ment"></div>
+                                </div>
+                                <div>
+                                    <!-- 활동 목록 주소 필요 -->
+                                    <a class="more-post-list" href="">
+                                        <span class="more-posts-text">더 많은 활동 보기</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="right-svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post-container">
+                                <div>
+                                    <div class="post-box">
+                                        <div class="post-list">
+                                            <!-- 첫번째 인기 모임 -->
+                                            <div class="post-substance">
+                                                <div class="clup-wrap">
+                                                    <div class="clup-container">
+                                                        <!-- 모임 상게보기 주소 필요 -->
+                                                        <a href="" ondragstart="return false">
+                                                            <div class="clup-profile-box">
+                                                                <div class="clup-profile-thumbnail">
+                                                                    <img class="clup-thumbnail-img" alt="한국ESG지원센터" src="https://eventusstorage.blob.core.windows.net/evs/UploadedFiles/kesg/TopLogoImage/4a2dd47f619046edb6994a4f86d2b986.png" />
+                                                                </div>
+                                                                <div class="badge-gap">
+                                                                    <div class="vacuum"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="club-info">
+                                                                <div class="clup-name">한국ESG지원센터</div>
+                                                                <div class="clup-activity">
+                                                                    1
+                                                                    <span>개의 행사</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="clup-service">
+                                                            <!-- 가입한 모임일 경우 -->
+                                                            <div class="clup-btn-box" style="display: none">
+                                                                <button class="join-status" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                    <span>가입중</span>
+                                                                </button>
+                                                                <button id="signal-btn" class="signal-on" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="signal-on-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                                                                    </svg>
+                                                                    <span>알림 받는 중</span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- 가입되지 않은 모임일 경우 -->
+                                                            <button class="join-btn" type="button">
+                                                                <span>가입 신청</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 두번째 인기 모임 -->
+                                            <div class="post-substance">
+                                                <div class="clup-wrap">
+                                                    <div class="clup-container">
+                                                        <!-- 모임 상게보기 주소 필요 -->
+                                                        <a href="" ondragstart="return false">
+                                                            <div class="clup-profile-box">
+                                                                <div class="clup-profile-thumbnail">
+                                                                    <img class="clup-thumbnail-img" alt="한국ESG지원센터" src="https://eventusstorage.blob.core.windows.net/evs/UploadedFiles/kesg/TopLogoImage/4a2dd47f619046edb6994a4f86d2b986.png" />
+                                                                </div>
+                                                                <div class="badge-gap">
+                                                                    <div class="vacuum"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="club-info">
+                                                                <div class="clup-name">한국ESG지원센터</div>
+                                                                <div class="clup-activity">
+                                                                    1
+                                                                    <span>개의 행사</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="clup-service">
+                                                            <!-- 가입한 모임일 경우 -->
+                                                            <div class="clup-btn-box" style="display: none">
+                                                                <button class="join-status" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                    <span>가입중</span>
+                                                                </button>
+                                                                <button id="signal-btn" class="signal-on" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="signal-on-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                                                                    </svg>
+                                                                    <span>알림 받는 중</span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- 가입되지 않은 모임일 경우 -->
+                                                            <button class="join-btn" type="button">
+                                                                <span>가입 신청</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 세번째 인기 모임 -->
+                                            <div class="post-substance">
+                                                <div class="clup-wrap">
+                                                    <div class="clup-container">
+                                                        <!-- 모임 상게보기 주소 필요 -->
+                                                        <a href="" ondragstart="return false">
+                                                            <div class="clup-profile-box">
+                                                                <div class="clup-profile-thumbnail">
+                                                                    <img class="clup-thumbnail-img" alt="한국ESG지원센터" src="https://eventusstorage.blob.core.windows.net/evs/UploadedFiles/kesg/TopLogoImage/4a2dd47f619046edb6994a4f86d2b986.png" />
+                                                                </div>
+                                                                <div class="badge-gap">
+                                                                    <div class="vacuum"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="club-info">
+                                                                <div class="clup-name">한국ESG지원센터</div>
+                                                                <div class="clup-activity">
+                                                                    1
+                                                                    <span>개의 행사</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="clup-service">
+                                                            <!-- 가입한 모임일 경우 -->
+                                                            <div class="clup-btn-box" style="display: none">
+                                                                <button class="join-status" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                    <span>가입중</span>
+                                                                </button>
+                                                                <button id="signal-btn" class="signal-on" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="signal-on-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                                                                    </svg>
+                                                                    <span>알림 받는 중</span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- 가입되지 않은 모임일 경우 -->
+                                                            <button class="join-btn" type="button">
+                                                                <span>가입 신청</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 네번째 인기 모임 -->
+                                            <div class="post-substance">
+                                                <div class="clup-wrap">
+                                                    <div class="clup-container">
+                                                        <!-- 모임 상게보기 주소 필요 -->
+                                                        <a href="" ondragstart="return false">
+                                                            <div class="clup-profile-box">
+                                                                <div class="clup-profile-thumbnail">
+                                                                    <img class="clup-thumbnail-img" alt="한국ESG지원센터" src="https://eventusstorage.blob.core.windows.net/evs/UploadedFiles/kesg/TopLogoImage/4a2dd47f619046edb6994a4f86d2b986.png" />
+                                                                </div>
+                                                                <div class="badge-gap">
+                                                                    <div class="vacuum"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="club-info">
+                                                                <div class="clup-name">한국ESG지원센터</div>
+                                                                <div class="clup-activity">
+                                                                    1
+                                                                    <span>개의 행사</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="clup-service">
+                                                            <!-- 가입한 모임일 경우 -->
+                                                            <div class="clup-btn-box" style="display: none">
+                                                                <button class="join-status" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                    <span>가입중</span>
+                                                                </button>
+                                                                <button id="signal-btn" class="signal-on" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="signal-on-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                                                                    </svg>
+                                                                    <span>알림 받는 중</span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- 가입되지 않은 모임일 경우 -->
+                                                            <button class="join-btn" type="button">
+                                                                <span>가입 신청</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 다번째 인기 모임 -->
+                                            <div class="post-substance">
+                                                <div class="clup-wrap">
+                                                    <div class="clup-container">
+                                                        <!-- 모임 상게보기 주소 필요 -->
+                                                        <a href="" ondragstart="return false">
+                                                            <div class="clup-profile-box">
+                                                                <div class="clup-profile-thumbnail">
+                                                                    <img class="clup-thumbnail-img" alt="한국ESG지원센터" src="https://eventusstorage.blob.core.windows.net/evs/UploadedFiles/kesg/TopLogoImage/4a2dd47f619046edb6994a4f86d2b986.png" />
+                                                                </div>
+                                                                <div class="badge-gap">
+                                                                    <div class="vacuum"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="club-info">
+                                                                <div class="clup-name">한국ESG지원센터</div>
+                                                                <div class="clup-activity">
+                                                                    1
+                                                                    <span>개의 행사</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="clup-service">
+                                                            <!-- 가입한 모임일 경우 -->
+                                                            <div class="clup-btn-box" style="display: none">
+                                                                <button class="join-status" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                    <span>가입중</span>
+                                                                </button>
+                                                                <button id="signal-btn" class="signal-on" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="signal-on-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                                                                    </svg>
+                                                                    <span>알림 받는 중</span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- 가입되지 않은 모임일 경우 -->
+                                                            <button class="join-btn" type="button">
+                                                                <span>가입 신청</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 여섯번째 인기 모임 -->
+                                            <div class="post-substance">
+                                                <div class="clup-wrap">
+                                                    <div class="clup-container">
+                                                        <!-- 모임 상게보기 주소 필요 -->
+                                                        <a href="" ondragstart="return false">
+                                                            <div class="clup-profile-box">
+                                                                <div class="clup-profile-thumbnail">
+                                                                    <img class="clup-thumbnail-img" alt="한국ESG지원센터" src="https://eventusstorage.blob.core.windows.net/evs/UploadedFiles/kesg/TopLogoImage/4a2dd47f619046edb6994a4f86d2b986.png" />
+                                                                </div>
+                                                                <div class="badge-gap">
+                                                                    <div class="vacuum"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="club-info">
+                                                                <div class="clup-name">한국ESG지원센터</div>
+                                                                <div class="clup-activity">
+                                                                    1
+                                                                    <span>개의 행사</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="clup-service">
+                                                            <!-- 가입한 모임일 경우 -->
+                                                            <div class="clup-btn-box" style="display: none">
+                                                                <button class="join-status" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                    <span>가입중</span>
+                                                                </button>
+                                                                <button id="signal-btn" class="signal-on" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="signal-on-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                                                                    </svg>
+                                                                    <span>알림 받는 중</span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- 가입되지 않은 모임일 경우 -->
+                                                            <button class="join-btn" type="button">
+                                                                <span>가입 신청</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 일곱번째 인기 모임 -->
+                                            <div class="post-substance">
+                                                <div class="clup-wrap">
+                                                    <div class="clup-container">
+                                                        <!-- 모임 상게보기 주소 필요 -->
+                                                        <a href="" ondragstart="return false">
+                                                            <div class="clup-profile-box">
+                                                                <div class="clup-profile-thumbnail">
+                                                                    <img class="clup-thumbnail-img" alt="한국ESG지원센터" src="https://eventusstorage.blob.core.windows.net/evs/UploadedFiles/kesg/TopLogoImage/4a2dd47f619046edb6994a4f86d2b986.png" />
+                                                                </div>
+                                                                <div class="badge-gap">
+                                                                    <div class="vacuum"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="club-info">
+                                                                <div class="clup-name">한국ESG지원센터</div>
+                                                                <div class="clup-activity">
+                                                                    1
+                                                                    <span>개의 행사</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="clup-service">
+                                                            <!-- 가입한 모임일 경우 -->
+                                                            <div class="clup-btn-box" style="display: none">
+                                                                <button class="join-status" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                    <span>가입중</span>
+                                                                </button>
+                                                                <button id="signal-btn" class="signal-on" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="signal-on-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                                                                    </svg>
+                                                                    <span>알림 받는 중</span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- 가입되지 않은 모임일 경우 -->
+                                                            <button class="join-btn" type="button">
+                                                                <span>가입 신청</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 여덟번째 인기 모임 -->
+                                            <div class="post-substance">
+                                                <div class="clup-wrap">
+                                                    <div class="clup-container">
+                                                        <!-- 모임 상게보기 주소 필요 -->
+                                                        <a href="" ondragstart="return false">
+                                                            <div class="clup-profile-box">
+                                                                <div class="clup-profile-thumbnail">
+                                                                    <img class="clup-thumbnail-img" alt="한국ESG지원센터" src="https://eventusstorage.blob.core.windows.net/evs/UploadedFiles/kesg/TopLogoImage/4a2dd47f619046edb6994a4f86d2b986.png" />
+                                                                </div>
+                                                                <div class="badge-gap">
+                                                                    <div class="vacuum"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="club-info">
+                                                                <div class="clup-name">한국ESG지원센터</div>
+                                                                <div class="clup-activity">
+                                                                    1
+                                                                    <span>개의 행사</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="clup-service">
+                                                            <!-- 가입한 모임일 경우 -->
+                                                            <div class="clup-btn-box" style="display: none">
+                                                                <button class="join-status" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                    <span>가입중</span>
+                                                                </button>
+                                                                <button id="signal-btn" class="signal-on" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="signal-on-svg" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                                                                    </svg>
+                                                                    <span>알림 받는 중</span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- 가입되지 않은 모임일 경우 -->
+                                                            <button class="join-btn" type="button">
+                                                                <span>가입 신청</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <!-- 푸터 부분 -->
+    <footer></footer>
+    <!-- 모달 모음 -->
+    <div id="modals-wrap">
+        <!-- 모임 신청 모달 -->
+        <div>
+            <div>
+                <div class="join-maodal-container" style="display: none">
+                    <div class="join-modal-shadow"></div>
+                    <div class="join-modal-box">
+                        <div class="join-modal-items">
+                            <div>
+                                <h2 class="modal-header">
+                                    <div class="join-check-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="join-check-svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="join-application-ment" style="display: none">가입을 신청했습니다.</div>
+                                    <div class="join-cancle-ment" style="display: none">신청을 취소 했습니다.</div>
+                                    <div class="login-ment" style="display: none">로그인이 필요한 서비스입니다.</div>
+                                    <div class="signal-ment" style="display: none"></div>
+                                </h2>
+                                <p class="join-guide-box">
+                                    <span class="join-guide-ment"></span>
+                                </p>
+                            </div>
+                            <div class="move-btn-box">
+                                <button class="continuously-btn" type="button"></button>
+                                <button class="clup-page-btn" type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 인증 메일 모달 -->
+        <div></div>
+        <!-- 검색 모달 -->
+        <div></div>
+        <!-- 슬라이드 베너 리스트 모달 -->
+        <div>
+            <div>
+                <div class="banner-modal-container" style="display: none">
+                    <div class="banner-modal-shadow"></div>
+                    <div class="banner-modal-box">
+                        <div class="banner-modal-items">
+                            <div class="banner-close-wrap">
+                                <div class="banner-close-container">
+                                    <div class="banner-close-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="close-svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 첫번째 베너 -->
+                            <div class="inner-banner-wrap">
+                                <!-- 해당 축제 링크 필요 -->
+                                <img class="slide-content-background" src="{% static 'public/app/images/main/main-app-banner01.png' %}" alt=" KYOBO x 창업도약패키지" />
+                                <div class="slide-text-content">
+                                    <!-- 해당 축제 링크 필요 -->
+                                    <a class="slide-text-link" href="" target="_blank">
+                                        <div class="slide-text-box">
+                                            <div>
+                                                <div class="festival-title">KYOBO x 창업도약패키지</div>
+                                                <div class="festival-contents">
+                                                    사업설명회 : 24. 2. 19.(월) 15:00 / 광화문 교보생명빌딩 17층 이노스테이지
+                                                    <br />
+                                                    협업분야 : 보험·AI
+                                                </div>
+                                            </div>
+                                            <div class="festival-info">
+                                                <div>2024. 01. 30.(화) ~ 2024. 02. 23.(금)</div>
+                                                <div>온라인 접수</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 두번째 베너 -->
+                            <div class="inner-banner-wrap">
+                                <!-- 해당 축제 링크 필요 -->
+                                <img class="slide-content-background" src="{% static 'public/app/images/main/main-app-banner02.png' %}" alt="" />
+                                <div class="slide-text-content">
+                                    <!-- 해당 축제 링크 필요 -->
+                                    <a class="slide-text-link" href="" target="_blank">
+                                        <div class="slide-text-box" style="color: rgb(53, 37, 40)">
+                                            <div>
+                                                <div class="festival-title">
+                                                    AI와 비즈니스의 만남!
+                                                    <br />
+                                                    다양한 사례를 확인하세요.
+                                                </div>
+                                                <div class="festival-contents">
+                                                    #요즘핫한 AI 이렇게 씁니다. #조찬모임
+                                                    <br />
+                                                    #비즈니스와 AI 융합에 관심 있으신 분 #AI전환을 고민하시는 분
+                                                </div>
+                                            </div>
+                                            <div class="festival-info">
+                                                <div>2024. 02. 27.(화) 07:30</div>
+                                                <div>오프라인 행사</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 세번째 베너 -->
+                            <div class="inner-banner-wrap">
+                                <!-- 해당 축제 링크 필요 -->
+                                <img class="slide-content-background" src="{% static 'public/app/images/main/main-app-banner03.png' %}" alt="" />
+                                <div class="slide-text-content">
+                                    <!-- 해당 축제 링크 필요 -->
+                                    <a class="slide-text-link" href="" target="_blank">
+                                        <div class="slide-text-box" style="color: rgb(53, 37, 40)">
+                                            <div>
+                                                <div class="festival-title">
+                                                    가장 효과적인 생존전략
+                                                    <br />
+                                                    d·camp officehours
+                                                </div>
+                                                <div class="festival-contents">
+                                                    스타트업 생존 패키지,
+                                                    <br />
+                                                    투자 검토는 물론 사업 고도화에 필요한 라인업을 만나보세요!
+                                                </div>
+                                            </div>
+                                            <div class="festival-info">
+                                                <div>2024. 02. 20.(화) ~ 2024. 02. 29.(목)</div>
+                                                <div>오프라인 행사</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'public/app/js/main-app.js' %}"></script>
+    <script src="{% static 'public/app/js/main-post-scroll-app.js' %}"></script>
+{% endblock %}

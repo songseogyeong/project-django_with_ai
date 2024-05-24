@@ -1,0 +1,81 @@
+{% extends 'member/web/base.html' %}
+{% load socialaccount %}
+{% load static %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'member/web/css/login-web.css' %}">
+{% endblock %}
+{% block title %}틴플 :: 로그인{% endblock %}
+{% block content %}
+    <!-- 화면 부분 -->
+    <div class="screen-all-wrap">
+        <div class="screen-full-wrap">
+            <div class="screen-wrap">
+                <div class="app-screen-all-wrap">
+                    <div class="app-screen-wrap">
+                        <div class="screen-divison-wrap">
+                            <!-- 로고 부분 -->
+                            <a class="title-logo-container" href="/">
+                                <img class="title-logo" src="{% static 'public/web/images/logo/logo2.png' %}">
+                            </a>
+                            <!-- 타이틀 부분 -->
+                            <div class="title-text">
+                                <span>다시 만나서 반가워요!</span>
+                            </div>
+                            <!-- SNS 로그인 부분 -->
+                                <div class="sns-login-all-wrap">
+                                    <div class="sns-login-wrap">
+                                        <!-- SNS 로그인 글씨 부분 -->
+                                        <div class="sns-text-container">
+{#                                            <span>SNS 계정으로 로그인/회원가입</span>#}
+                                        </div>
+                                        <!-- SNS 로그인 아이콘 부분 -->
+                                        <div class="sns-icon-container">
+                                            <!-- 구글 로그인 부분 -->
+                                            <form action="{% provider_login_url 'google' %}" method="post">
+                                                {% csrf_token %}
+                                                <div class="sns-icon">
+                                                    <button class="google-button">
+                                                        <img class="google-icon" src="https://www.google.com/favicon.ico">
+                                                            <path data-name="사각형 5227" d="M0 0h21v18H0z" style="fill: none;"></path>
+                                                            <path data-name="패스 5638" d="m170.744 255.583-5.837-8.385h-4.839v15.668h5.069v-8.385l5.837 8.385h4.839V247.2h-5.069z" transform="translate(-157.569 -246.197)" style="fill: rgb(255, 255, 255);"></path>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <!-- 네이버 로그인 부분 -->
+                                            <form action="{% provider_login_url 'naver' %}" method="post">
+                                                {% csrf_token %}
+                                                <div class="sns-icon icon-margin">
+                                                    <button class="naver-button">
+                                                        <svg class="naver-icon" xmlns="http://www.w3.org/2000/svg" data-name="그룹 8392" width="21" height="18" viewBox="0 0 21 18">
+                                                            <path data-name="사각형 5227" d="M0 0h21v18H0z" style="fill: none;"></path>
+                                                            <path data-name="패스 5638" d="m170.744 255.583-5.837-8.385h-4.839v15.668h5.069v-8.385l5.837 8.385h4.839V247.2h-5.069z" transform="translate(-157.569 -246.197)" style="fill: rgb(255, 255, 255);"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <!-- 카카오 로그인 부분 -->
+                                            <form action="{% provider_login_url 'kakao' %}" method="post">
+                                                {% csrf_token %}
+                                                <div class="sns-icon icon-margin">
+                                                    <button class="kakao-button">
+                                                        <svg class="kakao-icon" xmlns="http://www.w3.org/2000/svg" data-name="그룹 8392" width="21" height="18" viewBox="0 0 21 18">
+                                                            <path data-name="패스 5635" d="M10.538 1.713c4.418 0 8 2.91 8 6.5s-3.582 6.5-8 6.5a9.7 9.7 0 0 1-2.094-.234c-.389-.08-2.992 1.618-3.548 1.4-.392-.152 1.153-2.274.66-2.581a6.08 6.08 0 0 1-3.018-5.085c0-3.59 3.582-6.5 8-6.5z"></path>
+                                                            <path data-name="사각형 5227" d="M0 0h21v18H0z" style="fill: none;"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="width-full"></div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'member/web/js/login-web.js' %}"></script>
+{% endblock %}

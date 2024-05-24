@@ -1,0 +1,489 @@
+{% extends 'activity/web/base.html' %}
+{% load static %}
+{% block static %}
+        <link rel="stylesheet" href="{% static 'activity/web/css/activity-web.css' %}" />
+{% endblock %}
+{% block title %}틴플 :: 활동 보러가기{% endblock %}
+{% block content %}
+    <main class="main-screen">
+        <div class="prompt-popup">
+            <div class="prompt-popup-display"></div>
+        </div>
+        <div class="logo-popup">
+            <div class="logo-popup-display"></div>
+        </div>
+        <div class="app-screen">
+            <div class="app-wrap">
+                <!-- 슬라이더 베너 들어갈 부분 -->
+                <section class="slide-container">
+                    <div class="slide-box">
+                        <div class="swiper-slide-box">
+                            <div class="swiper-wrap">
+                                <!-- transition 의 항목은 js 사용할 것 -->
+                                <div class="swiper-wrap-three">
+                                    <a href="" target="_blank">
+                                        <div class="relative-h">
+                                            <img class="img-6" src="https://eventusstorage.blob.core.windows.net/evs/Images/searchpage/854e7493838c4aacbecca6f8cb733012.jpg" alt="대한민국 기업가정신 근본을 찾아서" />
+                                            <div class="absolute-inset">
+                                                <div class="flex-justify-center-items">
+                                                    <div class="text-center-pl">
+                                                        <div class="text-space-content">
+                                                            <div class="text-base-xl-text">대한민국 기업가정신 근본을 찾아서</div>
+                                                            <div class="text-block-sm">제61(사)도전과나눔 기업가정신 포럼</div>
+                                                        </div>
+                                                        <div class="text-base-front-bold">
+                                                            <div class="text-date">2024. 02. 14.(수) 06:30</div>
+                                                            <div class="text-location-sm">온·오프라인 행사</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-wrap-two">
+                                    <a href="" target="_blank">
+                                        <div class="relative-unline-w">
+                                            <img class="img-4" src="https://eventusstorage.blob.core.windows.net/evs/Images/searchpage/0a1feff684a24ae2a05dc1e47e0ef6ed.png" alt="늦었다고 생각될때가 가장 빠른 때" />
+                                            <div class="relative-underline-absolute">
+                                                <div class="flex-justify-center">
+                                                    <div class="text-center-sm">
+                                                        <div class="text-space-y">
+                                                            <div class="text-base-xl-lg">늦었다고 생각될때가 가장 빠른 때</div>
+                                                            <div class="text-hidden-blcok">[틴플레이] 리포트/VOD 패키지🎁</div>
+                                                        </div>
+                                                        <div class="text-base-lg-mt">
+                                                            <div class="text-human">상시 모집</div>
+                                                            <div class="text-location">온라인 행사</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-wrap-three">
+                                    <a href="" target="_blank">
+                                        <div class="relative-h">
+                                            <img class="img-6" src="https://eventusstorage.blob.core.windows.net/evs/Images/searchpage/854e7493838c4aacbecca6f8cb733012.jpg" alt="대한민국 기업가정신 근본을 찾아서" />
+                                            <div class="absolute-inset">
+                                                <div class="flex-justify-center-items">
+                                                    <div class="text-center-pl">
+                                                        <div class="text-space-content">
+                                                            <div class="text-base-xl-text">대한민국 기업가정신 근본을 찾아서</div>
+                                                            <div class="text-block-sm">제61(사)도전과나눔 기업가정신 포럼</div>
+                                                        </div>
+                                                        <div class="text-base-front-bold">
+                                                            <div class="text-date">2024. 02. 14.(수) 06:30</div>
+                                                            <div class="text-location-sm">온·오프라인 행사</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-wrap-two">
+                                    <a href="" target="_blank">
+                                        <div class="relative-unline-w">
+                                            <img class="img-4" src="https://eventusstorage.blob.core.windows.net/evs/Images/searchpage/0a1feff684a24ae2a05dc1e47e0ef6ed.png" alt="늦었다고 생각될때가 가장 빠른 때" />
+                                            <div class="relative-underline-absolute">
+                                                <div class="flex-justify-center">
+                                                    <div class="text-center-sm">
+                                                        <div class="text-space-y">
+                                                            <div class="text-base-xl-lg">늦었다고 생각될때가 가장 빠른 때</div>
+                                                            <div class="text-hidden-blcok">[틴플레이] 리포트/VOD 패키지🎁</div>
+                                                        </div>
+                                                        <div class="text-base-lg-mt">
+                                                            <div class="text-human">상시 모집</div>
+                                                            <div class="text-location">온라인 행사</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="absolute-z-button">
+                                <div class="z-button-container">
+                                    <div class="swiper-pagination">
+                                        <div class="flex-items-count-box">
+                                            <div class="swiper-page-count">2/2</div>
+                                            <div class="swiper-more-button">+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all-content"></div>
+                        </div>
+                    </div>
+                </section>
+                <div class="flex-wrap">
+                    <div class="filter-container-hidden">
+                        <div class="filter-box">
+                            <div class="filter-bg">
+                                <div class="filter-space">
+                                    <div class="filter-content">
+                                        <div class="filter-text">
+                                            <span>필터</span>
+                                        </div>
+                                        <button type="button" class="filter-reset">
+                                            <span>필터 초기화</span>
+                                        </button>
+                                    </div>
+                                    <div class="content-date">
+                                        <div class="font-bold-date">
+                                            <span>일시</span>
+                                        </div>
+                                        <div class="date-list">
+                                            <div class="date-container">
+                                                <div class="date-box">
+                                                    <input class="radio-everyday" id="ev-radio-98" type="radio" value="모든날" checked="true" />
+                                                    <label class="cursor-point-day" for="ev-radio-98"> 모든날 </label>
+                                                </div>
+                                                <div class="text-display-none-day">이 항목은 필수입니다.</div>
+                                            </div>
+                                            <div class="date-container" style="margin-top: 8px">
+                                                <div class="date-box">
+                                                    <input class="radio-everyday" id="ev-radio-99" type="radio" value="오늘" />
+                                                    <label class="cursor-point-day" for="ev-radio-99"> 오늘 </label>
+                                                </div>
+                                                <div class="text-display-none-day">이 항목은 필수입니다.</div>
+                                            </div>
+                                            <div class="date-container" style="margin-top: 8px">
+                                                <div class="date-box">
+                                                    <input class="radio-everyday" id="ev-radio-100" type="radio" value="이번주" />
+                                                    <label class="cursor-point-day" for="ev-radio-100"> 이번주 </label>
+                                                </div>
+                                                <div class="text-display-none-day">이 항목은 필수입니다.</div>
+                                            </div>
+                                            <div class="date-container" style="margin-top: 8px">
+                                                <div class="date-box">
+                                                    <input class="radio-everyday" id="ev-radio-101" type="radio" value="이번달" />
+                                                    <label class="cursor-point-day" for="ev-radio-101"> 이번달 </label>
+                                                </div>
+                                                <div class="text-display-none-day">이 항목은 필수입니다.</div>
+                                            </div>
+                                            <div class="date-container" style="margin-top: 8px">
+                                                <div class="date-box">
+                                                    <input class="radio-everyday" id="ev-radio-102" type="radio" value="기간선택" />
+                                                    <label class="cursor-point-day" for="ev-radio-102"> 기간선택 </label>
+                                                </div>
+                                                <div class="text-display-none-day">이 항목은 필수입니다.</div>
+                                            </div>
+                                            <div class="date-display-none" id="date-display-none">
+                                                <div class="date-relative-full">
+                                                    <label class="relative-block">
+                                                        <input type="text" class="relative-date" placeholder="기간을 선택하세요" />
+                                                        <!-- 달력을 jquery를 사용해서 가져오기 때문에 원본과 차이가 있음 -->
+                                                        <span class="text-overflow-hidden">
+                                                            <button type="button" class="date-selector">
+                                                                <svg class="calender" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="end-date-container" style="margin-top: 8px">
+                                                <div class="end-date-box">
+                                                    <div class="end-date-tie">
+                                                        <input class="end-date-chk" id="ev-checkbox-104" true-value="true" false-value="false" type="checkbox" value="모집 종료 행사" />
+                                                        <label class="end-text-box" for="ev-checkbox-104" value="모집 종료 행사"> 모집 종료 행사 </label>
+                                                    </div>
+                                                </div>
+                                                <div class="end-text-gray" style="margin-left: 24px">
+                                                    <span>모집 종료된 활동까지 포함하여 보기</span>
+                                                </div>
+                                                <div class="text-display-none-day">이 항목은 필수입니다.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-lotaction-container">
+                                        <div class="content-location-text">
+                                            <span>지역</span>
+                                        </div>
+                                        <select class="block-location">
+                                            <option value="전체">전체</option>
+                                            {% for region in regions %}
+                                                <option value="{{ region.region }}">{{ region.region }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="content-activity">
+                                        <div class="content-activity-text">
+                                            <span>활동분야</span>
+                                        </div>
+                                        <div class="content-activity-box">
+                                            {% for category in categories %}
+                                                <div class="activity-box">
+                                                    <div class="activity-tie">
+                                                        <div class="activity-center">
+                                                            <input class="activity-chk checkbox{{ category.id }}" id="{{ category.id }}" type="checkbox" value="{{ category.id }}" />
+                                                            <label class="activity-box-text" for="{{ category.id }}">{{ category.category_name }}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                            
+                                            <button class="another-view-btn" type="button">
+                                                <span class="view-btn-tie">
+                                                    <!-- 기본값 -->
+                                                    <span value="no-hidden">13개 모두 보기</span>
+                                                    <span value="no-hidden">
+                                                        <svg class="rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                                                <!-- 클릭 시 변경되는 부분 -->
+                                                <span class="view-btn-tie hidden">
+                                                    <span>접기</span>
+                                                    <span>
+                                                        <svg class="-rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="content-hidden-fiexd">
+                                        <div class="hidden-border-text"></div>
+                                        <button class="hidden-flex-center"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="full-wrap">
+                        <div class="main-space-section" id="event-section">
+                            <div class="main-title">
+                                <h1 class="text-title">
+                                    <span class="text-title-primary"></span>
+                                    <span class="text-title-content">개의 활동이 검색되었습니다.</span>
+                                </h1>
+                                <input type="hidden" name="search-keyword" value="{{ keyword }}">
+                                <div class="right-text-box">
+                                    <div class="right-text-tie">
+                                        <button class="best-text-btn" type="button" name="selected-recommend-btn">
+                                            <span class="filter-span font-bold-choice">추천순</span>
+                                            <div class="best-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="best-icon-radio" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                <div class="icon-hidden-content" id="icon-hidden-content">
+                                                    <div class="hidden-content-border">
+                                                        틴플의 추천순은 인기도, 참여율, 조회수,
+                                                        <br />
+                                                        검색 정확도 참가 인원수 등을 고려하여 정렬됩니다.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                        <button class="new-btn" type="button" name="selected-recommend-btn">
+                                            <span class="filter-span">새 행사순</span>
+                                        </button>
+                                        <button class="activity-sort-end" type="button" name="selected-recommend-btn">
+                                            <span class="filter-span">모집 마감일순</span>
+                                        </button>
+                                    </div>
+                                    <button class="hidden-right-btn" type="button">
+                                        <svg class="hidden-btn" viewBox="0 0 20 20" fill="currentColor">
+                                            <path 
+                                                d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"
+                                            ></path>
+                                        </svg>
+                                        <span> 필터(2)</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- 검색 필터 none 인 경우 -->
+                            <!-- <div class="hidden-filter-container-default"></div> -->
+                            <!-- 검색 필터 사용되는 경우  -->
+                            <div class="hidden-filter-container-check" id="hidden-filter-container-check">
+                                <div class="find-filter-keyword" style="display: none">
+                                    <div id="keyword-text"></div>
+                                    <button class="find-filter-exit">
+                                        <svg class="exit-icon-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" id="exit-icon-button">
+                                            <path class="exit-icon-button" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="find-filter-bg" style="display: none">
+                                    <div id="date-text"></div>
+                                    <button class="find-filter-exit">
+                                        <svg class="exit-icon-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" id="exit-icon-button">
+                                            <path class="exit-icon-button" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="find-filter-bg-join" style="display: none">
+                                    <div id="join-content"></div>
+                                    <button class="find-filter-exit">
+                                        <svg class="exit-icon-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" id="exit-icon-button">
+                                            <path class="exit-icon-button" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="find-filter-bg-location" style="display: none">
+                                    <div id="location-content"></div>
+                                    <button class="find-filter-exit">
+                                        <svg class="exit-icon-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" id="exit-icon-button">
+                                            <path class="exit-icon-button" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="activity-find-all"></div>
+                            <div class="filter-display-none">
+                                <div class="filter-none-text-tie">
+                                    <p class="text-base">선택하신 필터에 맞는 활동이 없습니다.</p>
+                                    <p class="text-base">다른 조건으로 선택하거나 초기화 해보세요!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="select-page-container">
+                            <div class="select-page-box">
+                                <div class="page-box-items">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- modal 관심 추가 -->
+    <div class="club-modal-wrap" style="display: none">
+        <div class="club-modal-bg"></div>
+        <div class="club-modal-container">
+            <div class="club-modal-like-wrap">
+                <div>
+                    <h2 class="club-modal-like-title">
+                        <div class="club-modal-like-title-text">관심 활동에 추가되었습니다.</div>
+                    </h2>
+                </div>
+                <div class="club-modal-like-button-wrap">
+                    <button type="button" class="club-modal-like-button">닫기</button>
+                </div>
+            </div>
+            <div class="club-modal-like-wrap unlike">
+                <div>
+                    <h2 class="club-modal-like-title">
+                        <div class="club-modal-like-title-text">관심 활동에서 삭제되었습니다.</div>
+                    </h2>
+                </div>
+                <div class="club-modal-like-button-wrap">
+                    <button type="button" class="club-modal-unlike-button">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 구독 관심 추가 -->
+    <div class="subcribe-wrap">
+        <div class="meeting-modal-bg"></div>
+        <div class="meeting-modal-content-center">
+            <div class="meeting-modal-container">
+                <div>
+                    <h2 class="meeting-box-image">
+                        <div class="image-flex-center">
+                            <svg class="check-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="meeting-subscribe-text">모임을 구독했습니다.</div>
+                    </h2>
+                    <p class="meeting-description"></p>
+                    <div class="description-text">구독 모임에 새로운 활동이 개설되면 알림으로 알려드려요.</div>
+                </div>
+                <div class="meeting-modal-text-container">
+                    <button class="meeting-continue-btn" type="button">계속 살펴보기</button>
+                    <button class="meeting-move-btn">구독 모임 바로가기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 구독 관심 취소 -->
+    <div class="subcribe-wrap-cancel">
+        <div class="meeting-modal-bg"></div>
+        <div class="meeting-modal-content-center">
+            <div class="meeting-modal-container-cancel">
+                <div>
+                    <h2 class="meeting-cancel-box">
+                        <div class="meeting-subscribe-text">구독을 취소했습니다.</div>
+                    </h2>
+                    <p class="meeting-cancel-description"></p>
+                    <div class="description-cancel-text">구독 모임에서 삭제했습니다. 더이상 새로운 활동 알림을 받을 수 없습니다.</div>
+                </div>
+                <div class="meeting-cancel-modal-text-container">
+                    <button class="meeting-cancel-btn">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 이미지 + 선택 시 발생 -->
+    <div class="banner-plus-bg">
+        <div class="pannel-container">
+            <div class="relative-w">
+                <div class="absolute-exit-icon">
+                    <div class="exit-icon-fixed">
+                        <svg class="exit-icon-image" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="long-image-f">
+                <img class="real-long-image" src="https://eventusstorage.blob.core.windows.net/evs/Images/searchpage/0a1feff684a24ae2a05dc1e47e0ef6ed.png" alt="늦었다고 생각될때가 가장 빠른 때" />
+                <div class="long-image-text-box">
+                    <a class="image-f-link" href="https://event-us.kr/m/77426/13613">
+                        <div class="f-image-text-box">
+                            <div>
+                                <div class="text-item-f">늦었다고 생각될때가 가장 빠른 때</div>
+                                <div class="item-f-hidden">[틴플레이] 리포트/VOD 패키지🎁</div>
+                            </div>
+                            <div class="s-image-text-box">
+                                <div>상시 모집</div>
+                                <div class="thumnail-item-text">온라인 행사</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="long-image-s">
+                <img class="real-long-image-s" src="https://eventusstorage.blob.core.windows.net/evs/Images/searchpage/854e7493838c4aacbecca6f8cb733012.jpg" alt="대한민국 기업가정신 근본을 찾아서" />
+                <div class="long-image-text-box-s">
+                    <a class="image-s-link" href="https://event-us.kr/dona/event/77987">
+                        <div class="s-image-text-box">
+                            <div>
+                                <div class="text-item-s">대한민국 기업가정신 근본을 찾아서</div>
+                                <div class="item-s-hidden">제61(사)도전과 나눔 기업가 정신 포럼</div>
+                                <div class="s-image-text-box-t">
+                                    <div>2024.02.14(수) 06:30</div>
+                                    <div class="thumnail-item-text-s">온, 오프라인 행사</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script>
+        const csrf_token = `{{ csrf_token }}`;
+        const selectedCategory = `{{ selected_category }}`;
+    </script>
+    <script src="{% static 'activity/web/js/activity-like-module.js' %}"></script>
+    <script src="{% static 'activity/web/js/activity-web.js' %}"></script>
+    <!-- 여기서 달력 가져오는 js -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="{% static 'activity/web/js/activity-calendar-web.js' %}"></script>
+{% endblock %}

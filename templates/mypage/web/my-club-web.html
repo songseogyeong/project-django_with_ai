@@ -1,0 +1,154 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/web/css/my-club-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플:: 나의 모임{% endblock %}
+{% block content %}
+    <!-- 메인 부분 -->
+    <main class="mypage-main">
+        <div class="mypage-wrap">
+            <div>
+                <div class="mypage-container">
+                    <div class="mypage-box">
+                        <div class="side-bar">
+                            <div class="side-bar-title">마이페이지</div>
+                            <div class="side-bar-items">
+                                <div>
+                                    <!-- 주소 필요 -->
+                                    <a href="">나의 위시리스트</a>
+                                </div>
+                                <div>
+                                    <!-- 주소 필요 -->
+                                    <a class="target-color" href="">나의 모임</a>
+                                </div>
+                                <div>
+                                    <!-- 주소 필요 -->
+                                    <a href="">나의 댓글</a>
+                                </div>
+                                <div>
+                                    <!-- 주소 필요 -->
+                                    <a href="">나의 활동</a>
+                                </div>
+                                <div>
+                                    <!-- 주소 필요 -->
+                                    <a href="">틴친 목록</a>
+                                </div>
+                                <div>
+                                    <!-- 주소 필요 -->
+                                    <a href="">결제 내역</a>
+                                </div>
+                                <div>
+                                    <!-- 주소 필요 -->
+                                    <a href="">쪽지 목록</a>
+                                </div>
+                                <div>
+                                    <!-- 주소 필요 -->
+                                    <a href="">알림 목록</a>
+                                </div>
+                                <div>
+                                    <!-- 주소 필요 -->
+                                    <a href="">내 정보 수정</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contents">
+                            <div class="service-title-box">
+                                <div class="service-title">나의 모임</div>
+                                <div class="tab-list-box">
+                                    <div>
+                                        <div>
+                                            <div class="tab-list-contents">
+                                                <div>
+                                                    <button class="tab-list-btn" type="button">
+                                                        <span>이름 순</span>
+                                                        <span> ↓ </span>
+                                                    </button>
+                                                </div>
+                                                <div class="tab-list">
+                                                    <a class="tab">이름 순</a>
+                                                    <a class="tab">최신 순</a>
+                                                    <a class="tab">오래된 순</a>
+                                                    <a class="tab">활동 순</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="club-list">
+                                <!-- 가입한 모임이 없을 경우 비워 놓으면 됩니다. -->
+                            </div>
+                            <!-- 모임 목록이 10개 이상일 경우 나타나는 더보기 버튼 -->
+                            <div class="more-btn-box">
+                                <button class="teenchin-more-btn" type="button">
+                                    <div class="more-text-box">
+                                        <div style="margin-right: 0.5rem">더보기</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="down-arrow-svg" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <!-- 모임 목록이 없을 경우 나타나는 문구 및 모임 홍보게시판 이동 버튼 -->
+                            <!-- 가시성을 위해 style="margin-top: 30px"을 임시로 넣음, 작업시 지우고 하세요 -->
+{#                            <div class="club-none-box" style="margin-top: 30px">#}
+{#                                <div class="club-none-ment">가입한 모임이 없습니다.</div>#}
+{#                                <!-- 모임 홍보 게시판 주소 필요 -->#}
+{#                                <a class="club-pr-link" href=""> 모임 가입하러 가기 </a>#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- 푸터 부분 -->
+    <footer></footer>
+    <!-- 모달 모아놓은 부분 -->
+    <div>
+        <!-- 알림 모달 부분 -->
+        <div class="message-maodal-container">
+            <div class="message-modal-shadow"></div>
+            <div class="message-modal-box">
+                <div class="message-modal-items">
+                    <div>
+                        <h2 class="modal-header-box">
+                            <div class="message-check-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="message-svg" viewBox="0 0 20 20"
+                                     fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="modal-header-title"></div>
+                        </h2>
+                        <p class="message-guide-box">
+                            <span class="message-guide-ment"></span>
+                        </p>
+                    </div>
+                    <div class="move-btn-box">
+                        <button class="continuously-btn" type="button"></button>
+                        <button class="club-page-btn" type="button">모임 바로가기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const csrf_token = '{{ csrf_token }}';
+        let page = `{{ page }}`;
+        let order = `{{ order }}`;
+    </script>
+    <script src="{% static 'member/web/js/management-mypage-module.js' %}"></script>
+    <script src="{% static 'member/web/js/my-club-web.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,469 @@
+{% extends 'admin/web/base-web.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'admin/web/css/festival/listview/festival-listview-web.css' %}">
+{% endblock %}
+{% block title %}틴플 :: 관리자 페이지{% endblock %}
+{% block content %}
+            <!-- 메뉴 선택할수 있는 칸 -->
+            <ul class="main-admin-select">
+                <!-- 유저관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/user/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/admin-user-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">유저 관리</span>
+                    </a>
+                </li>
+                <!-- 쪽지 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/message/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/message-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">쪽지 관리</span>
+                    </a>
+                </li>
+                <!-- 틴플레이관리 -->
+{#                <li class="main-user-other">#}
+{#                    <a href="/admin/teenplay/" class="main-user-warp">#}
+{#                        <img class="main-user-image" src="{% static 'admin/web/images/play-img.png' %}" alt="user-image" />#}
+{#                        <span class="main-user-text">틴 플레이 관리</span>#}
+{#                    </a>#}
+{#                </li>#}
+                <!-- 게시글 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/promote/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/post-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">게시글 관리</span>
+                    </a>
+                </li>
+                <!-- 전체모임 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/meeting/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/meeting-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">전체 모임관리</span>
+                    </a>
+                </li>
+                <!-- 축제관리 -->
+                <li class="main-user">
+                    <a href="/admin/festival/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/festival-img.png' %}" alt="user-image" />
+                        <span class="main-user-texta">축제 관리</span>
+                    </a>
+                </li>
+                <!-- 공지사항 관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/notice/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/loudspeaker-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">공지사항 관리</span>
+                    </a>
+                </li>
+                <!-- 댓글관리 -->
+                <li class="main-user-other">
+                    <a href="/admin/comment/" class="main-user-warp">
+                        <img class="main-user-image" src="{% static 'admin/web/images/comment-img.png' %}" alt="user-image" />
+                        <span class="main-user-text">댓글 관리</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- 사실상 여기만 수정하면 모든게 끝입니다! -->
+        <div class="main-user-info-warp">
+            <div class="main-user-info-container">
+                <div class="main-user-info-box">
+                    <div class="main-user-info-top">
+                        <!-- 유저관리, 검색하는곳 -->
+                        <header class="main-user-info-text">
+                            <h1 class="main-user-info-tag">축제 관리</h1>
+                            <div class="main-bet">
+                                <div class="main-user-info-seach">
+                                    <label class="main-user-info-label">
+                                        <div class="main-message-info-choice">
+                                            <div class="main-message-info-choice-box">
+                                                <div class="main-message-info-choice-in">
+                                                    <button class="main-message-info-button">
+                                                        <span class="main-message-info-button-text">축제제목</span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="main-comment-info-button-svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.27 8.42a1.076 1.076 0 0 1 1.587-.13L12 14.832l7.143-6.544a1.076 1.076 0 0 1 1.586.13 1.26 1.26 0 0 1-.122 1.696L12 18l-8.607-7.885A1.26 1.26 0 0 1 3.27 8.42Z"></path>
+                                                        </svg>
+                                                    </button>
+                                                    <div>
+                                                        <!-- 검색창 모달 -->
+                                                        <ul id="admin-message-modal-search" class="hidden">
+                                                            <button class="admin-message-modal-search-send">축제제목</button>
+                                                            <button class="admin-message-modal-search-receive">장소</button>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="main-message-info-bet"></div>
+                                        </div>
+                                        <input class="main-user-info-input" placeholder="축제 검색" type="search" value="" id="member-search" />
+                                        <button class="main-user-search-button" id="member-button">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="main-user-search-box">
+                                                <path id="member-search-cansle" fill-rule="evenodd" clip-rule="evenodd" d="M15.83 16.561a7.8 7.8 0 1 1 1.233-1.312l3.465 3.465a.9.9 0 1 1-1.272 1.273L15.83 16.56Zm1.13-5.961a6.16 6.16 0 1 1-12.32 0 6.16 6.16 0 0 1 12.32 0Z"></path>
+                                            </svg>
+                                        </button>
+                                    </label>
+                                </div>
+                            </div>
+                        </header>
+                        <!-- 전체 목록 갯수확인 -->
+                        <div class="main-user-total">
+                            <!-- 첫번째(왼쪽 전체0) -->
+                            <div class="main-user-total-list">
+                                <span class="main-user-total-text">전체</span>
+                                <span class="main-user-total-number">0</span>
+                            </div>
+                            <!-- 2번째 -->
+                            <!-- 일단은 없애요^^ -->
+                            <div class="main-bet">
+                                <div class="main-user-total-search">
+                                    <div class="main-user-total-member-status">
+                                        <div class="main-user-total-member-list">
+                                            <button class="main-user-total-button" onclick="location.href='/admin/festival/write/'">
+                                                <span class="main-user-total-span">축제 작성하기</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-user-list-ston">
+                                    <button class="member-user-list-button toggle-button">삭제하기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-user-status">
+                            <!-- 여기에 넣으면 추가할수있습니다(가로넓이 width만 수정)) -->
+                            <div class="main-user-status-check">전체선택</div>
+                            <div class="main-user-status-name">축제제목</div>
+                            <div class="main-user-status-date">시작일</div>
+                            <div class="main-user-status-pay">종료일</div>
+                            <div class="main-user-status-recent">장소</div>
+                            <div class="main-user-status-paycount"></div>
+                        </div>
+                    </div>
+                    <!-- 공지사항이 없으면 출력 -->
+                    {% if festival_id|length != 0 %}
+                        <div class="main-user-status-list">
+                            <!-- 이거말고 차라리 로고로? -->
+                            <svg width="53" height="56" fill="none" xmlns="http://www.w3.org/2000/svg" class="main-user-status-list-svg">
+                                <path
+                                    d="M27.516 1.62c-6.654-4.436-21.823.626-21.821 10.475 0 5.567 1.956 10.31 3.889 14.205-1.403-.463-2.853-1.072-3.8-2.095-.466-.502-1.151-1.115-1.802-1.35-.993-.358-2.035.135-2.572.923-1.212 1.776-1.071 2.717-.403 4.643 4.364 5.647 8.167 5.53 11.275 5.435.286-.009.566-.017.84-.021.897 3.13 2.706 6.042 4.099 8.965 1.617 5.694 9.313 4.544 12.913 1.697 2.3-1.819 5.187-2.36 8.117-1.475 2.303.419 3.88-.68 5.236-1.624 1.031-.72 1.934-1.348 2.93-1.149 1.19.238 2.511.191 2.718-1.307.521-3.781-8.391-5.535-11.284-7.062 4.98-2.883 7.416-7.67 6.968-10.861-.31-2.2-2.168-2.967-4.076-1.773-2.206 1.38-2.758 3.32-5.42 4.348 1.822-6.821 3.386-14.515-7.807-21.975Z"
+                                    fill="#9D8DFF"
+                                ></path>
+                                <path d="M15.33 17.017c.03.784-.382 1.385-.92 1.344-.54-.042-1.001-.71-1.032-1.494-.03-.784.382-1.385.921-1.343.54.041 1 .71 1.031 1.493ZM19.599 16.868c.03.784-.382 1.385-.921 1.344-.54-.042-1-.71-1.031-1.494-.03-.784.382-1.385.92-1.343.54.041 1.001.71 1.032 1.493Z" fill="#060606"></path>
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M11.457 29.625a.7.7 0 0 1 .755.64c.036.44.242.87.57 1.304.322.428.721.81 1.107 1.178l.027.026a.7.7 0 1 1-.967 1.012l-.05-.048c-.37-.353-.842-.804-1.235-1.325-.414-.55-.782-1.23-.847-2.033a.7.7 0 0 1 .64-.754ZM35.844 23.41a.7.7 0 0 0-.968.205 25.97 25.97 0 0 1-.389.571c-.235.34-.487.704-.68 1.032-.33.559-.626 1.212-.626 1.941a.7.7 0 1 0 1.4 0c0-.354.145-.745.43-1.228.18-.303.368-.573.573-.868.146-.21.3-.431.465-.684a.7.7 0 0 0-.205-.969Z"
+                                    fill="#000"
+                                ></path>
+                                <path d="M17.917 19.838c-.158-.342-2.435-.62-2.138.915 1.156 3.742 2.834.598 2.138-.915Z" fill="#030303"></path>
+                                <path d="M51.901 52.983c0 1.223-7.433 2.214-16.602 2.214-9.17 0-16.603-.991-16.603-2.214 0-1.222 7.433-2.213 16.603-2.213 9.17 0 16.602.99 16.602 2.213Z" fill="#E3E3E3"></path>
+                            </svg>
+                            <p class="main-user-status-list-text">유저가 없습니다.</p>
+                        </div>
+                    {% else %}
+                        <div class="festival-data">
+{#                            <li class="main-user-list" data-id="1">#}
+{#                                <div class="main-user-list-check">#}
+{#                                    <input type="checkbox" class="main-comment-list-checkbox" />#}
+{#                                </div>#}
+{#                                <div class="main-user-list-name">빙어축제</div>#}
+{#                                <div class="main-user-list-status">23.02.01</div>#}
+{#                                <div class="main-user-list-date">23.02.03</div>#}
+{#                                <div class="main-user-list-pay">강원도</div>#}
+{#                                <div class="main-user-list-detail">#}
+{#                                    <button class="member-user-list-detail-button toggle-button" data-target="1">상세보기</button>#}
+{#                                </div>#}
+{#                            </li>#}
+{#                            <li class="main-user-list" data-id="2">#}
+{#                                <div class="main-user-list-check">#}
+{#                                    <input type="checkbox" name="selected_items" class="main-comment-list-checkbox" />#}
+{#                                </div>#}
+{#                                <div class="main-user-list-name">타이틀1</div>#}
+{#                                <div class="main-user-list-status">2024.12.04</div>#}
+{#                                <div class="main-user-list-date">2024.12.03</div>#}
+{#                                <div class="main-user-list-pay">제주도</div>#}
+{#                                <div class="main-user-list-detail">#}
+{#                                    <button class="member-user-list-detail-button toggle-button" data-target="2">상세보기</button>#}
+{#                                </div>#}
+{#                            </li>#}
+                        </div>
+                    {% endif %}
+                    <!-- 아래쪽 -->
+                    <div class="main-user-bottom-box">
+                        <ul class="main-user-bottom-ul">
+                            <!-- 여기에 왼 숫자 오 들어감 -->
+                            <!-- 먼저 왼 -->
+{#                            <li>#}
+{#                                <button aria-label="page turning button" disabled type="button" class="main-user-bottom-reft">#}
+{#                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="main-user-bottom-svg">#}
+{#                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.58 3.27c.504.405.563 1.115.13 1.587L9.168 12l6.543 7.143a1.076 1.076 0 0 1-.13 1.586 1.26 1.26 0 0 1-1.695-.122L6 12l7.885-8.607a1.26 1.26 0 0 1 1.695-.122Z"></path>#}
+{#                                    </svg>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <!-- 숫자 -->#}
+{#                            <li class="main-margin">#}
+{#                                <button type="button" class="main-user-bottom add-color" id="button1">#}
+{#                                    <span class="main-user-number">1</span>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <li class="main-margin">#}
+{#                                <button aria-label="page number button" type="button" class="main-user-bottom" id="button2">#}
+{#                                    <span class="main-user-number">2</span>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <li class="main-margin">#}
+{#                                <button aria-label="page number button" type="button" class="main-user-bottom" id="button3">#}
+{#                                    <span class="main-user-number">3</span>#}
+{#                                </button>#}
+{#                            </li>#}
+{#                            <!-- 오른쪽 -->#}
+{#                            <li class="main-margin">#}
+{#                                <button aria-label="page turning button" disabled type="button" class="main-user-bottom-right">#}
+{#                                    <svg class="main-user-bottom-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">#}
+{#                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.42 20.73a1.076 1.076 0 0 1-.13-1.587L14.832 12 8.289 4.857a1.076 1.076 0 0 1 .13-1.586 1.26 1.26 0 0 1 1.696.122L18 12l-7.885 8.607a1.26 1.26 0 0 1-1.695.122Z"></path>#}
+{#                                    </svg>#}
+{#                                </button>#}
+{#                            </li>#}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 삭제모달 -->
+        <div id="admin-user-modal" class="hidden">
+            <h4 class="admin-user-modal-title">정말 삭제하시겠습니까?</h4>
+            <div class="admin-user-modal-button">
+                <div class="admin-user-modal-left">
+                    <button class="admin-user-modal-left-button" id="modalCloseButton">취소</button>
+                </div>
+                <div class="admin-user-modal-right">
+{#                     <form action="{% url 'admin-festival-delete' %}" method="get">#}
+                    <button class="admin-user-modal-right-button modal-click" type="button" id="modalApplyButton">삭제하기</button>
+{#                     </form>#}
+                </div>
+            </div>
+        </div>
+        <div id="admin-user-modal-backdrop" class="admin-delete-modal-backdrop hidden"></div>
+        <!-- 수정 모달창 -->
+        <div class="detail-box">
+            <div id="admin-post-modal" class="admin-message-modal hidden">
+            <h4 class="admin-post-modal-title">홍보글 상세정보</h4>
+                <div class="admin-post-modal-warp">
+                    <!-- 여기서부터 안에 들어가는거 하나씩 / 각각 빈 div하나 만들고 안에서 생성 -->
+                    <div class="titleqq">
+                        <p class="admin-post-modal-title-name">제목</p>
+                        <label class="admin-post-modal-title-label">
+                            <input name="title" readonly type="text" class="admin-post-modal-title-input" value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-title" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="admin-post-modal-content-name">내용</p>
+                        <label class="admin-post-modal-content-label">
+                            <textarea readonly name="content" class="admin-post-modal-content-input" value="" ></textarea>
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-content" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="admin-post-modal-thumbnail-name">이미지</p>
+                        <div class="admin-post-modal-thumbnail-warp">
+                            <div class="admin-post-modal-thumbnail-container">
+                                <img id="main-post-photo-img" class="admin-post-modal-thumbnail-img" src="" alt="" />
+                            </div>
+                            <div class="admin-post-modal-thumbnail-button"></div>
+                        </div>
+                        <!-- 여기아래에 안내문 적어주기 -->
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-pay-name">이용요금</p>
+                        <label class="admin-post-modal-pay-label">
+                            <input type="text" name="price" class="admin-post-modal-pay-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-pay" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-adress-name">주소</p>
+                        <label class="admin-post-modal-adress-label">
+                            <input type="text" name="address" class="admin-post-modal-adress-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-adress" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-adressadd-name">상세주소</p>
+                        <label class="admin-post-modal-adressadd-label">
+                            <input name="address-detail" type="text" class="admin-post-modal-adressadd-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-adressadd" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-place-name">행사장소</p>
+                        <label class="admin-post-modal-place-label">
+                            <input name="location" type="text" class="admin-post-modal-place-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-place" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-sttime-name">행사 시작일</p>
+                        <label class="admin-post-modal-sttime-label">
+                            <input name="start-date" type="text" class="admin-post-modal-sttime-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-sttime" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-endtime-name">행사 종료일</p>
+                        <label class="admin-post-modal-endtime-label">
+                            <input type="text" name="end-date" class="admin-post-modal-endtime-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-endtime" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-opne-name">주최자 정보</p>
+                        <label class="admin-post-modal-opne-label">
+                            <input name="host" type="text" class="admin-post-modal-opne-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-opne" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-phone-name">주최자 연락처</p>
+                        <label class="admin-post-modal-phone-label">
+                            <input name="host-phone" type="text" class="admin-post-modal-phone-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-phone" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-give-name">제공자 정보</p>
+                        <label class="admin-post-modal-give-label">
+                            <input name="info-provider" type="text" class="admin-post-modal-give-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시 -->
+                        <div id="red-give" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleqq">
+                        <p class="admin-post-modal-url-name">제공자 url</p>
+                        <label class="admin-post-modal-url-label">
+                            <input name="url-provider" type="text" class="admin-post-modal-url-input" readonly value="" />
+                        </label>
+                        <!-- 값 미입력시    -->
+                        <div id="red-url" class="hidden">
+                            <div class="redbox">
+                                <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" class="redfont">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.008 22.05c5.523.023 10.019-4.436 10.042-9.959.023-5.523-4.436-10.018-9.959-10.041C6.568 2.027 2.073 6.485 2.05 12.008c-.023 5.523 4.435 10.019 9.958 10.042Zm1.527-6.494a1.5 1.5 0 1 1-3-.013 1.5 1.5 0 0 1 3 .013Zm-1.181-2.505a.5.5 0 0 0 .498-.436l.646-4.997a.5.5 0 0 0-.494-.564l-1.867-.008a.5.5 0 0 0-.499.56l.604 5.002a.5.5 0 0 0 .495.44l.617.003Z"></path>
+                                </svg>
+                                값을 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-user-modal-button">
+                    <div class="admin-user-modal-left">
+                        <button class="admin-user-modal-left-detail-button" id="modalCloseButton">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="admin-user-modal-backdrop" class="admin-user-modal-backdrop hidden"></div>
+    </main>
+{% endblock %}
+{% block js %}
+    <script>
+        const csrf_token = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'admin/web/js/festival/listview/admin-festival-module-list-web.js' %}"></script>
+    <script src="{% static 'admin/web/js/festival/listview/admin-festival-list-web.js' %}"></script>
+{#    <script src="{% static 'admin/web/js/festival/listview/admin-festival-listview-addimg-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/festival/listview/admin-festival-listview-bottem-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/festival/listview/admin-festival-listview-button-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/festival/listview/admin-festival-listview-delete-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/festival/listview/admin-festival-listview-modal-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/festival/listview/admin-festival-listview-redbox-web.js' %}"></script>#}
+{#    <script src="{% static 'admin/web/js/festival/listview/admin-festival-listview-search-web.js' %}"></script>#}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'public/web/css/header-web.css' %}">
+    <link rel="stylesheet" href="{% static 'public/web/css/footer-web.css' %}">
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="{% static 'public/web/images/logo/logo1.png' %}" type="image/x-icon" />
+    {% block static %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body loaded style="position: relative; min-height: 100%; top: 0px !important; font-family: SUIT, sans-serif">
+    {% include 'fix/web/mypage-header-web.html' %}
+    {% block content %}{% endblock %}
+    {% include 'fix/web/footer-web.html' %}
+</body>
+<script src="{% static 'public/web/js/mypage-header-web.js' %}"></script>
+{% block js %}{% endblock %}
+</html>

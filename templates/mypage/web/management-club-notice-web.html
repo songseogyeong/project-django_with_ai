@@ -1,0 +1,137 @@
+{% extends 'mypage/web/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/web/css/management-club-notice-web.css' %}">
+{% endblock %}
+
+{% block title %}틴플:: 모임 공지사항{% endblock %}
+{% block content %}
+    <body style="position: relative; min-height: 100%; top: 0px">
+    <!-- 헤더 부분 -->
+    <header></header>
+    <!-- 메인 부분(모임 홍보쪽 해더) -->
+    <main class="main">
+        <!-- 헤더 밑의 모임 관리 관련 서브헤더 -->
+        <div class="sud-header-wrap">
+            <div class="sud-header-container">
+                <div class="sud-header-box">
+                    <!-- 모임 개요 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-club/{{ club_id }}">모임 개요</a>
+                    <!-- 구성원 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-member/{{ club_id }}">구성원</a>
+                    <!-- 모임 공지사항 페이지 주소 필요 -->
+                    <a class="sud-header-category select-category" href="/member/mypage-notice/{{ club_id }}">모임
+                        공지사항</a>
+                    <!-- 모임 설정 페이지 주소 필요 -->
+                    <a class="sud-header-category" href="/member/mypage-setting/{{ club_id }}">모임 설정</a>
+                </div>
+                <!-- 모임 상세페이지 주소 필요 -->
+                <a class="club-detail-link" href="/club/detail/?id={{ club_id }}" target="_blank">
+                    <span>모임 페이지 바로가기</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="move-svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="club-notice-wrap">
+                <div class="club-notice-container">
+                    <div class="club-notice-header-box">
+                        <div class="club-notice-header-items">
+                            모임 공지사항
+                            <div class="club-notice-description">모임 구성원들에게 회비 사용내역, 전달사항, 규칙 등을 공지할 수 있습니다.</div>
+                        </div>
+                        <div class="club-notice-tool">
+                            <button class="club-notice-delete" type="button" disabled>공지 삭제</button>
+                            <!-- 공지 작성 주소 필요 -->
+                            <a class="club-notice-write" href="/member/mypage-notice-write/{{ club_id }}">공지 작성</a>
+                        </div>
+                    </div>
+                    <div class="club-notice-box">
+                        <div class="club-notice-items">
+                            <div class="club-notice-categories">
+                                <div class="all-checked-category-wrap">
+                                    <div class="all-checked-category-container">
+                                        <div class="all-checked-category-box">
+                                            <input id="all-checked" type="checkbox"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="club-notice-sequence-category">순서</div>
+                                <div class="club-notice-title-category">제목</div>
+                                <div class="club-notice-details-category">상세보기</div>
+                                <div class="club-notice-date-category">날짜</div>
+                                <div class="club-notice-modify-category"></div>
+                            </div>
+                            <div class="club-notice-list-box">
+                                <div class="club-notice-list"></div>
+                            <!-- 페이지네이션 버튼 부분(1페이지당 5개) -->
+                            <div class="pagination-wrap">
+                                <div class="pagination-container">
+                                    <div class="pagination-box">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- 푸터 부분 -->
+    <footer></footer>
+    <!-- 모달 부분 -->
+    <div>
+        <!-- 공지 삭제 버튼 클릭 시 나타나는 모달 -->
+        <div class="delete-modal-wrap">
+            <div class="delete-modal-shadow"></div>
+            <div class="delete-modal-container">
+                <div class="delete-modal-box">
+                    <div>
+                        <h2 class="modal-header-box">
+                            <div class="delete-modal-title">선택한 공지사항들을 삭제하시겠습니까?</div>
+                        </h2>
+                    </div>
+                    <div class="delete-modal-btn-box">
+                        <button class="delete-modal-cancle-btn" type="button">취소</button>
+                        <button class="delete-btn" type="button">삭제하기</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 삭제하기 클릭 시 나오는 모달 -->
+            <div class="delete-check-modal-container" style="display: none">
+                <div class="delete-check-modal-box">
+                    <div>
+                        <h2 class="modal-header-box">
+                            <div class="delete-check-svg-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="delete-check-svg" viewBox="0 0 20 20"
+                                     fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="modal-header-title">선택한 공지사항들이 삭제되었습니다.</div>
+                        </h2>
+                    </div>
+                    <div class="delete-check-modal-btn-box">
+                        <button class="close-btn" type="button">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const csrf_token = '{{ csrf_token }}';
+        const club_id = '{{ club_id }}';
+        let page = '{{ page }}';
+        let del_item = '{{ del_item }}';
+    </script>
+    <script src="{% static 'member/web/js/management-mypage-module.js' %}"></script>
+    <script src="{% static 'member/web/js/management-club-notice-web.js' %}"></script>
+{% endblock %}

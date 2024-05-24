@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>틴플 :: 나의 활동</title>
+        <link rel="shortcut icon" href="/staticfiles/images/teenplay_logo/logo1.png" type="image/x-icon" />
+        <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/staticfiles/css/mypage/app/my-activity-app.css" />
+    </head>
+    <body loaded style="position: relative; min-height: 100%; top: 0px">
+        <!-- 마이페이지 헤더 부분 -->
+        <header></header>
+        <!-- 메인 부분 -->
+        <!-- 추가 모달 -->
+        <div class="like-modal-container">
+            <div class="like-modal-wrap">
+                <div>
+                    <h2 class="like-modal-tit-wrap">
+                        <div class="like-modal-tit">관심활동에 추가했습니다</div>
+                    </h2>
+                </div>
+                <div class="like-button-wrap">
+                    <button class="modal-like-button">닫기</button>
+                </div>
+            </div>
+        </div>
+        <!-- 삭제모달 -->
+        <div class="unlike-modal-container">
+            <div class="unlike-modal-wrap">
+                <div>
+                    <h2 class="unlike-modal-tit-wrap">
+                        <div class="unlike-modal-tit">관심활동에서 삭제했습니다</div>
+                    </h2>
+                </div>
+                <div class="unlike-btn-wrap">
+                    <button class="unlike-btn">닫기</button>
+                </div>
+            </div>
+        </div>
+        <!-- 삭제모달끝 -->
+        <main class="mypage-main">
+            <div class="mypage-wrap">
+                <div class="mypage-container">
+                    <div class="mypage-box">
+                        <div class="contents">
+                            <div class="activity-tit">나의 활동</div>
+                            <div class="categori">
+                                <button type="button" class="categori-btn">
+                                    <span class="activity-categori-on activity-categories">활동목록</span>
+                                </button>
+                                <button type="button" class="categori-btn">
+                                    <span class="activity-categori activity-categories">관심활동</span>
+                                </button>
+                            </div>
+                            <!-- 활동 목록 -->
+                            <section>
+                                <div id="activity-list">
+                                    <div class="activity-list-container">
+                                        <!-- activity-wrap 종료 -->
+                                        <div class="activity-wrap">
+                                            <div class="activity-box">
+                                                <div class="activity-img-box">
+                                                    <a href="#" class="activity-img-link">
+                                                        <!-- 종료된 활동은 이미지와 제목이 회색이라 클래스명이 다름 -->
+                                                        <!-- <img class="passivity-img" /> -->
+                                                        <img src="https://eventusstorage.blob.core.windows.net/evs/Image/knockon/77976/ProjectInfo/Cover/ae8368095455477e975264b468292161.jpg" alt="ces올인원 패키지" class="passivity-img" />
+                                                    </a>
+                                                    <div class="like-btn-wrap">
+                                                        <button type="button" class="like-btn">
+                                                            <span class="like-on like-none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="like-img-wrap" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                            </span>
+                                                            <span class="like-off">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="unlike-img-wrap" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="content-txt-box">
+                                                    <div class="middle-txt">
+                                                        <div>
+                                                            <span class="txt-head-end">종료</span>
+                                                        </div>
+                                                        <div>
+                                                            <span class="txt-head">01월22일(월)</span>
+                                                        </div>
+                                                        <div class="middle-txt-online">
+                                                            <span class="txt-foot">중구</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-tit-wrap">
+                                                        <!-- 이 부분도 회색 -->
+                                                        <!-- <a class="passivity-content-tit" -->
+                                                        <a href="#" class="passivity-content-tit">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                    </div>
+                                                    <div class="bottom-content-wrap">
+                                                        <div class="bottom-content-ahead">
+                                                            <span></span>
+                                                        </div>
+                                                        <div class="bottom-content-back">
+                                                            <span class="bottom-content-views">조회 1,048</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 종료 끝 -->
+                                        <!-- activity-wrap 참가대기 시작 -->
+                                        <div class="activity-wrap">
+                                            <div class="activity-box">
+                                                <div class="activity-img-box">
+                                                    <a href="#" class="activity-img-link">
+                                                        <img src="https://eventusstorage.blob.core.windows.net/evs/Image/youthcorn/78359/ProjectInfo/Cover/82b6e6e13a614de697312feabe175b61.png" alt="ces올인원 패키지" class="activity-img" />
+                                                    </a>
+                                                    <div class="like-btn-wrap">
+                                                        <button type="button" class="like-btn">
+                                                            <span class="like-on like-none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="like-img-wrap" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                            </span>
+                                                            <span class="like-off">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="unlike-img-wrap" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="content-txt-box">
+                                                    <div class="middle-txt">
+                                                        <div>
+                                                            <span class="txt-head-wait">참가대기</span>
+                                                        </div>
+                                                        <div>
+                                                            <span class="txt-head">01월22일(월)</span>
+                                                        </div>
+                                                        <div class="middle-txt-online">
+                                                            <span class="txt-foot">중구</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-tit-wrap">
+                                                        <a href="#" class="content-tit">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                    </div>
+                                                    <div class="bottom-content-wrap">
+                                                        <div class="bottom-content-ahead">
+                                                            <span></span>
+                                                        </div>
+                                                        <div class="bottom-content-back">
+                                                            <span class="bottom-content-views">조회 1,048</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 참가대기 끝 -->
+                                        <!-- activity-wrap 참가확정 시작 -->
+                                        <div class="activity-wrap">
+                                            <div class="activity-box">
+                                                <div class="activity-img-box">
+                                                    <a href="#" class="activity-img-link">
+                                                        <img src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/b0873b31c5574493bddf393dd2e16758.png" alt="ces올인원 패키지" class="activity-img" />
+                                                    </a>
+                                                    <div class="like-btn-wrap">
+                                                        <button type="button" class="like-btn">
+                                                            <span class="like-on like-none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="like-img-wrap" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                            </span>
+                                                            <span class="like-off">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="unlike-img-wrap" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="content-txt-box">
+                                                    <div class="middle-txt">
+                                                        <div>
+                                                            <span class="txt-head-confirm">참가확정</span>
+                                                        </div>
+                                                        <div>
+                                                            <span class="txt-head">01월22일(월)</span>
+                                                        </div>
+                                                        <div class="middle-txt-online">
+                                                            <span class="txt-foot">중구</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-tit-wrap">
+                                                        <a href="#" class="content-tit">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                    </div>
+                                                    <div class="bottom-content-wrap">
+                                                        <div class="bottom-content-ahead">
+                                                            <span></span>
+                                                        </div>
+                                                        <div class="bottom-content-back">
+                                                            <span class="bottom-content-views">조회 1,048</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 참가확정 끝 -->
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- 활동목록 끝 -->
+                            <!-- 관심활동 -->
+                            <section>
+                                <div id="interest-activity">
+                                    <div class="activity-list-container">
+                                        <!-- 진행중 한칸 시작 -->
+                                        <div class="activity-wrap-interest">
+                                            <div class="activity-box">
+                                                <div class="activity-img-box">
+                                                    <a href="#" class="activity-img-link">
+                                                        <img src="https://eventusstorage.blob.core.windows.net/evs/Image/godofcoding/78456/ProjectInfo/Cover/ec2edc5e5a514ea88d64372d94f89b2f.jpg" alt="ces올인원 패키지" class="activity-img" />
+                                                    </a>
+                                                    <div class="like-btn-wrap">
+                                                        <button type="button" class="like-button">
+                                                            <span class="like-on-interest">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="like-img-wrap" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                            </span>
+                                                            <span class="like-off-interest like-none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="unlike-img-wrap" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="content-txt-box">
+                                                    <div class="middle-txt">
+                                                        <div>
+                                                            <span class="txt-head">01월22일(월)</span>
+                                                        </div>
+                                                        <div class="middle-txt-online">
+                                                            <span class="txt-foot">온라인</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-tit-wrap">
+                                                        <a href="#" class="content-tit">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                    </div>
+                                                    <div class="bottom-content-wrap">
+                                                        <!-- <div class="bottom-content-ahead">
+                                                            <span></span>
+                                                        </div> -->
+                                                        <div class="bottom-content-back">
+                                                            <span class="bottom-content-views">조회 1,048</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 진행중 한칸 끝 -->
+                                        <!-- 종료 한칸 시작 -->
+                                        <div class="activity-wrap-interest">
+                                            <div class="activity-box">
+                                                <div class="activity-img-box">
+                                                    <a href="#" class="activity-img-link">
+                                                        <img src="https://eventusstorage.blob.core.windows.net/evs/Image/ces/77426/ProjectInfo/Cover/b0873b31c5574493bddf393dd2e16758.png" alt="ces올인원 패키지" class="passivity-img" />
+                                                    </a>
+                                                    <div class="like-btn-wrap">
+                                                        <button type="button" class="like-button">
+                                                            <span class="like-on-interest">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="like-img-wrap" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                            </span>
+                                                            <span class="like-off-interest like-none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="unlike-img-wrap" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="content-txt-box">
+                                                    <div class="middle-txt">
+                                                        <div>
+                                                            <span class="txt-head-end">종료</span>
+                                                        </div>
+                                                        <div>
+                                                            <span class="txt-head">01월22일(월)</span>
+                                                        </div>
+                                                        <div class="middle-txt-online">
+                                                            <span class="txt-foot">온라인</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-tit-wrap">
+                                                        <a href="#" class="passivity-content-tit">매일경제 CES 2024 올인원 패키지 (디브리핑 세미나+리포트)</a>
+                                                    </div>
+                                                    <div class="bottom-content-wrap">
+                                                        <div class="bottom-content-back">
+                                                            <span class="bottom-content-views">조회 1,048</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 종료 한칸 끝 -->
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 푸터 부분 -->
+        <footer></footer>
+    </body>
+    <script src="/staticfiles/js/mypage/app/my-activity-app.js"></script>
+</html>
